@@ -1,7 +1,9 @@
-const ROWER_TOTAL  = 97;
-const SKIERG_TOTAL = 132;
-const TOTAL_ASSETS = ROWER_TOTAL + SKIERG_TOTAL; // 97 + 132 = 229
 const IS_MOBILE = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+const ROWER_ACTIVE_FRAMES = IS_MOBILE ? ROWER_FRAMES_MOBILE : ROWER_FRAMES_DESKTOP;
+const SKIERG_ACTIVE_FRAMES = IS_MOBILE ? SKIERG_FRAMES_MOBILE : SKIERG_FRAMES_DESKTOP;
+const ROWER_TOTAL  = ROWER_ACTIVE_FRAMES.length;
+const SKIERG_TOTAL = SKIERG_ACTIVE_FRAMES.length;
+const TOTAL_ASSETS = ROWER_TOTAL + SKIERG_TOTAL;
 const getVH = () => (window.visualViewport && window.visualViewport.height) || window.innerHeight;
 const getScrollTop = () => document.documentElement.scrollTop || window.scrollY || 0;
 const DEBUG_SCROLL = false;
@@ -273,7 +275,7 @@ function makePlayer(opts) {
   (function loop() { if((rdy||firstPainted)&&Math.abs(tgt-cur)>0.05){cur+=(tgt-cur)*.08;paint(cur);} requestAnimationFrame(loop); })();
 }
 
-makePlayer({ canvasId:'canvas-rower',  loaderId:'loader-rower',  lbarId:'lbar-rower',  sceneId:'eq-rower',  paId:'pa-rower',  pbId:'pb-rower',  pcId:'pc-rower',  hintId:'hint-rower',  progId:'prog-rower',  frames:FRAMES,       total:ROWER_TOTAL  });
-makePlayer({ canvasId:'canvas-skierg', loaderId:'loader-skierg', lbarId:'lbar-skierg', sceneId:'eq-skierg', paId:'pa-skierg', pbId:'pb-skierg', pcId:'pc-skierg', hintId:'hint-skierg', progId:'prog-skierg', frames:SKIERG_FRAMES, total:SKIERG_TOTAL });
+makePlayer({ canvasId:'canvas-rower',  loaderId:'loader-rower',  lbarId:'lbar-rower',  sceneId:'eq-rower',  paId:'pa-rower',  pbId:'pb-rower',  pcId:'pc-rower',  hintId:'hint-rower',  progId:'prog-rower',  frames:ROWER_ACTIVE_FRAMES,  total:ROWER_TOTAL  });
+makePlayer({ canvasId:'canvas-skierg', loaderId:'loader-skierg', lbarId:'lbar-skierg', sceneId:'eq-skierg', paId:'pa-skierg', pbId:'pb-skierg', pcId:'pc-skierg', hintId:'hint-skierg', progId:'prog-skierg', frames:SKIERG_ACTIVE_FRAMES, total:SKIERG_TOTAL });
 if (bgVideo) bgVideo.addEventListener('loadedmetadata', () => ScrollTrigger.refresh(), { once:true });
 window.addEventListener('load', () => ScrollTrigger.refresh());
