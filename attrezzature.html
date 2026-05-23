@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attrezzi & Performance — IL COVO CrossFit Ivrea</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<div id="cur"></div><div id="cur-r"></div>
+<div id="iprog"></div>
+
+<div id="loader">
+  <img src="assets/img/loader-logo.png" class="lw2" alt="">
+  <div class="lb-bg"><div class="lb" id="lb"></div></div>
+  <span class="ll">Caricamento</span>
+</div>
+
+<a id="wa" href="https://wa.me/393282733326" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<nav id="nav">
+  <a href="#" class="nav-logo nav-brand" aria-label="IL COVO">
+    <img src="assets/img/il-covo-logo-white2.png" alt="IL COVO CrossFit Ivrea" class="nav-logo-img">
+  </a>
+  <div class="nav-links">
+    <a href="#eq-rower">Attrezzi</a><a href="#hyrox">HYROX</a>
+    <a href="#process">Come Iniziare</a>
+    <a href="https://www.ilcovocrossfitivrea.com/prezzi">Prezzi</a>
+    <a href="https://form.jotform.com/230275019314044" class="nav-cta">Prova Gratuita</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="att-hero">
+  <div class="att-hero-inner">
+    <span class="section-kicker">Il Covo — Ivrea</span>
+    <h1 class="att-hero-h">Attrezzi &amp;<br><em>Performance</em></h1>
+    <p class="att-hero-p">Gli strumenti che usiamo ogni giorno.</p>
+  </div>
+  <div class="att-shint"><div class="sh-line"></div><span class="sh-txt">Scroll</span></div>
+</section>
+
+<!-- Equipment Stack — Rower + SkiErg -->
+<section id="equipment-stack" class="equipment-stack-section equipment-master-stack">
+  <div class="equipment-stack-shell">
+
+    <article class="eq-scene equipment-card-stack-item card-rower" id="eq-rower">
+      <div class="eq-pin">
+        <canvas class="eq-canvas" id="canvas-rower"></canvas><div class="eq-ov"></div>
+        <div class="eq-pa" id="pa-rower"><span class="eq-nl">01 / 02 — Cardio & Resistenza</span><h2 class="eq-bt">ROW<em>ER</em></h2></div>
+        <div class="eq-pb" id="pb-rower"><span class="pl">Muscoli coinvolti</span><h3 class="ptt">Full <span style="color:var(--red)">Body</span></h3><div class="mg"><div class="mi"><span class="mn">Gambe</span><span class="mp">65%</span></div><div class="mi"><span class="mn">Core</span><span class="mp">20%</span></div><div class="mi"><span class="mn">Braccia</span><span class="mp">15%</span></div></div></div>
+        <div class="eq-pc" id="pc-rower"><span class="pl">Benefici</span><h3 class="ptt">Perché <span style="color:var(--red)">vogare</span></h3><div class="bl"><div class="bi">Fino a 800 calorie in un'ora</div><div class="bi">Zero impatto articolare</div><div class="bi">Migliora potenza cardiovascolare</div><div class="bi">Stazione ufficiale HYROX</div></div><div class="bc"><a href="https://form.jotform.com/230275019314044" class="btn btn-red">Prova adesso →</a></div></div>
+        <div class="eq-hint" id="hint-rower"><div class="eq-hint-line"></div><span class="eq-hint-txt">Scroll</span></div>
+        <div class="eq-progress" id="prog-rower"></div>
+        <div class="eq-loader" id="loader-rower"><div class="lbg"><div class="lbb" id="lbar-rower"></div></div><span class="lt">Caricamento</span></div>
+      </div>
+    </article>
+
+    <article class="eq-scene equipment-card-stack-item card-skierg" id="eq-skierg">
+      <div class="eq-pin">
+        <canvas class="eq-canvas" id="canvas-skierg"></canvas><div class="eq-ov"></div>
+        <div class="eq-pa" id="pa-skierg"><span class="eq-nl">02 / 02 — Upper Body & Core</span><h2 class="eq-bt">SKI<em>ERG</em></h2></div>
+        <div class="eq-pb" id="pb-skierg"><span class="pl">Muscoli coinvolti</span><h3 class="ptt">Upper <span style="color:var(--red)">Body</span></h3><div class="mg"><div class="mi"><span class="mn">Dorsali</span><span class="mp">Primario</span></div><div class="mi"><span class="mn">Spalle</span><span class="mp">Primario</span></div><div class="mi"><span class="mn">Core</span><span class="mp">Stabilizzatore</span></div><div class="mi"><span class="mn">Tricipiti</span><span class="mp">Secondario</span></div></div></div>
+        <div class="eq-pc" id="pc-skierg"><span class="pl">Benefici</span><h3 class="ptt">Perché <span style="color:var(--red)">lo Ski Erg</span></h3><div class="bl"><div class="bi">Coordinazione bilaterale</div><div class="bi">Forza upper body in un movimento</div><div class="bi">Zero impatto sulle gambe</div><div class="bi">Stazione ufficiale HYROX</div></div><div class="bc"><a href="https://form.jotform.com/230275019314044" class="btn btn-red">Prova adesso →</a></div></div>
+        <div class="eq-hint" id="hint-skierg"><div class="eq-hint-line"></div><span class="eq-hint-txt">Scroll</span></div>
+        <div class="eq-progress" id="prog-skierg"></div>
+        <div class="eq-loader" id="loader-skierg"><div class="lbg"><div class="lbb" id="lbar-skierg"></div></div><span class="lt">Caricamento</span></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- CTA finale -->
+<section id="finalcta">
+  <div class="rL"><h2 class="fh">Prenota<br>la tua <em>prova</em><br><em>gratuita.</em></h2></div>
+  <div class="fa rL d2">
+    <a href="https://form.jotform.com/230275019314044" class="btn btn-red">Prenota la Prova Gratuita →</a>
+    <a href="https://wa.me/393282733326" class="btn bwa"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Scrivici su WhatsApp</a>
+    <p class="fn">Prima lezione gratuita · Nessun vincolo · Ivrea, TO</p>
+  </div>
+</section>
+
+<footer><span class="fl">IL <em>COVO</em></span><div class="fls"><a href="#">CrossFit</a><a href="#">HYROX</a><a href="https://www.ilcovocrossfitivrea.com/orari">Orari</a><a href="https://www.ilcovocrossfitivrea.com/prezzi">Prezzi</a></div><div class="fi">Corso Vercelli 332/E, Ivrea TO<br>328 273 3326</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+
+const ROWER_FRAMES_DESKTOP = [
+"assets/frames/rower/desktop/rower_0001.jpg",
+  "assets/frames/rower/desktop/rower_0002.jpg",
+  "assets/frames/rower/desktop/rower_0003.jpg",
+  "assets/frames/rower/desktop/rower_0004.jpg",
+  "assets/frames/rower/desktop/rower_0005.jpg",
+  "assets/frames/rower/desktop/rower_0006.jpg",
+  "assets/frames/rower/desktop/rower_0007.jpg",
+  "assets/frames/rower/desktop/rower_0008.jpg",
+  "assets/frames/rower/desktop/rower_0009.jpg",
+  "assets/frames/rower/desktop/rower_0010.jpg",
+  "assets/frames/rower/desktop/rower_0011.jpg",
+  "assets/frames/rower/desktop/rower_0012.jpg",
+  "assets/frames/rower/desktop/rower_0013.jpg",
+  "assets/frames/rower/desktop/rower_0014.jpg",
+  "assets/frames/rower/desktop/rower_0015.jpg",
+  "assets/frames/rower/desktop/rower_0016.jpg",
+  "assets/frames/rower/desktop/rower_0017.jpg",
+  "assets/frames/rower/desktop/rower_0018.jpg",
+  "assets/frames/rower/desktop/rower_0019.jpg",
+  "assets/frames/rower/desktop/rower_0020.jpg",
+  "assets/frames/rower/desktop/rower_0021.jpg",
+  "assets/frames/rower/desktop/rower_0022.jpg",
+  "assets/frames/rower/desktop/rower_0023.jpg",
+  "assets/frames/rower/desktop/rower_0024.jpg",
+  "assets/frames/rower/desktop/rower_0025.jpg",
+  "assets/frames/rower/desktop/rower_0026.jpg",
+  "assets/frames/rower/desktop/rower_0027.jpg",
+  "assets/frames/rower/desktop/rower_0028.jpg",
+  "assets/frames/rower/desktop/rower_0029.jpg",
+  "assets/frames/rower/desktop/rower_0030.jpg",
+  "assets/frames/rower/desktop/rower_0031.jpg",
+  "assets/frames/rower/desktop/rower_0032.jpg",
+  "assets/frames/rower/desktop/rower_0033.jpg",
+  "assets/frames/rower/desktop/rower_0034.jpg",
+  "assets/frames/rower/desktop/rower_0035.jpg",
+  "assets/frames/rower/desktop/rower_0036.jpg",
+  "assets/frames/rower/desktop/rower_0037.jpg",
+  "assets/frames/rower/desktop/rower_0038.jpg",
+  "assets/frames/rower/desktop/rower_0039.jpg",
+  "assets/frames/rower/desktop/rower_0040.jpg",
+  "assets/frames/rower/desktop/rower_0041.jpg",
+  "assets/frames/rower/desktop/rower_0042.jpg",
+  "assets/frames/rower/desktop/rower_0043.jpg",
+  "assets/frames/rower/desktop/rower_0044.jpg",
+  "assets/frames/rower/desktop/rower_0045.jpg",
+  "assets/frames/rower/desktop/rower_0046.jpg",
+  "assets/frames/rower/desktop/rower_0047.jpg",
+  "assets/frames/rower/desktop/rower_0048.jpg",
+  "assets/frames/rower/desktop/rower_0049.jpg",
+  "assets/frames/rower/desktop/rower_0050.jpg",
+  "assets/frames/rower/desktop/rower_0051.jpg",
+  "assets/frames/rower/desktop/rower_0052.jpg",
+  "assets/frames/rower/desktop/rower_0053.jpg",
+  "assets/frames/rower/desktop/rower_0054.jpg",
+  "assets/frames/rower/desktop/rower_0055.jpg",
+  "assets/frames/rower/desktop/rower_0056.jpg",
+  "assets/frames/rower/desktop/rower_0057.jpg",
+  "assets/frames/rower/desktop/rower_0058.jpg",
+  "assets/frames/rower/desktop/rower_0059.jpg",
+  "assets/frames/rower/desktop/rower_0060.jpg",
+  "assets/frames/rower/desktop/rower_0061.jpg",
+  "assets/frames/rower/desktop/rower_0062.jpg",
+  "assets/frames/rower/desktop/rower_0063.jpg",
+  "assets/frames/rower/desktop/rower_0064.jpg",
+  "assets/frames/rower/desktop/rower_0065.jpg",
+  "assets/frames/rower/desktop/rower_0066.jpg",
+  "assets/frames/rower/desktop/rower_0067.jpg",
+  "assets/frames/rower/desktop/rower_0068.jpg",
+  "assets/frames/rower/desktop/rower_0069.jpg",
+  "assets/frames/rower/desktop/rower_0070.jpg",
+  "assets/frames/rower/desktop/rower_0071.jpg",
+  "assets/frames/rower/desktop/rower_0072.jpg",
+  "assets/frames/rower/desktop/rower_0073.jpg",
+  "assets/frames/rower/desktop/rower_0074.jpg",
+  "assets/frames/rower/desktop/rower_0075.jpg",
+  "assets/frames/rower/desktop/rower_0076.jpg",
+  "assets/frames/rower/desktop/rower_0077.jpg",
+  "assets/frames/rower/desktop/rower_0078.jpg",
+  "assets/frames/rower/desktop/rower_0079.jpg",
+  "assets/frames/rower/desktop/rower_0080.jpg",
+  "assets/frames/rower/desktop/rower_0081.jpg",
+  "assets/frames/rower/desktop/rower_0082.jpg",
+  "assets/frames/rower/desktop/rower_0083.jpg",
+  "assets/frames/rower/desktop/rower_0084.jpg",
+  "assets/frames/rower/desktop/rower_0085.jpg",
+  "assets/frames/rower/desktop/rower_0086.jpg",
+  "assets/frames/rower/desktop/rower_0087.jpg",
+  "assets/frames/rower/desktop/rower_0088.jpg",
+  "assets/frames/rower/desktop/rower_0089.jpg",
+  "assets/frames/rower/desktop/rower_0090.jpg",
+  "assets/frames/rower/desktop/rower_0091.jpg",
+  "assets/frames/rower/desktop/rower_0092.jpg",
+  "assets/frames/rower/desktop/rower_0093.jpg",
+  "assets/frames/rower/desktop/rower_0094.jpg",
+  "assets/frames/rower/desktop/rower_0095.jpg",
+  "assets/frames/rower/desktop/rower_0096.jpg",
+  "assets/frames/rower/desktop/rower_0097.jpg"
+];
+
+const ROWER_FRAMES_MOBILE = [
+  "assets/frames/rower/mobile/rower_mobile_0001.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0002.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0003.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0004.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0005.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0006.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0007.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0008.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0009.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0010.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0011.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0012.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0013.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0014.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0015.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0016.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0017.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0018.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0019.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0020.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0021.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0022.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0023.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0024.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0025.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0026.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0027.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0028.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0029.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0030.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0031.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0032.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0033.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0034.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0035.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0036.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0037.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0038.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0039.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0040.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0041.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0042.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0043.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0044.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0045.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0046.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0047.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0048.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0049.jpg",
+  "assets/frames/rower/mobile/rower_mobile_0050.jpg"
+];
+
+const FRAMES = ROWER_FRAMES_DESKTOP;
+
+const SKIERG_FRAMES_DESKTOP = [
+"assets/frames/skierg/desktop/skierg_0001.jpg",
+  "assets/frames/skierg/desktop/skierg_0002.jpg",
+  "assets/frames/skierg/desktop/skierg_0003.jpg",
+  "assets/frames/skierg/desktop/skierg_0004.jpg",
+  "assets/frames/skierg/desktop/skierg_0005.jpg",
+  "assets/frames/skierg/desktop/skierg_0006.jpg",
+  "assets/frames/skierg/desktop/skierg_0007.jpg",
+  "assets/frames/skierg/desktop/skierg_0008.jpg",
+  "assets/frames/skierg/desktop/skierg_0009.jpg",
+  "assets/frames/skierg/desktop/skierg_0010.jpg",
+  "assets/frames/skierg/desktop/skierg_0011.jpg",
+  "assets/frames/skierg/desktop/skierg_0012.jpg",
+  "assets/frames/skierg/desktop/skierg_0013.jpg",
+  "assets/frames/skierg/desktop/skierg_0014.jpg",
+  "assets/frames/skierg/desktop/skierg_0015.jpg",
+  "assets/frames/skierg/desktop/skierg_0016.jpg",
+  "assets/frames/skierg/desktop/skierg_0017.jpg",
+  "assets/frames/skierg/desktop/skierg_0018.jpg",
+  "assets/frames/skierg/desktop/skierg_0019.jpg",
+  "assets/frames/skierg/desktop/skierg_0020.jpg",
+  "assets/frames/skierg/desktop/skierg_0021.jpg",
+  "assets/frames/skierg/desktop/skierg_0022.jpg",
+  "assets/frames/skierg/desktop/skierg_0023.jpg",
+  "assets/frames/skierg/desktop/skierg_0024.jpg",
+  "assets/frames/skierg/desktop/skierg_0025.jpg",
+  "assets/frames/skierg/desktop/skierg_0026.jpg",
+  "assets/frames/skierg/desktop/skierg_0027.jpg",
+  "assets/frames/skierg/desktop/skierg_0028.jpg",
+  "assets/frames/skierg/desktop/skierg_0029.jpg",
+  "assets/frames/skierg/desktop/skierg_0030.jpg",
+  "assets/frames/skierg/desktop/skierg_0031.jpg",
+  "assets/frames/skierg/desktop/skierg_0032.jpg",
+  "assets/frames/skierg/desktop/skierg_0033.jpg",
+  "assets/frames/skierg/desktop/skierg_0034.jpg",
+  "assets/frames/skierg/desktop/skierg_0035.jpg",
+  "assets/frames/skierg/desktop/skierg_0036.jpg",
+  "assets/frames/skierg/desktop/skierg_0037.jpg",
+  "assets/frames/skierg/desktop/skierg_0038.jpg",
+  "assets/frames/skierg/desktop/skierg_0039.jpg",
+  "assets/frames/skierg/desktop/skierg_0040.jpg",
+  "assets/frames/skierg/desktop/skierg_0041.jpg",
+  "assets/frames/skierg/desktop/skierg_0042.jpg",
+  "assets/frames/skierg/desktop/skierg_0043.jpg",
+  "assets/frames/skierg/desktop/skierg_0044.jpg",
+  "assets/frames/skierg/desktop/skierg_0045.jpg",
+  "assets/frames/skierg/desktop/skierg_0046.jpg",
+  "assets/frames/skierg/desktop/skierg_0047.jpg",
+  "assets/frames/skierg/desktop/skierg_0048.jpg",
+  "assets/frames/skierg/desktop/skierg_0049.jpg",
+  "assets/frames/skierg/desktop/skierg_0050.jpg",
+  "assets/frames/skierg/desktop/skierg_0051.jpg",
+  "assets/frames/skierg/desktop/skierg_0052.jpg",
+  "assets/frames/skierg/desktop/skierg_0053.jpg",
+  "assets/frames/skierg/desktop/skierg_0054.jpg",
+  "assets/frames/skierg/desktop/skierg_0055.jpg",
+  "assets/frames/skierg/desktop/skierg_0056.jpg",
+  "assets/frames/skierg/desktop/skierg_0057.jpg",
+  "assets/frames/skierg/desktop/skierg_0058.jpg",
+  "assets/frames/skierg/desktop/skierg_0059.jpg",
+  "assets/frames/skierg/desktop/skierg_0060.jpg",
+  "assets/frames/skierg/desktop/skierg_0061.jpg",
+  "assets/frames/skierg/desktop/skierg_0062.jpg",
+  "assets/frames/skierg/desktop/skierg_0063.jpg",
+  "assets/frames/skierg/desktop/skierg_0064.jpg",
+  "assets/frames/skierg/desktop/skierg_0065.jpg",
+  "assets/frames/skierg/desktop/skierg_0066.jpg",
+  "assets/frames/skierg/desktop/skierg_0067.jpg",
+  "assets/frames/skierg/desktop/skierg_0068.jpg",
+  "assets/frames/skierg/desktop/skierg_0069.jpg",
+  "assets/frames/skierg/desktop/skierg_0070.jpg",
+  "assets/frames/skierg/desktop/skierg_0071.jpg",
+  "assets/frames/skierg/desktop/skierg_0072.jpg",
+  "assets/frames/skierg/desktop/skierg_0073.jpg",
+  "assets/frames/skierg/desktop/skierg_0074.jpg",
+  "assets/frames/skierg/desktop/skierg_0075.jpg",
+  "assets/frames/skierg/desktop/skierg_0076.jpg",
+  "assets/frames/skierg/desktop/skierg_0077.jpg",
+  "assets/frames/skierg/desktop/skierg_0078.jpg",
+  "assets/frames/skierg/desktop/skierg_0079.jpg",
+  "assets/frames/skierg/desktop/skierg_0080.jpg",
+  "assets/frames/skierg/desktop/skierg_0081.jpg",
+  "assets/frames/skierg/desktop/skierg_0082.jpg",
+  "assets/frames/skierg/desktop/skierg_0083.jpg",
+  "assets/frames/skierg/desktop/skierg_0084.jpg",
+  "assets/frames/skierg/desktop/skierg_0085.jpg",
+  "assets/frames/skierg/desktop/skierg_0086.jpg",
+  "assets/frames/skierg/desktop/skierg_0087.jpg",
+  "assets/frames/skierg/desktop/skierg_0088.jpg",
+  "assets/frames/skierg/desktop/skierg_0089.jpg",
+  "assets/frames/skierg/desktop/skierg_0090.jpg",
+  "assets/frames/skierg/desktop/skierg_0091.jpg",
+  "assets/frames/skierg/desktop/skierg_0092.jpg",
+  "assets/frames/skierg/desktop/skierg_0093.jpg",
+  "assets/frames/skierg/desktop/skierg_0094.jpg",
+  "assets/frames/skierg/desktop/skierg_0095.jpg",
+  "assets/frames/skierg/desktop/skierg_0096.jpg",
+  "assets/frames/skierg/desktop/skierg_0097.jpg",
+  "assets/frames/skierg/desktop/skierg_0098.jpg",
+  "assets/frames/skierg/desktop/skierg_0099.jpg",
+  "assets/frames/skierg/desktop/skierg_0100.jpg",
+  "assets/frames/skierg/desktop/skierg_0101.jpg",
+  "assets/frames/skierg/desktop/skierg_0102.jpg",
+  "assets/frames/skierg/desktop/skierg_0103.jpg",
+  "assets/frames/skierg/desktop/skierg_0104.jpg",
+  "assets/frames/skierg/desktop/skierg_0105.jpg",
+  "assets/frames/skierg/desktop/skierg_0106.jpg",
+  "assets/frames/skierg/desktop/skierg_0107.jpg",
+  "assets/frames/skierg/desktop/skierg_0108.jpg",
+  "assets/frames/skierg/desktop/skierg_0109.jpg",
+  "assets/frames/skierg/desktop/skierg_0110.jpg",
+  "assets/frames/skierg/desktop/skierg_0111.jpg",
+  "assets/frames/skierg/desktop/skierg_0112.jpg",
+  "assets/frames/skierg/desktop/skierg_0113.jpg",
+  "assets/frames/skierg/desktop/skierg_0114.jpg",
+  "assets/frames/skierg/desktop/skierg_0115.jpg",
+  "assets/frames/skierg/desktop/skierg_0116.jpg",
+  "assets/frames/skierg/desktop/skierg_0117.jpg",
+  "assets/frames/skierg/desktop/skierg_0118.jpg",
+  "assets/frames/skierg/desktop/skierg_0119.jpg",
+  "assets/frames/skierg/desktop/skierg_0120.jpg",
+  "assets/frames/skierg/desktop/skierg_0121.jpg",
+  "assets/frames/skierg/desktop/skierg_0122.jpg",
+  "assets/frames/skierg/desktop/skierg_0123.jpg",
+  "assets/frames/skierg/desktop/skierg_0124.jpg",
+  "assets/frames/skierg/desktop/skierg_0125.jpg",
+  "assets/frames/skierg/desktop/skierg_0126.jpg",
+  "assets/frames/skierg/desktop/skierg_0127.jpg",
+  "assets/frames/skierg/desktop/skierg_0128.jpg",
+  "assets/frames/skierg/desktop/skierg_0129.jpg",
+  "assets/frames/skierg/desktop/skierg_0130.jpg",
+  "assets/frames/skierg/desktop/skierg_0131.jpg",
+  "assets/frames/skierg/desktop/skierg_0132.jpg"
+];
+
+const SKIERG_FRAMES_MOBILE = [
+  "assets/frames/skierg/mobile/skierg_mobile_0001.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0002.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0003.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0004.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0005.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0006.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0007.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0008.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0009.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0010.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0011.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0012.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0013.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0014.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0015.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0016.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0017.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0018.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0019.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0020.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0021.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0022.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0023.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0024.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0025.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0026.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0027.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0028.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0029.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0030.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0031.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0032.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0033.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0034.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0035.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0036.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0037.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0038.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0039.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0040.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0041.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0042.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0043.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0044.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0045.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0046.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0047.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0048.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0049.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0050.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0051.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0052.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0053.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0054.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0055.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0056.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0057.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0058.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0059.jpg",
+  "assets/frames/skierg/mobile/skierg_mobile_0060.jpg"
+];
+
+const SKIERG_FRAMES = SKIERG_FRAMES_DESKTOP;
+</script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
