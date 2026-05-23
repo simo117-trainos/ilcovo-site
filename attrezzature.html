@@ -6,6 +6,13 @@
 <title>Attrezzi & Performance — IL COVO CrossFit Ivrea</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
+<style>
+.eq-scene.card-sled {
+  background:
+    radial-gradient(circle at 78% 28%,rgba(188,22,47,.18),transparent 34%),
+    linear-gradient(145deg,#101010,#030303);
+}
+</style>
 </head>
 <body>
 <div id="cur"></div><div id="cur-r"></div>
@@ -48,7 +55,7 @@
     <article class="eq-scene equipment-card-stack-item card-rower" id="eq-rower">
       <div class="eq-pin">
         <canvas class="eq-canvas" id="canvas-rower"></canvas><div class="eq-ov"></div>
-        <div class="eq-pa" id="pa-rower"><span class="eq-nl">01 / 02 — Cardio & Resistenza</span><h2 class="eq-bt">ROW<em>ER</em></h2></div>
+        <div class="eq-pa" id="pa-rower"><span class="eq-nl">01 / 03 — Cardio & Resistenza</span><h2 class="eq-bt">ROW<em>ER</em></h2></div>
         <div class="eq-pb" id="pb-rower"><span class="pl">Muscoli coinvolti</span><h3 class="ptt">Full <span style="color:var(--red)">Body</span></h3><div class="mg"><div class="mi"><span class="mn">Gambe</span><span class="mp">65%</span></div><div class="mi"><span class="mn">Core</span><span class="mp">20%</span></div><div class="mi"><span class="mn">Braccia</span><span class="mp">15%</span></div></div></div>
         <div class="eq-pc" id="pc-rower"><span class="pl">Benefici</span><h3 class="ptt">Perché <span style="color:var(--red)">vogare</span></h3><div class="bl"><div class="bi">Fino a 800 calorie in un'ora</div><div class="bi">Zero impatto articolare</div><div class="bi">Migliora potenza cardiovascolare</div><div class="bi">Stazione ufficiale HYROX</div></div><div class="bc"><a href="https://form.jotform.com/230275019314044" class="btn btn-red">Prova adesso →</a></div></div>
         <div class="eq-hint" id="hint-rower"><div class="eq-hint-line"></div><span class="eq-hint-txt">Scroll</span></div>
@@ -60,12 +67,24 @@
     <article class="eq-scene equipment-card-stack-item card-skierg" id="eq-skierg">
       <div class="eq-pin">
         <canvas class="eq-canvas" id="canvas-skierg"></canvas><div class="eq-ov"></div>
-        <div class="eq-pa" id="pa-skierg"><span class="eq-nl">02 / 02 — Upper Body & Core</span><h2 class="eq-bt">SKI<em>ERG</em></h2></div>
+        <div class="eq-pa" id="pa-skierg"><span class="eq-nl">02 / 03 — Upper Body & Core</span><h2 class="eq-bt">SKI<em>ERG</em></h2></div>
         <div class="eq-pb" id="pb-skierg"><span class="pl">Muscoli coinvolti</span><h3 class="ptt">Upper <span style="color:var(--red)">Body</span></h3><div class="mg"><div class="mi"><span class="mn">Dorsali</span><span class="mp">Primario</span></div><div class="mi"><span class="mn">Spalle</span><span class="mp">Primario</span></div><div class="mi"><span class="mn">Core</span><span class="mp">Stabilizzatore</span></div><div class="mi"><span class="mn">Tricipiti</span><span class="mp">Secondario</span></div></div></div>
         <div class="eq-pc" id="pc-skierg"><span class="pl">Benefici</span><h3 class="ptt">Perché <span style="color:var(--red)">lo Ski Erg</span></h3><div class="bl"><div class="bi">Coordinazione bilaterale</div><div class="bi">Forza upper body in un movimento</div><div class="bi">Zero impatto sulle gambe</div><div class="bi">Stazione ufficiale HYROX</div></div><div class="bc"><a href="https://form.jotform.com/230275019314044" class="btn btn-red">Prova adesso →</a></div></div>
         <div class="eq-hint" id="hint-skierg"><div class="eq-hint-line"></div><span class="eq-hint-txt">Scroll</span></div>
         <div class="eq-progress" id="prog-skierg"></div>
         <div class="eq-loader" id="loader-skierg"><div class="lbg"><div class="lbb" id="lbar-skierg"></div></div><span class="lt">Caricamento</span></div>
+      </div>
+    </article>
+
+    <article class="eq-scene equipment-card-stack-item card-sled" id="eq-sled">
+      <div class="eq-pin">
+        <canvas class="eq-canvas" id="canvas-sled"></canvas><div class="eq-ov"></div>
+        <div class="eq-pa" id="pa-sled"><span class="eq-nl">03 / 03 — Lower Body & Potenza</span><h2 class="eq-bt">SLED <em>PUSH</em></h2></div>
+        <div class="eq-pb" id="pb-sled"><span class="pl">Muscoli coinvolti</span><h3 class="ptt">Lower <span style="color:var(--red)">Body</span></h3><div class="mg"><div class="mi"><span class="mn">Quadricipiti</span><span class="mp">Primario</span></div><div class="mi"><span class="mn">Glutei</span><span class="mp">Primario</span></div><div class="mi"><span class="mn">Core</span><span class="mp">Stabilizzatore</span></div><div class="mi"><span class="mn">Spalle</span><span class="mp">Secondario</span></div></div></div>
+        <div class="eq-pc" id="pc-sled"><span class="pl">Benefici</span><h3 class="ptt">Perché <span style="color:var(--red)">lo Sled</span></h3><div class="bl"><div class="bi">Forza esplosiva senza impatto articolare</div><div class="bi">Migliora accelerazione e potenza atletica</div><div class="bi">Usata in ogni protocollo HYROX competitivo</div><div class="bi">Adatta a tutti i livelli</div></div><div class="bc"><a href="https://form.jotform.com/230275019314044" class="btn btn-red">Prova adesso →</a></div></div>
+        <div class="eq-hint" id="hint-sled"><div class="eq-hint-line"></div><span class="eq-hint-txt">Scroll</span></div>
+        <div class="eq-progress" id="prog-sled"></div>
+        <div class="eq-loader" id="loader-sled"><div class="lbg"><div class="lbb" id="lbar-sled"></div></div><span class="lt">Caricamento</span></div>
       </div>
     </article>
 
@@ -442,8 +461,387 @@ const SKIERG_FRAMES_MOBILE = [
 ];
 
 const SKIERG_FRAMES = SKIERG_FRAMES_DESKTOP;
+
+const SLED_FRAMES_DESKTOP = [
+  "assets/frames/sled/desktop/sled_0001.jpg",
+  "assets/frames/sled/desktop/sled_0002.jpg",
+  "assets/frames/sled/desktop/sled_0003.jpg",
+  "assets/frames/sled/desktop/sled_0004.jpg",
+  "assets/frames/sled/desktop/sled_0005.jpg",
+  "assets/frames/sled/desktop/sled_0006.jpg",
+  "assets/frames/sled/desktop/sled_0007.jpg",
+  "assets/frames/sled/desktop/sled_0008.jpg",
+  "assets/frames/sled/desktop/sled_0009.jpg",
+  "assets/frames/sled/desktop/sled_0010.jpg",
+  "assets/frames/sled/desktop/sled_0011.jpg",
+  "assets/frames/sled/desktop/sled_0012.jpg",
+  "assets/frames/sled/desktop/sled_0013.jpg",
+  "assets/frames/sled/desktop/sled_0014.jpg",
+  "assets/frames/sled/desktop/sled_0015.jpg",
+  "assets/frames/sled/desktop/sled_0016.jpg",
+  "assets/frames/sled/desktop/sled_0017.jpg",
+  "assets/frames/sled/desktop/sled_0018.jpg",
+  "assets/frames/sled/desktop/sled_0019.jpg",
+  "assets/frames/sled/desktop/sled_0020.jpg",
+  "assets/frames/sled/desktop/sled_0021.jpg",
+  "assets/frames/sled/desktop/sled_0022.jpg",
+  "assets/frames/sled/desktop/sled_0023.jpg",
+  "assets/frames/sled/desktop/sled_0024.jpg",
+  "assets/frames/sled/desktop/sled_0025.jpg",
+  "assets/frames/sled/desktop/sled_0026.jpg",
+  "assets/frames/sled/desktop/sled_0027.jpg",
+  "assets/frames/sled/desktop/sled_0028.jpg",
+  "assets/frames/sled/desktop/sled_0029.jpg",
+  "assets/frames/sled/desktop/sled_0030.jpg",
+  "assets/frames/sled/desktop/sled_0031.jpg",
+  "assets/frames/sled/desktop/sled_0032.jpg",
+  "assets/frames/sled/desktop/sled_0033.jpg",
+  "assets/frames/sled/desktop/sled_0034.jpg",
+  "assets/frames/sled/desktop/sled_0035.jpg",
+  "assets/frames/sled/desktop/sled_0036.jpg",
+  "assets/frames/sled/desktop/sled_0037.jpg",
+  "assets/frames/sled/desktop/sled_0038.jpg",
+  "assets/frames/sled/desktop/sled_0039.jpg",
+  "assets/frames/sled/desktop/sled_0040.jpg",
+  "assets/frames/sled/desktop/sled_0041.jpg",
+  "assets/frames/sled/desktop/sled_0042.jpg",
+  "assets/frames/sled/desktop/sled_0043.jpg",
+  "assets/frames/sled/desktop/sled_0044.jpg",
+  "assets/frames/sled/desktop/sled_0045.jpg",
+  "assets/frames/sled/desktop/sled_0046.jpg",
+  "assets/frames/sled/desktop/sled_0047.jpg",
+  "assets/frames/sled/desktop/sled_0048.jpg",
+  "assets/frames/sled/desktop/sled_0049.jpg",
+  "assets/frames/sled/desktop/sled_0050.jpg",
+  "assets/frames/sled/desktop/sled_0051.jpg",
+  "assets/frames/sled/desktop/sled_0052.jpg",
+  "assets/frames/sled/desktop/sled_0053.jpg",
+  "assets/frames/sled/desktop/sled_0054.jpg",
+  "assets/frames/sled/desktop/sled_0055.jpg",
+  "assets/frames/sled/desktop/sled_0056.jpg",
+  "assets/frames/sled/desktop/sled_0057.jpg",
+  "assets/frames/sled/desktop/sled_0058.jpg",
+  "assets/frames/sled/desktop/sled_0059.jpg",
+  "assets/frames/sled/desktop/sled_0060.jpg",
+  "assets/frames/sled/desktop/sled_0061.jpg",
+  "assets/frames/sled/desktop/sled_0062.jpg",
+  "assets/frames/sled/desktop/sled_0063.jpg",
+  "assets/frames/sled/desktop/sled_0064.jpg",
+  "assets/frames/sled/desktop/sled_0065.jpg",
+  "assets/frames/sled/desktop/sled_0066.jpg",
+  "assets/frames/sled/desktop/sled_0067.jpg",
+  "assets/frames/sled/desktop/sled_0068.jpg",
+  "assets/frames/sled/desktop/sled_0069.jpg",
+  "assets/frames/sled/desktop/sled_0070.jpg",
+  "assets/frames/sled/desktop/sled_0071.jpg",
+  "assets/frames/sled/desktop/sled_0072.jpg",
+  "assets/frames/sled/desktop/sled_0073.jpg",
+  "assets/frames/sled/desktop/sled_0074.jpg",
+  "assets/frames/sled/desktop/sled_0075.jpg",
+  "assets/frames/sled/desktop/sled_0076.jpg",
+  "assets/frames/sled/desktop/sled_0077.jpg",
+  "assets/frames/sled/desktop/sled_0078.jpg",
+  "assets/frames/sled/desktop/sled_0079.jpg",
+  "assets/frames/sled/desktop/sled_0080.jpg",
+  "assets/frames/sled/desktop/sled_0081.jpg",
+  "assets/frames/sled/desktop/sled_0082.jpg",
+  "assets/frames/sled/desktop/sled_0083.jpg",
+  "assets/frames/sled/desktop/sled_0084.jpg",
+  "assets/frames/sled/desktop/sled_0085.jpg",
+  "assets/frames/sled/desktop/sled_0086.jpg",
+  "assets/frames/sled/desktop/sled_0087.jpg",
+  "assets/frames/sled/desktop/sled_0088.jpg",
+  "assets/frames/sled/desktop/sled_0089.jpg",
+  "assets/frames/sled/desktop/sled_0090.jpg",
+  "assets/frames/sled/desktop/sled_0091.jpg",
+  "assets/frames/sled/desktop/sled_0092.jpg",
+  "assets/frames/sled/desktop/sled_0093.jpg",
+  "assets/frames/sled/desktop/sled_0094.jpg",
+  "assets/frames/sled/desktop/sled_0095.jpg",
+  "assets/frames/sled/desktop/sled_0096.jpg",
+  "assets/frames/sled/desktop/sled_0097.jpg",
+  "assets/frames/sled/desktop/sled_0098.jpg",
+  "assets/frames/sled/desktop/sled_0099.jpg",
+  "assets/frames/sled/desktop/sled_0100.jpg",
+  "assets/frames/sled/desktop/sled_0101.jpg",
+  "assets/frames/sled/desktop/sled_0102.jpg",
+  "assets/frames/sled/desktop/sled_0103.jpg",
+  "assets/frames/sled/desktop/sled_0104.jpg",
+  "assets/frames/sled/desktop/sled_0105.jpg",
+  "assets/frames/sled/desktop/sled_0106.jpg",
+  "assets/frames/sled/desktop/sled_0107.jpg",
+  "assets/frames/sled/desktop/sled_0108.jpg",
+  "assets/frames/sled/desktop/sled_0109.jpg",
+  "assets/frames/sled/desktop/sled_0110.jpg",
+  "assets/frames/sled/desktop/sled_0111.jpg",
+  "assets/frames/sled/desktop/sled_0112.jpg",
+  "assets/frames/sled/desktop/sled_0113.jpg",
+  "assets/frames/sled/desktop/sled_0114.jpg",
+  "assets/frames/sled/desktop/sled_0115.jpg",
+  "assets/frames/sled/desktop/sled_0116.jpg",
+  "assets/frames/sled/desktop/sled_0117.jpg",
+  "assets/frames/sled/desktop/sled_0118.jpg",
+  "assets/frames/sled/desktop/sled_0119.jpg",
+  "assets/frames/sled/desktop/sled_0120.jpg",
+  "assets/frames/sled/desktop/sled_0121.jpg",
+  "assets/frames/sled/desktop/sled_0122.jpg",
+  "assets/frames/sled/desktop/sled_0123.jpg",
+  "assets/frames/sled/desktop/sled_0124.jpg",
+  "assets/frames/sled/desktop/sled_0125.jpg",
+  "assets/frames/sled/desktop/sled_0126.jpg",
+  "assets/frames/sled/desktop/sled_0127.jpg",
+  "assets/frames/sled/desktop/sled_0128.jpg",
+  "assets/frames/sled/desktop/sled_0129.jpg",
+  "assets/frames/sled/desktop/sled_0130.jpg",
+  "assets/frames/sled/desktop/sled_0131.jpg",
+  "assets/frames/sled/desktop/sled_0132.jpg",
+  "assets/frames/sled/desktop/sled_0133.jpg",
+  "assets/frames/sled/desktop/sled_0134.jpg",
+  "assets/frames/sled/desktop/sled_0135.jpg",
+  "assets/frames/sled/desktop/sled_0136.jpg",
+  "assets/frames/sled/desktop/sled_0137.jpg",
+  "assets/frames/sled/desktop/sled_0138.jpg",
+  "assets/frames/sled/desktop/sled_0139.jpg",
+  "assets/frames/sled/desktop/sled_0140.jpg",
+  "assets/frames/sled/desktop/sled_0141.jpg",
+  "assets/frames/sled/desktop/sled_0142.jpg",
+  "assets/frames/sled/desktop/sled_0143.jpg",
+  "assets/frames/sled/desktop/sled_0144.jpg",
+  "assets/frames/sled/desktop/sled_0145.jpg",
+  "assets/frames/sled/desktop/sled_0146.jpg",
+  "assets/frames/sled/desktop/sled_0147.jpg",
+  "assets/frames/sled/desktop/sled_0148.jpg",
+  "assets/frames/sled/desktop/sled_0149.jpg",
+  "assets/frames/sled/desktop/sled_0150.jpg",
+  "assets/frames/sled/desktop/sled_0151.jpg"
+];
+
+const SLED_FRAMES_MOBILE = [
+  "assets/frames/sled/mobile/sled_mobile_0001.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0002.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0003.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0004.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0005.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0006.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0007.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0008.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0009.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0010.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0011.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0012.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0013.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0014.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0015.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0016.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0017.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0018.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0019.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0020.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0021.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0022.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0023.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0024.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0025.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0026.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0027.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0028.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0029.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0030.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0031.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0032.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0033.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0034.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0035.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0036.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0037.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0038.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0039.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0040.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0041.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0042.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0043.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0044.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0045.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0046.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0047.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0048.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0049.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0050.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0051.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0052.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0053.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0054.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0055.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0056.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0057.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0058.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0059.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0060.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0061.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0062.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0063.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0064.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0065.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0066.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0067.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0068.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0069.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0070.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0071.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0072.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0073.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0074.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0075.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0076.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0077.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0078.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0079.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0080.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0081.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0082.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0083.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0084.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0085.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0086.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0087.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0088.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0089.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0090.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0091.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0092.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0093.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0094.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0095.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0096.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0097.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0098.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0099.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0100.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0101.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0102.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0103.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0104.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0105.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0106.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0107.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0108.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0109.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0110.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0111.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0112.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0113.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0114.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0115.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0116.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0117.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0118.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0119.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0120.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0121.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0122.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0123.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0124.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0125.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0126.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0127.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0128.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0129.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0130.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0131.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0132.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0133.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0134.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0135.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0136.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0137.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0138.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0139.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0140.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0141.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0142.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0143.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0144.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0145.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0146.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0147.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0148.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0149.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0150.jpg",
+  "assets/frames/sled/mobile/sled_mobile_0151.jpg"
+];
 </script>
 <script src="assets/js/main.js"></script>
+<script>
+  // Player canvas per la Sled (main.js gestisce rower e skierg automaticamente)
+  var SLED_ACTIVE_FRAMES = IS_MOBILE ? SLED_FRAMES_MOBILE : SLED_FRAMES_DESKTOP;
+  var SLED_TOTAL = SLED_ACTIVE_FRAMES.length;
+  makePlayer({
+    canvasId: 'canvas-sled', loaderId: 'loader-sled', lbarId: 'lbar-sled',
+    sceneId:  'eq-sled',     paId:     'pa-sled',     pbId:    'pb-sled',
+    pcId:     'pc-sled',     hintId:   'hint-sled',   progId:  'prog-sled',
+    frames: SLED_ACTIVE_FRAMES, total: SLED_TOTAL
+  });
+
+  /* Override stack timing per 3 card.
+     Con count=3: Rower local=1 a progress=0.333, SkiErg a 0.667, Sled a 1.0.
+     Transizioni: Rower→SkiErg a 0.42, SkiErg→Sled a 0.75.
+     L'utente ha ~9% di scroll per leggere ogni pannello benefici. */
+  window.addEventListener('load', function() {
+    var section = document.querySelector('.equipment-stack-section');
+    var cards = gsap.utils.toArray('.equipment-card-stack-item');
+    if (!section || cards.length < 3) return;
+
+    var isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+    // Uccidi solo il trigger visivo (ha .animation collegata; i player usano onUpdate)
+    ScrollTrigger.getAll().forEach(function(st) {
+      if (st.trigger === section && st.animation) st.kill(false, false);
+    });
+
+    // Più scroll fisico per card → animazioni leggibili
+    section.style.height = (cards.length * (isMobile ? 350 : 420)) + 'vh';
+
+    // Posizioni iniziali
+    gsap.set(cards[0], { yPercent: 0,   scale: 1, filter: 'brightness(1)', zIndex: 1 });
+    gsap.set(cards[1], { yPercent: 120, scale: 1, filter: 'brightness(1)', zIndex: 2 });
+    gsap.set(cards[2], { yPercent: 120, scale: 1, filter: 'brightness(1)', zIndex: 3 });
+
+    var t1 = 0.37, t2 = 0.70, dur = 0.08;
+
+    var tl = gsap.timeline({
+      defaults: { ease: 'none' },
+      scrollTrigger: {
+        trigger: section, start: 'top top', end: 'bottom bottom',
+        scrub: 0.8, invalidateOnRefresh: true
+      }
+    });
+
+    // Rower → SkiErg
+    tl.to({}, { duration: t1 });
+    tl.to(cards[1], { yPercent: 0, duration: dur }, t1);
+    tl.to(cards[0], { scale: 0.96, filter: 'brightness(0.7)', duration: dur }, t1);
+    // SkiErg → Sled
+    tl.to({}, { duration: t2 - t1 - dur }, t1 + dur);
+    tl.to(cards[2], { yPercent: 0, duration: dur }, t2);
+    tl.to(cards[1], { scale: 0.96, filter: 'brightness(0.7)', duration: dur }, t2);
+    tl.to({}, { duration: 1 - t2 - dur });
+
+    ScrollTrigger.refresh();
+  });
+
+  window.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      var loader = document.getElementById('loader');
+      if (loader) {
+        loader.style.opacity = '0';
+        loader.style.pointerEvents = 'none';
+        setTimeout(function() {
+          loader.style.display = 'none';
+        }, 500);
+      }
+    }, 300);
+  });
+</script>
 
 </body>
 </html>
