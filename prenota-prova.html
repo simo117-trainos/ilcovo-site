@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prenota la tua Prova — IL COVO CrossFit & HYROX Ivrea</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="booking-page">
+
+<nav id="nav" class="site-header header--light">
+  <div class="nav-container">
+  <a href="index.html" class="nav-logo nav-brand" aria-label="IL COVO">
+    <img src="assets/img/Scritta+lupo-bianco - Copia.png" alt="IL COVO CrossFit Ivrea" class="nav-logo-img">
+  </a>
+  <div class="nav-links">
+    <a href="index.html">HOME</a>
+    <a href="crossfit.html">CrossFit</a>
+    <a href="hyrox.html">Hyrox</a>
+    <a href="orari.html">Orari</a>
+    <a href="prezzi.html">Prezzi</a>
+    <a href="prenota-prova.html?type=trial" class="nav-cta nav-cta--mobile">Prova Gratuita</a>
+  </div>
+  <div class="nav-actions">
+    <a href="prenota-prova.html?type=trial" class="nav-cta">Prova Gratuita</a>
+    <button class="nav-toggle" type="button" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  </div>
+</nav>
+
+<main class="booking-main">
+
+  <!-- ── HERO ── -->
+  <section class="booking-hero">
+    <span class="section-kicker">Inizia con Il Covo</span>
+    <h1 class="booking-hero-title">PRENOTA LA TUA<br>PRIMA ESPERIENZA<br><em>AL COVO</em></h1>
+    <p class="booking-hero-sub">Scegli il percorso più adatto a te. Ti ricontattiamo su WhatsApp per fissare giorno e orario.</p>
+  </section>
+
+  <!-- ── SCELTA PERCORSO ── -->
+  <section class="booking-choice">
+    <div class="booking-cards" role="tablist" aria-label="Scegli il tipo di richiesta">
+
+      <button type="button" class="booking-card" data-type="prova" role="tab" aria-label="Scegli Prova Gratuita" aria-controls="form-prova" aria-selected="false">
+        <div class="booking-card-inner">
+          <span class="booking-card-tag">Gratis</span>
+          <h2 class="booking-card-title">PROVA<br>GRATUITA</h2>
+          <p class="booking-card-text">Per iniziare con CrossFit o HYROX, anche se parti da zero. Prima lezione senza impegno.</p>
+          <span class="booking-card-cta">Voglio fare una prova →</span>
+        </div>
+      </button>
+
+      <button type="button" class="booking-card booking-card--dropin" data-type="dropin" role="tab" aria-label="Scegli Drop-in" aria-controls="form-dropin" aria-selected="false">
+        <div class="booking-card-inner">
+          <span class="booking-card-tag">Visitatori</span>
+          <h2 class="booking-card-title">DROP-IN</h2>
+          <p class="booking-card-text">Per chi si allena già e vuole venire al COVO per una classe singola.</p>
+          <span class="booking-card-cta">Voglio fare un drop-in →</span>
+        </div>
+      </button>
+
+    </div>
+  </section>
+
+  <!-- ── FORM PROVA GRATUITA ── -->
+  <section id="form-prova" class="booking-form-section" role="tabpanel" hidden>
+    <div class="booking-form-header">
+      <h2 class="booking-form-title">PRENOTA LA TUA PROVA</h2>
+      <p class="booking-form-desc">Scegli CrossFit o HYROX e indicaci quando preferisci allenarti.</p>
+    </div>
+    <form id="booking-form-prova" class="booking-form booking-form--trial" novalidate>
+
+      <div class="booking-field">
+        <label class="booking-label">Nome e cognome <span class="req">*</span></label>
+        <input type="text" name="nome" class="booking-input" placeholder="Mario Rossi" value="" autocomplete="name" required>
+        <p class="booking-field-error">Campo obbligatorio</p>
+      </div>
+
+      <div class="booking-field">
+        <label class="booking-label">Numero WhatsApp <span class="req">*</span></label>
+        <input type="tel" name="whatsapp" class="booking-input" placeholder="+39 333 123 4567" value="" autocomplete="tel" required>
+        <p class="booking-field-error">Campo obbligatorio</p>
+      </div>
+
+      <div class="booking-field">
+        <label class="booking-label">Email <span class="booking-optional">(facoltativa)</span></label>
+        <input type="email" name="email" class="booking-input" placeholder="mario@esempio.it" value="" autocomplete="email">
+      </div>
+
+      <div class="booking-field">
+        <label class="booking-label">Che prova vuoi fare? <span class="req">*</span></label>
+        <div class="booking-radio-group" data-required="true">
+          <label class="booking-radio-option"><input type="radio" name="tipo-prova" value="CrossFit"><span>CrossFit</span></label>
+          <label class="booking-radio-option"><input type="radio" name="tipo-prova" value="HYROX"><span>HYROX</span></label>
+          <label class="booking-radio-option"><input type="radio" name="tipo-prova" value="Consigliatemi voi"><span>Consigliatemi voi</span></label>
+        </div>
+        <p class="booking-field-error">Seleziona un'opzione</p>
+      </div>
+
+      <div class="booking-field">
+        <label class="booking-label">Qual è il tuo livello attuale? <span class="req">*</span></label>
+        <div class="booking-radio-group" data-required="true">
+          <label class="booking-radio-option"><input type="radio" name="livello" value="Non mi alleno da tempo"><span>Non mi alleno da tempo</span></label>
+          <label class="booking-radio-option"><input type="radio" name="livello" value="Vado già in palestra"><span>Vado già in palestra</span></label>
+          <label class="booking-radio-option"><input type="radio" name="livello" value="Corro / faccio sport"><span>Corro / faccio sport</span></label>
+          <label class="booking-radio-option"><input type="radio" name="livello" value="Faccio già CrossFit"><span>Faccio già CrossFit</span></label>
+          <label class="booking-radio-option"><input type="radio" name="livello" value="Mi sto preparando per HYROX o gare simili"><span>Mi preparo per HYROX</span></label>
+        </div>
+        <p class="booking-field-error">Seleziona un'opzione</p>
+      </div>
+
+      <div class="booking-field">
+        <label class="booking-label">Qual è il tuo obiettivo principale? <span class="req">*</span></label>
+        <div class="booking-radio-group" data-required="true">
+          <label class="booking-radio-option"><input type="radio" name="obiettivo" value="Rimettermi in forma"><span>Rimettermi in forma</span></label>
+          <label class="booking-radio-option"><input type="radio" name="obiettivo" value="Dimagrire / tonificare"><span>Dimagrire / tonificare</span></label>
+          <label class="booking-radio-option"><input type="radio" name="obiettivo" value="Diventare più forte"><span>Diventare più forte</span></label>
+          <label class="booking-radio-option"><input type="radio" name="obiettivo" value="Allenarmi con più costanza"><span>Più costanza</span></label>
+          <label class="booking-radio-option"><input type="radio" name="obiettivo" value="Preparare una gara HYROX"><span>Preparare gara HYROX</span></label>
+          <label class="booking-radio-option"><input type="radio" name="obiettivo" value="Cercare un ambiente più motivante"><span>Ambiente più motivante</span></label>
+        </div>
+        <p class="booking-field-error">Seleziona un'opzione</p>
+      </div>
+
+      <div class="booking-field" id="prova-orario-field">
+        <label class="booking-label">Quando vorresti fare la prova? <span class="req">*</span></label>
+        <button type="button" class="booking-class-picker" id="booking-class-picker" aria-haspopup="dialog" aria-controls="trial-class-dialog">
+          <span class="booking-class-picker-icon" aria-hidden="true">▣</span>
+          <span class="booking-class-picker-copy">
+            <strong id="booking-class-summary">Scegli giorno e orario</strong>
+            <small id="booking-class-modify" hidden>Modifica</small>
+          </span>
+          <span class="booking-class-picker-chevron" aria-hidden="true">⌄</span>
+        </button>
+        <input type="hidden" name="preferred-discipline">
+        <input type="hidden" name="preferred-day">
+        <input type="hidden" name="preferred-time">
+        <input type="hidden" name="preferred-class-label">
+        <input type="hidden" name="availability-preference">
+        <p class="booking-field-error" id="prova-orario-error">Seleziona il giorno e l'orario della prova.</p>
+      </div>
+
+      <div class="booking-field">
+        <label class="booking-label">Ci sono esigenze particolari di cui preferisci parlare con il coach prima della prova?</label>
+        <div class="booking-radio-group">
+          <label class="booking-radio-option"><input type="radio" name="infortuni" value="No"><span>No</span></label>
+          <label class="booking-radio-option"><input type="radio" name="infortuni" value="Sì, scrivo nelle note"><span>Sì, scrivo nelle note</span></label>
+        </div>
+        <p class="booking-orario-hint">Indica solo le informazioni strettamente necessarie per permettere al coach di adattare l’allenamento. Non inserire diagnosi, referti o documentazione medica.</p>
+      </div>
+
+      <div class="booking-field">
+        <label class="booking-label">Note libere</label>
+        <textarea name="note" class="booking-textarea" rows="3" placeholder="Qualcosa che dobbiamo sapere prima di ricontattarti..."></textarea>
+        <p class="booking-orario-hint">Non inserire diagnosi, referti o informazioni mediche. Potrai confrontarti direttamente con il coach prima della prova.</p>
+      </div>
+
+      <div class="booking-field">
+        <label class="booking-label">Come ci hai trovato?</label>
+        <div class="booking-radio-group">
+          <label class="booking-radio-option"><input type="radio" name="provenienza" value="Instagram"><span>Instagram</span></label>
+          <label class="booking-radio-option"><input type="radio" name="provenienza" value="Google"><span>Google</span></label>
+          <label class="booking-radio-option"><input type="radio" name="provenienza" value="Passaparola"><span>Passaparola</span></label>
+          <label class="booking-radio-option"><input type="radio" name="provenienza" value="TikTok"><span>TikTok</span></label>
+          <label class="booking-radio-option"><input type="radio" name="provenienza" value="Evento / gara"><span>Evento / gara</span></label>
+          <label class="booking-radio-option"><input type="radio" name="provenienza" value="Altro"><span>Altro</span></label>
+        </div>
+      </div>
+
+      <div class="booking-field booking-field--privacy">
+        <label class="booking-privacy">
+          <input type="checkbox" name="privacy" required>
+          <span>Ho letto la <a href="privacy-policy.html">Privacy Policy</a> e autorizzo il trattamento dei dati necessari alla gestione della mia richiesta.</span>
+        </label>
+        <p class="booking-field-error">Devi accettare la privacy per procedere</p>
+      </div>
+
+      <p class="booking-form-error" hidden>Compila tutti i campi obbligatori prima di continuare.</p>
+      <button type="submit" class="booking-submit">RICHIEDI LA TUA PROVA</button>
+
+    </form>
+
+    <!-- Success state — mostrato da JS dopo l'invio -->
+    <div class="booking-success" hidden>
+      <span class="booking-success-check">✓</span>
+      <h3 class="booking-success-title">Richiesta ricevuta</h3>
+      <p class="booking-success-text">Richiesta ricevuta. Ti confermeremo la disponibilità della classe.</p>
+      <p class="booking-success-wa" hidden>
+        Completa l'invio su WhatsApp per mandarci la richiesta.
+        <a class="booking-success-wa-link" href="#" target="_blank" rel="noopener">Apri WhatsApp →</a>
+      </p>
+    </div>
+
+  </section>
+
+  <!-- ── FORM DROP-IN ── -->
+  <section id="form-dropin" class="booking-form-section" role="tabpanel" hidden>
+    <div class="booking-form-header">
+      <h2 class="booking-form-title">DROP-IN</h2>
+      <p class="booking-form-desc">Compila il form — ti confermiamo disponibilità e orario in base ai posti in classe.</p>
+    </div>
+    <form id="booking-form-dropin" class="booking-form booking-form--dropin" novalidate>
+
+      <div class="booking-field">
+        <label class="booking-label">Nome e cognome <span class="req">*</span></label>
+        <input type="text" name="nome" class="booking-input" placeholder="Mario Rossi" value="" autocomplete="name" required>
+        <p class="booking-field-error">Campo obbligatorio</p>
+      </div>
+
+      <div class="booking-field">
+        <label class="booking-label">Numero WhatsApp <span class="req">*</span></label>
+        <input type="tel" name="whatsapp" class="booking-input" placeholder="+39 333 123 4567" value="" autocomplete="tel" required>
+        <p class="booking-field-error">Campo obbligatorio</p>
+      </div>
+
+      <div class="booking-field">
+        <label class="booking-label">Email <span class="booking-optional">(facoltativa)</span></label>
+        <input type="email" name="email" class="booking-input" placeholder="mario@esempio.it" value="" autocomplete="email">
+      </div>
+
+      <div class="booking-field">
+        <label class="booking-label">Da dove vieni? <span class="req">*</span></label>
+        <input type="text" name="provenienza" class="booking-input" placeholder="Box, palestra o città" value="" required>
+        <p class="booking-field-error">Campo obbligatorio</p>
+      </div>
+
+      <div class="booking-field">
+        <label class="booking-label">Che esperienza hai? <span class="req">*</span></label>
+        <div class="booking-radio-group" data-required="true">
+          <label class="booking-radio-option"><input type="radio" name="esperienza" value="Faccio CrossFit regolarmente"><span>CrossFit regolarmente</span></label>
+          <label class="booking-radio-option"><input type="radio" name="esperienza" value="Faccio functional training"><span>Functional training</span></label>
+          <label class="booking-radio-option"><input type="radio" name="esperienza" value="Faccio HYROX / endurance"><span>HYROX / endurance</span></label>
+          <label class="booking-radio-option"><input type="radio" name="esperienza" value="Altro"><span>Altro</span></label>
+        </div>
+        <p class="booking-field-error">Seleziona un'opzione</p>
+      </div>
+
+      <div class="booking-fields-row">
+        <div class="booking-field">
+          <label class="booking-label">Data preferita</label>
+          <input type="date" name="data" class="booking-input">
+        </div>
+        <div class="booking-field">
+          <label class="booking-label">Preferenza oraria indicativa</label>
+          <div class="booking-radio-group">
+            <label class="booking-radio-option"><input type="radio" name="fascia-oraria" value="Mattina"><span>Mattina</span></label>
+            <label class="booking-radio-option"><input type="radio" name="fascia-oraria" value="Pausa pranzo"><span>Pausa pranzo</span></label>
+            <label class="booking-radio-option"><input type="radio" name="fascia-oraria" value="Pomeriggio"><span>Pomeriggio</span></label>
+            <label class="booking-radio-option"><input type="radio" name="fascia-oraria" value="Sera"><span>Sera</span></label>
+            <label class="booking-radio-option"><input type="radio" name="fascia-oraria" value="Sono flessibile"><span>Sono flessibile</span></label>
+          </div>
+          <p class="booking-orario-hint">La disponibilità del drop-in viene confermata su WhatsApp in base alla classe e ai posti disponibili.</p>
+        </div>
+      </div>
+
+      <div class="booking-field">
+        <label class="booking-label">Che tipo di classe vuoi fare?</label>
+        <div class="booking-radio-group">
+          <label class="booking-radio-option"><input type="radio" name="tipo-classe" value="CrossFit"><span>CrossFit</span></label>
+          <label class="booking-radio-option"><input type="radio" name="tipo-classe" value="HYROX"><span>HYROX</span></label>
+          <label class="booking-radio-option"><input type="radio" name="tipo-classe" value="Open gym, se disponibile"><span>Open gym</span></label>
+          <label class="booking-radio-option"><input type="radio" name="tipo-classe" value="Non so, consigliatemi voi"><span>Consigliatemi voi</span></label>
+        </div>
+      </div>
+
+      <div class="booking-field">
+        <label class="booking-label">Vieni da solo o con altre persone?</label>
+        <input type="text" name="persone" class="booking-input" placeholder="Es: da solo, con un amico, siamo in 3…" value="">
+      </div>
+
+      <div class="booking-field">
+        <label class="booking-label">Note libere</label>
+        <textarea name="note" class="booking-textarea" rows="3" placeholder="Qualcosa che dobbiamo sapere..."></textarea>
+      </div>
+
+      <div class="booking-field booking-field--privacy">
+        <label class="booking-privacy">
+          <input type="checkbox" name="privacy" required>
+          <span>Acconsento al trattamento dei dati personali per essere ricontattato da IL COVO.</span>
+        </label>
+        <p class="booking-field-error">Devi accettare la privacy per procedere</p>
+      </div>
+
+      <p class="booking-form-error" hidden>Compila tutti i campi obbligatori prima di continuare.</p>
+      <button type="submit" class="booking-submit booking-submit--dropin">Richiedi Drop-in →</button>
+
+    </form>
+
+    <!-- Success state — mostrato da JS dopo l'invio -->
+    <div class="booking-success booking-success--dropin" hidden>
+      <span class="booking-success-check">✓</span>
+      <h3 class="booking-success-title">Richiesta ricevuta</h3>
+      <p class="booking-success-text">Richiesta drop-in ricevuta. Ti confermeremo disponibilità e orario in base ai posti in classe.</p>
+      <p class="booking-success-wa" hidden>
+        Completa l'invio su WhatsApp per mandarci la richiesta.
+        <a class="booking-success-wa-link" href="#" target="_blank" rel="noopener">Apri WhatsApp →</a>
+      </p>
+    </div>
+
+  </section>
+
+</main>
+
+<div class="booking-dialog-backdrop" id="trial-class-dialog" role="dialog" aria-modal="true" aria-labelledby="trial-class-dialog-title" aria-describedby="trial-class-dialog-desc" hidden>
+  <div class="booking-dialog" tabindex="-1">
+    <button type="button" class="booking-dialog-close" aria-label="Chiudi selezione classe">×</button>
+    <h2 class="booking-dialog-title" id="trial-class-dialog-title">Scegli la tua classe</h2>
+    <p class="booking-dialog-desc" id="trial-class-dialog-desc">Seleziona prima il giorno e poi l’orario che preferisci.</p>
+    <div class="booking-dialog-options" id="trial-class-dialog-options"></div>
+  </div>
+</div>
+
+<script>
+// Cursor
+const C = document.getElementById('cur'), R = document.getElementById('cur-r');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; C.style.left=mx+'px'; C.style.top=my+'px'; });
+(function tick(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;R.style.left=rx+'px';R.style.top=ry+'px';requestAnimationFrame(tick);})();
+// Nav scroll + light theme
+const navEl = document.getElementById('nav');
+function updateNav(){const st=window.scrollY||document.documentElement.scrollTop;navEl.classList.toggle('solid',st>60);navEl.classList.toggle('header--light',st>5);}
+window.addEventListener('scroll', updateNav, {passive:true});
+updateNav();
+</script>
+<script src="assets/js/booking.js"></script>
+
+<div data-site-footer></div>
+<script src="assets/js/header.js" defer></script>
+<script src="assets/js/footer.js" defer></script>
+</body>
+</html>

@@ -4,12 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IL COVO — CrossFit & HYROX Ivrea</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@600;700&family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
-<div id="cur"></div><div id="cur-r"></div>
-<div id="iprog"></div>
+<body class="home-page">
 
 <div id="loader">
   <img src="assets/img/loader-logo.png" class="lw2" alt="">
@@ -17,222 +15,184 @@
   <span class="ll">Caricamento</span>
 </div>
 
-<a id="wa" href="https://wa.me/393282733326" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-
-<nav id="nav">
-  <a href="#" class="nav-logo nav-brand" aria-label="IL COVO">
-    <img src="assets/img/il-covo-logo-white2.png" alt="IL COVO CrossFit Ivrea" class="nav-logo-img">
+<nav id="nav" class="site-header">
+  <div class="nav-container">
+  <a href="index.html" class="nav-logo nav-brand" aria-label="IL COVO">
+    <img src="assets/img/Scritta+lupo-bianco - Copia.png" alt="IL COVO CrossFit Ivrea" class="nav-logo-img">
   </a>
   <div class="nav-links">
-    <a href="#eq-rower">Attrezzi</a><a href="#hyrox">HYROX</a>
-    <a href="#process">Come Iniziare</a>
-    <a href="https://www.ilcovocrossfitivrea.com/prezzi">Prezzi</a>
-    <a href="https://form.jotform.com/230275019314044" class="nav-cta">Prova Gratuita</a>
+    <a href="index.html">HOME</a>
+    <a href="crossfit.html">CrossFit</a>
+    <a href="hyrox.html">Hyrox</a>
+    <a href="orari.html">Orari</a>
+    <a href="prezzi.html">Prezzi</a>
+    <a href="prenota-prova.html?type=trial" class="nav-cta nav-cta--mobile">Prova Gratuita</a>
+  </div>
+  <div class="nav-actions">
+    <a href="prenota-prova.html?type=trial" class="nav-cta">Prova Gratuita</a>
+    <button class="nav-toggle" type="button" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
   </div>
 </nav>
 
-<div id="intro">
-<div id="intro-pin">
+<section id="intro" data-header-theme="dark">
 
-  <!-- Video autoplay, non dipende dallo scroll -->
-  <video id="bg-video" autoplay loop muted playsinline preload="auto">
-    <source src="assets/video/intro-bg.mp4" type="video/mp4">
-  </video>
   <div id="bg-overlay"></div>
 
-  <div id="wolf-layer">
-    <img src="assets/img/wolf-logo.png" class="wolf-img" alt="Il Covo">
-  </div>
-
-  <!-- Frasi in stampatello minuscolo (text-transform:none) -->
-  <div class="phrase" id="s0">
-    <div class="pt pt-xl">
-      <span class="lw"><span class="li">Non la</span></span>
-      <span class="lw"><span class="li d1">classica</span></span>
-      <span class="lw"><span class="li d2 r">palestra.</span></span>
-    </div>
-  </div>
-  <div class="phrase" id="s1">
-    <div class="pt pt-lg">
-      <span class="lw"><span class="li">Qui si suda.</span></span>
-      <span class="lw"><span class="li d1">Qui ci si <span class="r">aiuta.</span></span></span>
-      <span class="lw"><span class="li d2">Qui si migliora.</span></span>
-    </div>
-  </div>
-  <div class="phrase" id="s2">
-    <div class="pt pt-lg">
-      <span class="lw"><span class="li">Coach <span class="r">veri.</span></span></span>
-      <span class="lw"><span class="li d1">Ogni ora.</span></span>
-      <span class="lw"><span class="li d2 d">Per ogni livello.</span></span>
-    </div>
-  </div>
-  <div class="phrase" id="s3">
-    <div class="pt pt-lg">
-      <span class="lw"><span class="li">CrossFit</span></span>
-      <span class="lw"><span class="li d1">e <span class="lime">HYROX.</span></span></span>
-      <span class="lw"><span class="li d2 d">Un solo posto.</span></span>
-    </div>
-  </div>
-  <div class="phrase" id="s4">
-    <div class="pt pt-xl">
-      <span class="lw"><span class="li">Il tuo primo</span></span>
-      <span class="lw"><span class="li d1">allenamento</span></span>
-      <span class="lw"><span class="li d2">è <span class="r">gratis.</span></span></span>
+  <div class="intro-hero-container">
+    <div class="intro-hero-copy">
+      <h1 class="home-hero-title">
+        <span class="home-hero-line">QUI NON TI ALLENI</span>
+        <span class="home-hero-line">A <em>CASO</em></span>
+      </h1>
+      <p>CrossFit, HYROX e coaching per costruire forza, metodo e continuità.</p>
+      <a href="prenota-prova.html?type=trial" class="btn btn-red">Prenota la tua prova</a>
     </div>
   </div>
 
-  <div id="cta-panel">
-    <div class="cta-main">Inizia<br><span class="r">oggi.</span></div>
-    <div class="cta-btns" id="cta-btns">
-      <a href="https://form.jotform.com/230275019314044" class="btn btn-red">Prenota la Prova Gratuita →</a>
-      <a href="https://wa.me/393282733326" class="btn btn-outline-w">WhatsApp →</a>
+</section>
+
+<section id="disciplines" class="home-paths" data-header-theme="light">
+  <a href="crossfit.html" class="home-path home-path--crossfit">
+    <img src="assets/img/DSC04165.JPG" alt="" loading="lazy">
+    <div class="home-path-overlay"></div>
+    <div class="home-path-copy rUp">
+      <span class="home-path-kicker">BOX CROSSFIT AFFILIATO</span>
+      <h2>CROSSFIT</h2>
+      <p>Forza, tecnica e conditioning. Ogni giorno un allenamento diverso, sempre adattato al tuo livello.</p>
+      <span class="home-path-cta">SCOPRI CROSSFIT →</span>
     </div>
-    <span class="cta-sub" id="cta-sub">Prima lezione gratuita · Nessun vincolo · Ivrea, TO</span>
-  </div>
+  </a>
+  <a href="hyrox.html" class="home-path home-path--hyrox">
+    <img src="assets/img/IMG_0045.JPG" alt="" loading="lazy">
+    <div class="home-path-overlay"></div>
+    <div class="home-path-copy rUp d1">
+      <span class="home-path-kicker">HYROX Training Club Ufficiale</span>
+      <h2>HYROX</h2>
+      <p>Corsa e stazioni funzionali. Classi dedicate per affrontare la prima gara o migliorare la tua performance.</p>
+      <span class="home-path-cta">SCOPRI HYROX →</span>
+    </div>
+  </a>
+</section>
 
-  <div id="shint"><div class="sh-line"></div><span class="sh-txt">Scroll</span></div>
-</div>
-</div>
-
-<a class="intro-bottom-pill" href="https://form.jotform.com/230275019314044">
+<a class="intro-bottom-pill" href="prenota-prova.html?type=trial">
   <img src="assets/img/wolf-logo.png" alt="IL COVO" class="intro-bottom-logo">
   <span class="intro-bottom-action">PROVA GRATIS</span>
 </a>
 
 <div id="site">
-  <div id="strip">
-    <div class="si"><span class="sn" data-target="200">0</span><span class="sl2">Atleti Attivi</span></div>
-    <div class="si"><span class="sn" data-target="8">0</span><span class="sl2">Anni di Storia</span></div>
-    <div class="si"><span class="sn">4.9★</span><span class="sl2">Google Reviews</span></div>
-    <div class="si"><span class="sn">2</span><span class="sl2">CrossFit + HYROX</span></div>
-    <div class="si"><span class="sn">1h</span><span class="sl2">Per Sessione</span></div>
-  </div>
-  <section id="why">
-    <div class="stag rUp">Perché Il Covo</div>
-    <div class="wg">
-      <div class="why-copy rUp"><h2 class="wh">Qui non ti<br>alleni<br><em>a caso.</em></h2><p class="why-lead">Ogni classe ha un coach, uno stimolo preciso e un gruppo che ti porta a dare qualcosa in più.</p></div>
-      <div class="why-ticker rUp d1" aria-label="Differenze Il Covo">
-        <div class="why-ticker-mask">
-          <div class="why-ticker-track">
-            <div class="why-ticker-set">
-              <div class="why-pill"><span class="why-pill-problem"><span class="why-pill-accent">0</span> schede standard</span><strong class="why-pill-solution">Programmazione vera</strong></div>
-              <div class="why-pill"><span class="why-pill-problem"><span class="why-pill-accent">0</span> improvvisazione</span><strong class="why-pill-solution">Ogni classe ha una logica</strong></div>
-              <div class="why-pill"><span class="why-pill-problem"><span class="why-pill-accent">60’</span> guidati</span><strong class="why-pill-solution">Dall’inizio alla fine</strong></div>
-              <div class="why-pill"><span class="why-pill-problem"><span class="why-pill-accent">1</span> coach</span><strong class="why-pill-solution">Sempre in classe</strong></div>
-              <div class="why-pill"><span class="why-pill-problem"><span class="why-pill-accent">1</span> gruppo</span><strong class="why-pill-solution">Che ti spinge davvero</strong></div>
-              <div class="why-pill"><span class="why-pill-problem"><span class="why-pill-accent">tutti</span> i livelli</span><strong class="why-pill-solution">Parti da dove sei</strong></div>
-            </div>
-            <div class="why-ticker-set" aria-hidden="true">
-              <div class="why-pill"><span class="why-pill-problem"><span class="why-pill-accent">0</span> schede standard</span><strong class="why-pill-solution">Programmazione vera</strong></div>
-              <div class="why-pill"><span class="why-pill-problem"><span class="why-pill-accent">0</span> improvvisazione</span><strong class="why-pill-solution">Ogni classe ha una logica</strong></div>
-              <div class="why-pill"><span class="why-pill-problem"><span class="why-pill-accent">60’</span> guidati</span><strong class="why-pill-solution">Dall’inizio alla fine</strong></div>
-              <div class="why-pill"><span class="why-pill-problem"><span class="why-pill-accent">1</span> coach</span><strong class="why-pill-solution">Sempre in classe</strong></div>
-              <div class="why-pill"><span class="why-pill-problem"><span class="why-pill-accent">1</span> gruppo</span><strong class="why-pill-solution">Che ti spinge davvero</strong></div>
-              <div class="why-pill"><span class="why-pill-problem"><span class="why-pill-accent">tutti</span> i livelli</span><strong class="why-pill-solution">Parti da dove sei</strong></div>
-            </div>
-          </div>
+  <section id="why" class="home-fixed-photo-bg">
+    <div class="why-home-head rUp">
+      <div class="why-home-copy">
+        <div class="stag">Perché Il Covo</div>
+        <h2 class="home-section-title">NON È IL <em>SOLITO</em> ALLENAMENTO</h2>
+        <p>Non entri, esegui un workout e torni a casa. Segui una programmazione, sei affiancato da un coach e costruisci risultati che durano.</p>
+      </div>
+      <div class="why-home-side">
+        <div class="why-phrase-wheel" aria-label="Principi IL COVO">
+          <p class="why-wheel-phrase is-current"><em>L’INTENSITÀ</em><br>SI ADATTA A TE</p>
+          <p class="why-wheel-phrase is-next"><em>LA TECNICA</em><br>VIENE PRIMA DEL CARICO</p>
+          <p class="why-wheel-phrase is-back"><em>PARTI DA DOVE SEI</em><br>COSTRUIAMO DA LÌ</p>
+          <p class="why-wheel-phrase is-back"><em>DAL PRIMO GIORNO</em><br>SEI SEGUITO</p>
+          <p class="why-wheel-phrase is-prev"><em>NON TI ALLENI</em><br>A CASO</p>
         </div>
       </div>
     </div>
+    <div class="why-home-grid">
+      <article class="why-home-item rUp d1"><span>01</span><h3>METODO</h3><p>Una direzione chiara, non allenamenti casuali.</p></article>
+      <article class="why-home-item rUp d2"><span>02</span><h3>COACHING</h3><p>Tecnica, intensità e movimenti adattati al tuo livello.</p></article>
+      <article class="why-home-item rUp d3"><span>03</span><h3>COMMUNITY</h3><p>Persone che si allenano insieme e continuano a migliorare.</p></article>
+    </div>
   </section>
-  <section id="equipment-stack" class="equipment-stack-section equipment-master-stack">
-    <div class="equipment-stack-shell">
-  <article id="exercises-cards" class="exercise-cards-section exercise-main-card equipment-card-stack-item">
-    <div class="exercise-cards-shell">
-      <div class="exercise-cards-copy">
-        <span class="section-kicker">Attrezzi & Workout</span>
-        <h2>Allenati su ciò che conta davvero.</h2>
-        <p>CrossFit, HYROX, conditioning, forza e skill: ogni classe è pensata per farti migliorare davvero.</p>
+
+  <section id="capabilities" data-header-theme="light">
+    <div class="home-wide-container">
+      <div class="capabilities-head rUp">
+        <span class="section-kicker">Capacità che alleni</span>
+        <h2 class="home-section-title">
+          <span>ALLENATI</span>
+          <span>SU CIÒ</span>
+          <span>CHE CONTA</span>
+          <em>DAVVERO.</em>
+        </h2>
+        <p class="home-section-subtitle">Non muscoli isolati. Capacità che rendono il tuo corpo più forte, efficiente e completo.</p>
       </div>
-      <div class="exercise-card-stack">
-        <article class="exercise-card exercise-card-lg">
-          <span class="exercise-card-num">01</span>
-          <div>
-            <h3>CrossFit</h3>
-            <p>Forza, skill, weightlifting e conditioning.</p>
-          </div>
-          <span class="exercise-card-mark">CF</span>
-        </article>
-        <article class="exercise-card exercise-card-lime">
-          <span class="exercise-card-num">02</span>
-          <div>
-            <h3>HYROX</h3>
-            <p>Run, sled, wall ball, ski, row e lavoro ad alta intensità.</p>
-          </div>
-          <span class="exercise-card-mark">HX</span>
-        </article>
-        <article class="exercise-card">
-          <span class="exercise-card-num">03</span>
-          <div>
-            <h3>Conditioning</h3>
-            <p>Bike, rower, ski erg, interval training e engine.</p>
-          </div>
-          <span class="exercise-card-mark">EN</span>
-        </article>
-        <article class="exercise-card exercise-card-red">
-          <span class="exercise-card-num">04</span>
-          <div>
-            <h3>Gymnastics</h3>
-            <p>Pull up, toes to bar, handstand, muscle up progression.</p>
-          </div>
-          <span class="exercise-card-mark">GY</span>
-        </article>
-        <article class="exercise-card exercise-card-wide">
-          <span class="exercise-card-num">05</span>
-          <div>
-            <h3>Strength</h3>
-            <p>Squat, deadlift, press, clean, snatch e lavoro tecnico.</p>
-          </div>
-          <span class="exercise-card-mark">ST</span>
-        </article>
+      <div class="capacity-gallery" data-capacity-gallery aria-label="Gallery capacità"></div>
+      <div class="capabilities-grid">
+        <article class="capability-item rUp"><span>01</span><h3>FORZA</h3><p>Produrre forza e gestire carichi con controllo.</p></article>
+        <article class="capability-item rUp d1"><span>02</span><h3>RESISTENZA</h3><p>Mantenere qualità e ritmo anche quando arriva la fatica.</p></article>
+        <article class="capability-item rUp d2"><span>03</span><h3>POTENZA</h3><p>Esprimere forza rapidamente, con velocità ed esplosività.</p></article>
+        <article class="capability-item rUp"><span>04</span><h3>MOBILITÀ</h3><p>Muoversi liberamente, senza compensi inutili.</p></article>
+        <article class="capability-item rUp d1"><span>05</span><h3>COORDINAZIONE</h3><p>Collegare movimenti diversi in modo preciso ed efficiente.</p></article>
+        <article class="capability-item rUp d2"><span>06</span><h3>CONTROLLO</h3><p>Stabilità, equilibrio e consapevolezza del corpo.</p></article>
       </div>
     </div>
-  </article>
-  <article class="eq-scene equipment-card-stack-item card-rower" id="eq-rower">
-    <div class="eq-pin">
-      <canvas class="eq-canvas" id="canvas-rower"></canvas><div class="eq-ov"></div>
-      <div class="eq-pa" id="pa-rower"><span class="eq-nl">01 / 02 — Cardio & Resistenza</span><h2 class="eq-bt">ROW<em>ER</em></h2></div>
-      <div class="eq-pb" id="pb-rower"><span class="pl">Muscoli coinvolti</span><h3 class="ptt">Full <span style="color:var(--red)">Body</span></h3><div class="mg"><div class="mi"><span class="mn">Gambe</span><span class="mp">65%</span></div><div class="mi"><span class="mn">Core</span><span class="mp">20%</span></div><div class="mi"><span class="mn">Braccia</span><span class="mp">15%</span></div></div></div>
-      <div class="eq-pc" id="pc-rower"><span class="pl">Benefici</span><h3 class="ptt">Perché <span style="color:var(--red)">vogare</span></h3><div class="bl"><div class="bi">Fino a 800 calorie in un'ora</div><div class="bi">Zero impatto articolare</div><div class="bi">Migliora potenza cardiovascolare</div><div class="bi">Stazione ufficiale HYROX</div></div><div class="bc"><a href="https://form.jotform.com/230275019314044" class="btn btn-red">Prova adesso →</a></div></div>
-      <div class="eq-hint" id="hint-rower"><div class="eq-hint-line"></div><span class="eq-hint-txt">Scroll</span></div>
-      <div class="eq-progress" id="prog-rower"></div>
-      <div class="eq-loader" id="loader-rower"><div class="lbg"><div class="lbb" id="lbar-rower"></div></div><span class="lt">Caricamento</span></div>
-    </div>
-  </article>
-  <article class="eq-scene equipment-card-stack-item card-skierg" id="eq-skierg">
-    <div class="eq-pin">
-      <canvas class="eq-canvas" id="canvas-skierg"></canvas><div class="eq-ov"></div>
-      <div class="eq-pa" id="pa-skierg"><span class="eq-nl">02 / 02 — Upper Body & Core</span><h2 class="eq-bt">SKI<em>ERG</em></h2></div>
-      <div class="eq-pb" id="pb-skierg"><span class="pl">Muscoli coinvolti</span><h3 class="ptt">Upper <span style="color:var(--red)">Body</span></h3><div class="mg"><div class="mi"><span class="mn">Dorsali</span><span class="mp">Primario</span></div><div class="mi"><span class="mn">Spalle</span><span class="mp">Primario</span></div><div class="mi"><span class="mn">Core</span><span class="mp">Stabilizzatore</span></div><div class="mi"><span class="mn">Tricipiti</span><span class="mp">Secondario</span></div></div></div>
-      <div class="eq-pc" id="pc-skierg"><span class="pl">Benefici</span><h3 class="ptt">Perché <span style="color:var(--red)">lo Ski Erg</span></h3><div class="bl"><div class="bi">Coordinazione bilaterale</div><div class="bi">Forza upper body in un movimento</div><div class="bi">Zero impatto sulle gambe</div><div class="bi">Stazione ufficiale HYROX</div></div><div class="bc"><a href="https://form.jotform.com/230275019314044" class="btn btn-red">Prova adesso →</a></div></div>
-      <div class="eq-hint" id="hint-skierg"><div class="eq-hint-line"></div><span class="eq-hint-txt">Scroll</span></div>
-      <div class="eq-progress" id="prog-skierg"></div>
-      <div class="eq-loader" id="loader-skierg"><div class="lbg"><div class="lbb" id="lbar-skierg"></div></div><span class="lt">Caricamento</span></div>
-    </div>
-  </article>
-    </div>
   </section>
-  <section id="hyrox">
-    <div class="hl rL"><span class="hb">✦ Nuovo al Covo</span><h2 class="hh"><span class="hyrox-word">HYRO<span>X</span></span><br>È QUI.</h2><p class="hs">8 km di corsa + 8 stazioni funzionali. Il formato che sta conquistando il mondo del fitness arriva a Ivrea.</p><a href="https://form.jotform.com/230275019314044" class="btn btn-red">Inizia con HYROX →</a></div>
-    <div class="hr rL d2"><div class="hst"><span class="hsn">8 km</span><p class="hsl">Corsa in 8 segmenti</p></div><div class="hst"><span class="hsn">8</span><p class="hsl">Stazioni funzionali</p></div><div class="hst"><span class="hsn">Tutti</span><p class="hsl">Dal principiante al competitore</p></div><div class="hst"><span class="hsn">Gara</span><p class="hsl">Allenati per competere</p></div></div>
-  </section>
-  <section id="process">
-    <div class="sh rUp"><h2 class="shh">Come<br><em>iniziare</em></h2><p class="shn">Non servono esperienze precedenti.</p></div>
-    <div class="steps">
-      <div class="step rUp d1"><span class="stn">01</span><h4 class="sth">Prenota la prova</h4><p class="stp">30 secondi per compilare il form. Ti richiamiamo noi.</p><a href="https://form.jotform.com/230275019314044" class="stl">Prenota ora <span class="arr">→</span></a></div>
-      <div class="step rUp d2"><span class="stn">02</span><h4 class="sth">Vieni e prova gratis</h4><p class="stp">Prima lezione gratuita. Il coach calibra tutto sul tuo livello.</p><a href="tel:+393282733326" class="stl">Chiamaci <span class="arr">→</span></a></div>
-      <div class="step rUp d3"><span class="stn">03</span><h4 class="sth">Entra nella community</h4><p class="stp">Dopo la prima settimana non riuscirai più a smettere.</p><a href="https://www.ilcovocrossfitivrea.com/prezzi" class="stl">Vedi i prezzi <span class="arr">→</span></a></div>
+
+  <section id="process" class="home-fixed-photo-bg">
+    <div class="process-container">
+      <div class="process-head rUp">
+        <h2 class="shh home-section-title">COME<br><em>INIZIARE</em></h2>
+        <span class="process-badge">Nessuna esperienza necessaria</span>
+      </div>
+      <div class="steps">
+        <article class="step rUp d1"><span class="stn">01</span><h3 class="sth home-card-title">Scegli la tua prova</h3><p class="stp">CrossFit o HYROX: scegli il percorso più adatto a te.</p><a href="#disciplines" class="stl">Scopri i percorsi <span class="arr">→</span></a></article>
+        <article class="step rUp d2"><span class="stn">02</span><h3 class="sth home-card-title">Prenota la classe</h3><p class="stp">Seleziona giorno e orario tra le disponibilità.</p><a href="prenota-prova.html?type=trial" class="stl">Prenota ora <span class="arr">→</span></a></article>
+        <article class="step rUp d3"><span class="stn">03</span><h3 class="sth home-card-title">Vieni ad allenarti</h3><p class="stp">Il coach adatta il lavoro al tuo livello fin dalla prima classe.</p><a href="prenota-prova.html?type=trial" class="stl">Prenota la prova <span class="arr">→</span></a></article>
+      </div>
     </div>
   </section>
   <section id="testi">
-    <div class="sh rUp"><h2 class="shh">Le loro<br><em>storie</em></h2><p class="shn">Persone reali, risultati reali.</p></div>
-    <div class="tg"><div class="tc rUp d1"><div class="ts">★★★★★</div><p class="tq">"Non era la solita palestra. Mi sento stimolata, seguita, spronata a migliorare. È come una grande famiglia."</p><div class="tw">Elisa B.</div><div class="tr">Membro da 2 anni</div></div><div class="tc rUp d2"><div class="ts">★★★★★</div><p class="tq">"In tutta la vita non sono mai andato oltre i 2 mesi in palestra. Al Covo ci vado da 2 anni."</p><div class="tw">Gianluca F.</div><div class="tr">Membro da 2 anni</div></div><div class="tc rUp d3"><div class="ts">★★★★★</div><p class="tq">"Da marzo ho perso 15 chili. Non pensavo di trovare qualcosa che mi desse voglia di migliorare."</p><div class="tw">Eleonora</div><div class="tr">−15 kg in 8 mesi</div></div></div>
+    <div class="sh rUp"><h2 class="shh home-section-title">Le loro <em>storie</em></h2><p class="home-section-subtitle">Esperienze vere di chi ha scelto di iniziare.</p></div>
+    <div class="testi-video-grid">
+
+      <!-- VIDEO 1 — carica: assets/video/testimonials/testimonianza-1.mp4 -->
+      <div class="testi-video-card rUp d1">
+        <div class="testi-video-wrap">
+          <video src="assets/video/testimonials/testimonianza-1.mp4"
+            muted
+            preload="metadata" controls playsinline
+            class="testi-video"></video>
+          <div class="testi-video-overlay"></div>
+        </div>
+        <div class="testi-video-info">
+          <div class="tw">ELEONORA</div>
+          <div class="tr">"A livello fisico sono cambiata molto perché da marzo ad oggi ho perso 15 chili, non mi sentivo bene con me stessa e non pensavo di trovare qualcosa che mi desse la voglia di riuscire a migliorare. Ora mi sento decisamente meglio con me stessa."</div>
+        </div>
+      </div>
+
+      <!-- VIDEO 2 — carica: assets/video/testimonials/testimonianza-2.mp4 -->
+      <div class="testi-video-card rUp d2">
+        <div class="testi-video-wrap">
+          <video src="assets/video/testimonials/testimonianza-2.mp4"
+            muted
+            preload="metadata" controls playsinline
+            class="testi-video"></video>
+          <div class="testi-video-overlay"></div>
+        </div>
+        <div class="testi-video-info">
+          <div class="tw">SIMONE</div>
+          <div class="tr">"A livello fisico devo dire che sono cambiato quando ho iniziato ero molto 'secco' adesso invece ho un fisico abbastanza atletico. Anche a livello comportamentale ho visto dei cambiamenti ho più energia anche nella vita di tutti i giorni."</div>
+        </div>
+      </div>
+
+      <!-- VIDEO 3 — carica: assets/video/testimonials/testimonianza-3.mp4 -->
+      <div class="testi-video-card rUp d3">
+        <div class="testi-video-wrap">
+          <video src="assets/video/testimonials/testimonianza-3.mp4"
+            muted
+            preload="metadata" controls playsinline
+            class="testi-video"></video>
+          <div class="testi-video-overlay"></div>
+        </div>
+        <div class="testi-video-info">
+          <div class="tw">LORELLA</div>
+          <div class="tr">"Ho provato e mi è piaciuto tantissimo adesso è un anno e mezzo che mi alleno. L’allenamento è completamente diverso da quello della palestra perché è sempre diverso! ed è per questo che mi piace molto."</div>
+        </div>
+      </div>
+
+    </div>
   </section>
-  <section id="finalcta">
-    <div class="rL"><h2 class="fh">Cosa<br>stai <em>aspet</em><br><em>tando?</em></h2></div>
-    <div class="fa rL d2"><a href="https://form.jotform.com/230275019314044" class="btn btn-red">Prenota la Prova Gratuita →</a><a href="https://wa.me/393282733326" class="btn bwa"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Scrivici su WhatsApp</a><p class="fn">Prima lezione gratuita · Nessun vincolo</p></div>
-  </section>
-  <footer><span class="fl">IL <em>COVO</em></span><div class="fls"><a href="#">CrossFit</a><a href="#">HYROX</a><a href="https://www.ilcovocrossfitivrea.com/orari">Orari</a><a href="https://www.ilcovocrossfitivrea.com/prezzi">Prezzi</a></div><div class="fi">Corso Vercelli 332/E, Ivrea TO<br>328 273 3326</div></footer>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -595,6 +555,9 @@ const SKIERG_FRAMES_MOBILE = [
 const SKIERG_FRAMES = SKIERG_FRAMES_DESKTOP;
 </script>
 <script src="assets/js/main.js"></script>
+<div data-site-footer></div>
+<script src="assets/js/header.js" defer></script>
+<script src="assets/js/footer.js" defer></script>
 
 </body>
 </html>

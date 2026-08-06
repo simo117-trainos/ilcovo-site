@@ -12,10 +12,19 @@
     radial-gradient(circle at 78% 28%,rgba(188,22,47,.18),transparent 34%),
     linear-gradient(145deg,#101010,#030303);
 }
+#back-to-top {
+  position:fixed; bottom:32px; right:80px;
+  width:44px; height:44px;
+  background:#e30613; color:#ffffff;
+  border:none; border-radius:50%;
+  font-size:20px; cursor:pointer;
+  opacity:0; transition:opacity 0.3s;
+  z-index:999;
+}
+#back-to-top.visible { opacity:1; }
 </style>
 </head>
 <body>
-<div id="cur"></div><div id="cur-r"></div>
 <div id="iprog"></div>
 
 <div id="loader">
@@ -26,30 +35,39 @@
 
 <a id="wa" href="https://wa.me/393282733326" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
-<nav id="nav">
-  <a href="#" class="nav-logo nav-brand" aria-label="IL COVO">
-    <img src="assets/img/il-covo-logo-white2.png" alt="IL COVO CrossFit Ivrea" class="nav-logo-img">
+<nav id="nav" class="site-header">
+  <div class="nav-container">
+  <a href="index.html" class="nav-logo nav-brand" aria-label="IL COVO">
+    <img src="assets/img/Scritta+lupo-bianco - Copia.png" alt="IL COVO CrossFit Ivrea" class="nav-logo-img">
   </a>
   <div class="nav-links">
-    <a href="#eq-rower">Attrezzi</a><a href="#hyrox">HYROX</a>
-    <a href="#process">Come Iniziare</a>
-    <a href="https://www.ilcovocrossfitivrea.com/prezzi">Prezzi</a>
+    <a href="index.html">HOME</a>
+    <a href="crossfit.html">CrossFit</a>
+    <a href="hyrox.html">Hyrox</a>
+    <a href="orari.html">Orari</a>
+    <a href="prezzi.html">Prezzi</a>
+    <a href="https://form.jotform.com/230275019314044" class="nav-cta nav-cta--mobile">Prova Gratuita</a>
+  </div>
+  <div class="nav-actions">
     <a href="https://form.jotform.com/230275019314044" class="nav-cta">Prova Gratuita</a>
+    <button class="nav-toggle" type="button" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
   </div>
 </nav>
 
 <!-- Hero -->
-<section id="att-hero">
+<section id="att-hero" style="padding-bottom:150px;">
   <div class="att-hero-inner">
     <span class="section-kicker">Il Covo — Ivrea</span>
     <h1 class="att-hero-h">Attrezzi &amp;<br><em>Performance</em></h1>
     <p class="att-hero-p">Gli strumenti che usiamo ogni giorno.</p>
   </div>
   <div class="att-shint"><div class="sh-line"></div><span class="sh-txt">Scroll</span></div>
+  <div style="position:absolute;bottom:-1px;left:0;width:100%;height:250px;background:linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(255,255,255,1) 100%);pointer-events:none;z-index:10;"></div>
 </section>
 
 <!-- Equipment Stack — Rower + SkiErg -->
-<section id="equipment-stack" class="equipment-stack-section equipment-master-stack">
+<section id="equipment-stack" class="equipment-stack-section equipment-master-stack" style="background:#ffffff;">
   <div class="equipment-stack-shell">
 
     <article class="eq-scene equipment-card-stack-item card-rower" id="eq-rower">
@@ -91,17 +109,17 @@
   </div>
 </section>
 
+<div style="width:100%;height:200px;background:linear-gradient(to bottom,#ffffff,#000000);"></div>
+
 <!-- CTA finale -->
 <section id="finalcta">
-  <div class="rL"><h2 class="fh">Prenota<br>la tua <em>prova</em><br><em>gratuita.</em></h2></div>
+  <div class="rL"><h2 class="fh">Prenota<br>la tua <em>prova</em><br><em>gratuita</em></h2></div>
   <div class="fa rL d2">
     <a href="https://form.jotform.com/230275019314044" class="btn btn-red">Prenota la Prova Gratuita →</a>
     <a href="https://wa.me/393282733326" class="btn bwa"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Scrivici su WhatsApp</a>
     <p class="fn">Prima lezione gratuita · Nessun vincolo · Ivrea, TO</p>
   </div>
 </section>
-
-<footer><span class="fl">IL <em>COVO</em></span><div class="fls"><a href="#">CrossFit</a><a href="#">HYROX</a><a href="https://www.ilcovocrossfitivrea.com/orari">Orari</a><a href="https://www.ilcovocrossfitivrea.com/prezzi">Prezzi</a></div><div class="fi">Corso Vercelli 332/E, Ivrea TO<br>328 273 3326</div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -843,5 +861,18 @@ const SLED_FRAMES_MOBILE = [
   });
 </script>
 
+<button id="back-to-top" aria-label="Torna in alto">↑</button>
+<script>
+const btn = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+  btn.classList.toggle('visible', window.scrollY > 400);
+});
+btn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+<div data-site-footer></div>
+<script src="assets/js/header.js" defer></script>
+<script src="assets/js/footer.js" defer></script>
 </body>
 </html>
