@@ -68,3 +68,5 @@ jobs:
           git rm .github/workflows/apply-mobile-menu-fix.yml
           git commit -m "Fix mobile menu drawer on small screens"
           git push origin HEAD:fix/mobile-menu-drawer
+
+# Trigger run after workflow exists on the branch.
