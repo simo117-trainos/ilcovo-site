@@ -2,7 +2,7 @@
   const mount = document.querySelector("[data-site-footer]");
   if (!mount) return;
 
-  const footerUrl = new URL(`components/footer.html?v=${Date.now()}`, document.baseURI);
+  const footerUrl = new URL("components/footer.html?v=1", document.baseURI);
 
   fetch(footerUrl)
     .then(response => {
