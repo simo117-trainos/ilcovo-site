@@ -1,26 +1,150 @@
 (() => {
+  const mobileUiStyle = document.createElement("style");
+  mobileUiStyle.setAttribute("data-mobile-ui-fixes", "");
+  mobileUiStyle.textContent = `
+    @media (max-width:899px) {
+      nav#nav.site-header .nav-links,
+      .hyrox-page nav#nav.site-header .nav-links,
+      .cf-page nav#nav.site-header .nav-links {
+        left:auto;
+        right:20px;
+        width:min(calc(100vw - 40px),1680px);
+        max-width:calc(100vw - 40px);
+        transform:translateY(-10px);
+      }
+
+      nav#nav.site-header.nav-open .nav-links,
+      .hyrox-page nav#nav.site-header.nav-open .nav-links,
+      .cf-page nav#nav.site-header.nav-open .nav-links {
+        transform:translateY(0);
+      }
+    }
+
+    .testi-video-play {
+      display:none;
+    }
+
+    @media (max-width:767px) {
+      .testi-video-play {
+        position:absolute;
+        top:50%;
+        left:50%;
+        z-index:3;
+        display:grid;
+        place-items:center;
+        width:58px;
+        height:58px;
+        padding:0;
+        border:1px solid rgba(255,255,255,.72);
+        border-radius:50%;
+        color:#fff;
+        background:rgba(0,0,0,.58);
+        box-shadow:0 8px 30px rgba(0,0,0,.28);
+        transform:translate(-50%,-50%);
+        cursor:pointer;
+        -webkit-tap-highlight-color:transparent;
+        backdrop-filter:blur(5px);
+      }
+
+      .testi-video-play::before {
+        content:"";
+        width:0;
+        height:0;
+        margin-left:4px;
+        border-top:8px solid transparent;
+        border-bottom:8px solid transparent;
+        border-left:13px solid currentColor;
+      }
+
+      .testi-video-play:focus-visible {
+        outline:2px solid #fff;
+        outline-offset:3px;
+      }
+    }
+  `;
+  document.head.appendChild(mobileUiStyle);
+
   const nav = document.getElementById("nav");
   const toggle = nav?.querySelector(".nav-toggle");
   const links = nav?.querySelector(".nav-links");
-  if (!nav || !toggle || !links) return;
 
-  const closeMenu = () => {
-    nav.classList.remove("nav-open");
-    toggle.setAttribute("aria-expanded", "false");
-    toggle.setAttribute("aria-label", "Apri menu");
+  if (nav && toggle && links) {
+    const closeMenu = () => {
+      nav.classList.remove("nav-open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Apri menu");
+    };
+
+    toggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("nav-open");
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Chiudi menu" : "Apri menu");
+    });
+
+    links.addEventListener("click", event => {
+      if (event.target.closest("a")) closeMenu();
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 900) closeMenu();
+    });
+  }
+
+  const testimonialMq = window.matchMedia("(max-width: 767px)");
+
+  const setupTestimonialPreviews = () => {
+    document.querySelectorAll(".testi-video").forEach(video => {
+      const wrap = video.closest(".testi-video-wrap");
+      if (!wrap) return;
+
+      let playButton = wrap.querySelector(".testi-video-play");
+
+      if (!testimonialMq.matches) {
+        video.controls = true;
+        video.dataset.mobilePreview = "off";
+        if (playButton) playButton.remove();
+        return;
+      }
+
+      if (video.dataset.mobilePreview === "playing") return;
+
+      video.controls = false;
+      video.dataset.mobilePreview = "ready";
+
+      if (!playButton) {
+        playButton = document.createElement("button");
+        playButton.type = "button";
+        playButton.className = "testi-video-play";
+        const name = video.closest(".testi-video-card")?.querySelector(".tw")?.textContent?.trim();
+        playButton.setAttribute("aria-label", name ? `Riproduci la testimonianza di ${name}` : "Riproduci testimonianza");
+        wrap.appendChild(playButton);
+      }
+
+      const startPlayback = event => {
+        if (video.dataset.mobilePreview !== "ready") return;
+        if (event) event.preventDefault();
+        video.dataset.mobilePreview = "playing";
+        video.controls = true;
+        const currentButton = wrap.querySelector(".testi-video-play");
+        if (currentButton) currentButton.remove();
+        video.play().catch(() => {
+          video.dataset.mobilePreview = "ready";
+          video.controls = false;
+          setupTestimonialPreviews();
+        });
+      };
+
+      if (!video.dataset.mobilePreviewBound) {
+        video.dataset.mobilePreviewBound = "true";
+        video.addEventListener("click", event => {
+          if (video.dataset.mobilePreview === "ready") startPlayback(event);
+        });
+      }
+
+      playButton.onclick = startPlayback;
+    });
   };
 
-  toggle.addEventListener("click", () => {
-    const open = nav.classList.toggle("nav-open");
-    toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "Chiudi menu" : "Apri menu");
-  });
-
-  links.addEventListener("click", event => {
-    if (event.target.closest("a")) closeMenu();
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth >= 900) closeMenu();
-  });
+  setupTestimonialPreviews();
+  if (testimonialMq.addEventListener) testimonialMq.addEventListener("change", setupTestimonialPreviews);
 })();
