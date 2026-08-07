@@ -1,4 +1,4 @@
-name: Apply mobile menu fix
+name: Prepare mobile UI fixes
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  patch-mobile-menu:
+  prepare-fixes:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
@@ -17,7 +17,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Patch mobile drawer CSS
+      - name: Ensure ffmpeg is available
+        run: |
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y ffmpeg
+          fi
+
+      - name: Fix mobile drawer CSS
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -57,16 +64,51 @@ jobs:
           path.write_text(text, encoding='utf-8')
           PY
 
-      - name: Validate diff
-        run: git diff --check
+      - name: Create testimonial poster images
+        run: |
+          mkdir -p assets/images/testimonials
+          for n in 1 2 3; do
+            input="assets/video/testimonials/testimonianza-${n}.mp4"
+            output="assets/images/testimonials/testimonianza-${n}.webp"
+            test -f "$input"
+            ffmpeg -hide_banner -loglevel error -y -ss 8 -i "$input" -frames:v 1 \
+              -vf "scale=1280:720:force_original_aspect_ratio=increase,crop=1280:720" \
+              -c:v libwebp -quality 82 -compression_level 6 "$output"
+            test -s "$output"
+          done
 
-      - name: Commit patch and remove temporary workflow
+      - name: Add posters to testimonial videos
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8-sig')
+          for n in (1, 2, 3):
+              old = f'''<video src="assets/video/testimonials/testimonianza-{n}.mp4"\n            muted'''
+              new = f'''<video src="assets/video/testimonials/testimonianza-{n}.mp4"\n            poster="assets/images/testimonials/testimonianza-{n}.webp"\n            muted'''
+              if old not in text:
+                  raise SystemExit(f'Expected testimonial video {n} markup not found; aborting.')
+              text = text.replace(old, new, 1)
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Validate prepared changes
+        run: |
+          git diff --check
+          grep -q 'right:20px;' assets/css/styles.css
+          grep -q 'max-width:calc(100vw - 40px);' assets/css/styles.css
+          grep -q 'poster="assets/images/testimonials/testimonianza-1.webp"' index.html
+          grep -q 'poster="assets/images/testimonials/testimonianza-2.webp"' index.html
+          grep -q 'poster="assets/images/testimonials/testimonianza-3.webp"' index.html
+          file assets/images/testimonials/testimonianza-*.webp
+          ls -lh assets/images/testimonials/testimonianza-*.webp
+
+      - name: Commit prepared site changes and remove temporary workflow
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/css/styles.css
+          git add assets/css/styles.css index.html assets/images/testimonials
           git rm .github/workflows/apply-mobile-menu-fix.yml
-          git commit -m "Fix mobile menu drawer on small screens"
+          git commit -m "Prepare mobile menu and testimonial preview fixes"
           git push origin HEAD:fix/mobile-menu-drawer
-
-# Trigger run after workflow exists on the branch.
