@@ -1,0 +1,66 @@
+name: Apply mobile menu fix
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  patch-mobile-menu:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Patch mobile drawer CSS
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('assets/css/styles.css')
+          text = path.read_text(encoding='utf-8-sig')
+          old = '''  nav#nav.site-header .nav-links,
+          .hyrox-page nav#nav.site-header .nav-links,
+          .cf-page nav#nav.site-header .nav-links {
+            left:50%;
+            right:auto;
+            width:min(calc(100vw - 40px),1680px);
+            transform:translateX(-50%) translateY(-10px);
+          }
+
+          nav#nav.site-header.nav-open .nav-links {
+            transform:translateX(-50%);
+          }
+          '''
+          new = '''  nav#nav.site-header .nav-links,
+          .hyrox-page nav#nav.site-header .nav-links,
+          .cf-page nav#nav.site-header .nav-links {
+            left:auto;
+            right:20px;
+            width:min(calc(100vw - 40px),1680px);
+            max-width:calc(100vw - 40px);
+            transform:translateY(-10px);
+          }
+
+          nav#nav.site-header.nav-open .nav-links {
+            transform:translateY(0);
+          }
+          '''
+          if old not in text:
+              raise SystemExit('Expected mobile menu CSS block not found; aborting without changes.')
+          path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
+
+      - name: Validate and commit
+        run: |
+          git diff --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/css/styles.css
+          git rm .github/workflows/apply-mobile-menu-fix.yml
+          git commit -m "Fix mobile menu drawer on small screens"
+          git push origin HEAD:main
