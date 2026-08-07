@@ -92,6 +92,26 @@
 
   const testimonialMq = window.matchMedia("(max-width: 767px)");
 
+  const ensureMobilePreviewFrame = video => {
+    if (video.dataset.mobilePreviewFrameBound) return;
+    video.dataset.mobilePreviewFrameBound = "true";
+
+    const seekToPreviewFrame = () => {
+      if (!testimonialMq.matches || video.dataset.mobilePreview === "playing") return;
+      if (!Number.isFinite(video.duration) || video.duration <= 0.12) return;
+      try {
+        if (video.currentTime < 0.05) video.currentTime = 0.1;
+      } catch (_) {}
+    };
+
+    if (video.readyState >= 1) {
+      seekToPreviewFrame();
+    } else {
+      video.addEventListener("loadedmetadata", seekToPreviewFrame, { once:true });
+      if (video.networkState === HTMLMediaElement.NETWORK_EMPTY) video.load();
+    }
+  };
+
   const setupTestimonialPreviews = () => {
     document.querySelectorAll(".testi-video").forEach(video => {
       const wrap = video.closest(".testi-video-wrap");
@@ -109,7 +129,9 @@
       if (video.dataset.mobilePreview === "playing") return;
 
       video.controls = false;
+      video.preload = "metadata";
       video.dataset.mobilePreview = "ready";
+      ensureMobilePreviewFrame(video);
 
       if (!playButton) {
         playButton = document.createElement("button");
@@ -127,6 +149,9 @@
         video.controls = true;
         const currentButton = wrap.querySelector(".testi-video-play");
         if (currentButton) currentButton.remove();
+        try {
+          if (video.currentTime > 0 && video.currentTime <= 0.15) video.currentTime = 0;
+        } catch (_) {}
         video.play().catch(() => {
           video.dataset.mobilePreview = "ready";
           video.controls = false;
