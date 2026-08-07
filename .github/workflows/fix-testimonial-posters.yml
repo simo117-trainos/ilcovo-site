@@ -1,0 +1,101 @@
+name: Fix testimonial video posters
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  fix-testimonial-posters:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Ensure ffmpeg is available
+        run: |
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y ffmpeg
+          fi
+
+      - name: Generate real poster frames
+        run: |
+          mkdir -p assets/images/testimonials
+          for n in 1 2 3; do
+            input="assets/video/testimonials/testimonianza-${n}.mp4"
+            output="assets/images/testimonials/testimonianza-${n}-poster.jpg"
+            test -s "$input"
+            ffmpeg -hide_banner -loglevel error -y \
+              -i "$input" \
+              -vf "thumbnail=90,scale=960:-2" \
+              -frames:v 1 -q:v 4 "$output"
+            test -s "$output"
+          done
+
+      - name: Add posters and remove mobile frame-seek workaround
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          index_path = Path('index.html')
+          html = index_path.read_text(encoding='utf-8-sig')
+
+          for n in (1, 2, 3):
+              src = f'assets/video/testimonials/testimonianza-{n}.mp4'
+              poster = f'assets/images/testimonials/testimonianza-{n}-poster.jpg'
+              pattern = rf'(<video\s+src="{re.escape(src)}"\s*\n)(\s*)(?!poster=)'
+              replacement = rf'\1\2poster="{poster}"\n\2'
+              html, count = re.subn(pattern, replacement, html, count=1)
+              if count != 1 and f'poster="{poster}"' not in html:
+                  raise SystemExit(f'Could not add poster for testimonial {n}')
+
+          html = re.sub(
+              r'src="assets/js/header\.js(?:\?v=[^"]*)?"',
+              'src="assets/js/header.js?v=20260807-testimonial-poster"',
+              html,
+              count=1,
+          )
+          index_path.write_text(html, encoding='utf-8')
+
+          header_path = Path('assets/js/header.js')
+          js = header_path.read_text(encoding='utf-8-sig')
+          js, count = re.subn(
+              r'\n  const ensureMobilePreviewFrame = video => \{.*?\n  \};\n\n  const setupTestimonialPreviews',
+              '\n  const setupTestimonialPreviews',
+              js,
+              count=1,
+              flags=re.S,
+          )
+          if count != 1:
+              raise SystemExit('Expected mobile frame-seek workaround not found')
+          js = js.replace('      ensureMobilePreviewFrame(video);\n', '')
+          header_path.write_text(js, encoding='utf-8')
+          PY
+
+      - name: Validate
+        run: |
+          git diff --check
+          for n in 1 2 3; do
+            test -s "assets/images/testimonials/testimonianza-${n}-poster.jpg"
+            grep -q "poster=\"assets/images/testimonials/testimonianza-${n}-poster.jpg\"" index.html
+          done
+          grep -q 'header.js?v=20260807-testimonial-poster' index.html
+          ! grep -q 'ensureMobilePreviewFrame' assets/js/header.js
+          file assets/images/testimonials/testimonianza-*-poster.jpg
+          ls -lh assets/images/testimonials/testimonianza-*-poster.jpg
+
+      - name: Commit site fix and remove temporary workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html assets/js/header.js assets/images/testimonials
+          git rm .github/workflows/fix-testimonial-posters.yml
+          git commit -m "Fix mobile testimonial video previews"
+          git push origin HEAD:main
