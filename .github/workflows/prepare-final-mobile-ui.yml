@@ -1,0 +1,113 @@
+name: Prepare final mobile UI fixes
+
+on:
+  push:
+    branches:
+      - fix/final-mobile-ui
+
+permissions:
+  contents: write
+
+jobs:
+  prepare-fixes:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Ensure ffmpeg is available
+        run: |
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y ffmpeg
+          fi
+
+      - name: Fix mobile drawer CSS
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('assets/css/styles.css')
+          text = path.read_text(encoding='utf-8-sig')
+          old = '''  nav#nav.site-header .nav-links,
+          .hyrox-page nav#nav.site-header .nav-links,
+          .cf-page nav#nav.site-header .nav-links {
+            left:50%;
+            right:auto;
+            width:min(calc(100vw - 40px),1680px);
+            transform:translateX(-50%) translateY(-10px);
+          }
+
+          nav#nav.site-header.nav-open .nav-links {
+            transform:translateX(-50%);
+          }
+          '''
+          new = '''  nav#nav.site-header .nav-links,
+          .hyrox-page nav#nav.site-header .nav-links,
+          .cf-page nav#nav.site-header .nav-links {
+            left:auto;
+            right:20px;
+            width:min(calc(100vw - 40px),1680px);
+            max-width:calc(100vw - 40px);
+            transform:translateY(-10px);
+          }
+
+          nav#nav.site-header.nav-open .nav-links {
+            transform:translateY(0);
+          }
+          '''
+          if old not in text:
+              raise SystemExit('Expected mobile menu CSS block not found.')
+          text = text.replace(old, new, 1)
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Create testimonial posters
+        run: |
+          mkdir -p assets/images/testimonials
+          for n in 1 2 3; do
+            input="assets/video/testimonials/testimonianza-${n}.mp4"
+            output="assets/images/testimonials/testimonianza-${n}.webp"
+            test -f "$input"
+            ffmpeg -hide_banner -loglevel error -y -ss 8 -i "$input" -frames:v 1 \
+              -vf "scale=1280:720:force_original_aspect_ratio=increase,crop=1280:720" \
+              -c:v libwebp -quality 82 -compression_level 6 "$output"
+            test -s "$output"
+          done
+
+      - name: Add posters to testimonial markup
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8-sig')
+          for n in (1, 2, 3):
+              old = f'''<video src="assets/video/testimonials/testimonianza-{n}.mp4"\n            muted'''
+              new = f'''<video src="assets/video/testimonials/testimonianza-{n}.mp4"\n            poster="assets/images/testimonials/testimonianza-{n}.webp"\n            muted'''
+              if old not in text:
+                  raise SystemExit(f'Expected testimonial video {n} markup not found.')
+              text = text.replace(old, new, 1)
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Validate
+        run: |
+          git diff --check
+          grep -q 'right:20px;' assets/css/styles.css
+          grep -q 'max-width:calc(100vw - 40px);' assets/css/styles.css
+          for n in 1 2 3; do
+            grep -q "poster=\"assets/images/testimonials/testimonianza-${n}.webp\"" index.html
+            test -s "assets/images/testimonials/testimonianza-${n}.webp"
+          done
+          file assets/images/testimonials/testimonianza-*.webp
+          ls -lh assets/images/testimonials/testimonianza-*.webp
+
+      - name: Commit prepared changes and remove temporary workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/css/styles.css index.html assets/images/testimonials
+          git rm .github/workflows/prepare-final-mobile-ui.yml
+          git commit -m "Prepare mobile menu and testimonial preview fixes"
+          git push origin HEAD:fix/final-mobile-ui
