@@ -111,3 +111,5 @@ jobs:
           git rm .github/workflows/prepare-final-mobile-ui.yml
           git commit -m "Prepare mobile menu and testimonial preview fixes"
           git push origin HEAD:fix/final-mobile-ui
+
+# Trigger workflow after creation.
