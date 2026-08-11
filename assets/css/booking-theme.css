@@ -30,6 +30,11 @@ body.booking-page.booking-trial-neutral {
   --trial-accent-text:#111;
 }
 
+/* Booking hero: same warm neutral used for "PERCORSO" on pricing page. */
+body.booking-page .booking-hero-title em {
+  color:#8A8175;
+}
+
 /* Choice cards: neither card uses CrossFit red or HYROX lime. */
 body.booking-page .booking-card[data-type="prova"] {
   border-color:var(--booking-trial-warm);
