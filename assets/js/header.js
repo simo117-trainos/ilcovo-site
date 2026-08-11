@@ -64,6 +64,22 @@
   `;
   document.head.appendChild(mobileUiStyle);
 
+  // I CTA "Prova Gratuita" devono aprire la pagina di scelta senza
+  // selezionare automaticamente il form. Manteniamo solo l'eventuale
+  // disciplina (CrossFit/HYROX) come preselezione dopo il click sulla card.
+  document.querySelectorAll('a[href*="/prenota-prova"]').forEach(link => {
+    const href = link.getAttribute("href");
+    if (!href) return;
+    try {
+      const url = new URL(href, window.location.origin);
+      if (url.pathname.replace(/\/+$/, "") !== "/prenota-prova") return;
+      if (url.searchParams.get("type") !== "trial") return;
+      url.searchParams.delete("type");
+      const query = url.searchParams.toString();
+      link.setAttribute("href", `${url.pathname}${query ? `?${query}` : ""}${url.hash}`);
+    } catch (_) {}
+  });
+
   const nav = document.getElementById("nav");
   const toggle = nav?.querySelector(".nav-toggle");
   const links = nav?.querySelector(".nav-links");
