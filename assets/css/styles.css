@@ -6156,8 +6156,8 @@ nav#nav.site-header.solid,
 
 nav#nav.site-header .nav-container {
   position:relative;
-  width:calc(100% - clamp(40px,8vw,160px));
-  max-width:1680px;
+  width:calc(100% - 56px);
+  max-width:none;
   min-height:clamp(78px,6.5vw,96px);
   margin-inline:auto;
   display:grid;
