@@ -1,0 +1,194 @@
+/* IL COVO — Booking palette
+   Entry type: neutral warm / neutral cool.
+   Discipline: CrossFit red / HYROX lime / unsure neutral warm. */
+
+body.booking-page {
+  --booking-trial-warm:#d8d2c4;
+  --booking-trial-warm-rgb:216,210,196;
+  --booking-dropin-cool:#8c949b;
+  --booking-dropin-cool-rgb:140,148,155;
+  --trial-accent:var(--booking-trial-warm);
+  --trial-accent-rgb:var(--booking-trial-warm-rgb);
+  --trial-accent-text:#111;
+}
+
+body.booking-page.booking-trial-crossfit {
+  --trial-accent:#bc162f;
+  --trial-accent-rgb:188,22,47;
+  --trial-accent-text:#fff;
+}
+
+body.booking-page.booking-trial-hyrox {
+  --trial-accent:#d7ff00;
+  --trial-accent-rgb:215,255,0;
+  --trial-accent-text:#050505;
+}
+
+body.booking-page.booking-trial-neutral {
+  --trial-accent:var(--booking-trial-warm);
+  --trial-accent-rgb:var(--booking-trial-warm-rgb);
+  --trial-accent-text:#111;
+}
+
+/* Choice cards: neither card uses CrossFit red or HYROX lime. */
+body.booking-page .booking-card[data-type="prova"] {
+  border-color:var(--booking-trial-warm);
+  background:linear-gradient(145deg,#12110f 0%,#0e0e0d 100%);
+  box-shadow:0 0 0 1px rgba(var(--booking-trial-warm-rgb),.04);
+}
+
+body.booking-page .booking-card[data-type="prova"] .booking-card-tag,
+body.booking-page .booking-card[data-type="prova"] .booking-card-cta {
+  color:#111;
+  border-color:var(--booking-trial-warm);
+  background:var(--booking-trial-warm);
+}
+
+body.booking-page .booking-card[data-type="prova"]:hover,
+body.booking-page .booking-card[data-type="prova"].is-active {
+  border-color:#eee8da;
+  box-shadow:0 0 0 4px rgba(var(--booking-trial-warm-rgb),.09),0 24px 50px rgba(0,0,0,.16);
+}
+
+body.booking-page .booking-card[data-type="prova"]:focus-visible {
+  outline-color:var(--booking-trial-warm);
+}
+
+body.booking-page .booking-card[data-type="dropin"] {
+  border-color:var(--booking-dropin-cool);
+  background:linear-gradient(145deg,#121619 0%,#0d0f11 100%);
+  box-shadow:0 0 0 1px rgba(var(--booking-dropin-cool-rgb),.05);
+}
+
+body.booking-page .booking-card[data-type="dropin"] .booking-card-tag,
+body.booking-page .booking-card[data-type="dropin"] .booking-card-cta {
+  color:#0a0b0c;
+  border-color:var(--booking-dropin-cool);
+  background:var(--booking-dropin-cool);
+}
+
+body.booking-page .booking-card[data-type="dropin"]:hover,
+body.booking-page .booking-card[data-type="dropin"].is-active {
+  border-color:#b8c0c6;
+  box-shadow:0 0 0 4px rgba(var(--booking-dropin-cool-rgb),.1),0 24px 50px rgba(0,0,0,.16);
+}
+
+body.booking-page .booking-card[data-type="dropin"]:focus-visible {
+  outline-color:var(--booking-dropin-cool);
+}
+
+/* Keep the selected entry card tied to its neutral family. */
+body.booking-page .booking-card[data-type="prova"].is-active .booking-card-tag,
+body.booking-page .booking-card[data-type="prova"].is-active .booking-card-cta {
+  color:#111;
+  border-color:var(--booking-trial-warm);
+  background:var(--booking-trial-warm);
+}
+
+body.booking-page .booking-card[data-type="dropin"].is-active .booking-card-tag,
+body.booking-page .booking-card[data-type="dropin"].is-active .booking-card-cta {
+  color:#0a0b0c;
+  border-color:var(--booking-dropin-cool);
+  background:var(--booking-dropin-cool);
+}
+
+/* Trial form: accent follows discipline. */
+body.booking-page #booking-form-prova {
+  --booking-accent:var(--trial-accent);
+  --booking-accent-soft:rgba(var(--trial-accent-rgb),.14);
+  --booking-accent-filled:rgba(var(--trial-accent-rgb),.4);
+  --booking-accent-text:var(--trial-accent-text);
+}
+
+body.booking-page #form-prova {
+  border-color:rgba(var(--trial-accent-rgb),.28);
+  box-shadow:0 0 0 1px rgba(var(--trial-accent-rgb),.04),0 24px 80px rgba(0,0,0,.16),0 4px 20px rgba(0,0,0,.1);
+  transition:border-color .22s ease,box-shadow .22s ease;
+}
+
+body.booking-page #form-prova .req,
+body.booking-page #form-prova .booking-class-picker-icon,
+body.booking-page #form-prova .booking-class-picker-copy small {
+  color:var(--trial-accent);
+}
+
+body.booking-page #form-prova .booking-class-picker:focus-visible {
+  border-color:var(--trial-accent);
+  box-shadow:0 0 0 3px rgba(var(--trial-accent-rgb),.12);
+}
+
+body.booking-page #form-prova .booking-class-picker.has-value {
+  border-color:rgba(var(--trial-accent-rgb),.44);
+  background:#141414;
+}
+
+body.booking-page .booking-dialog-close:hover {
+  border-color:var(--trial-accent);
+  color:var(--trial-accent);
+}
+
+body.booking-page .booking-dialog-close:focus-visible,
+body.booking-page .booking-dialog-day:focus-visible,
+body.booking-page .booking-dialog-option:focus-visible {
+  outline-color:var(--trial-accent);
+}
+
+body.booking-page .booking-dialog-day.is-selected,
+body.booking-page .booking-dialog-option.is-selected {
+  color:var(--trial-accent-text);
+  background:var(--trial-accent);
+  border-color:var(--trial-accent);
+}
+
+body.booking-page #form-prova .booking-submit {
+  color:var(--trial-accent-text);
+  background:var(--trial-accent);
+}
+
+body.booking-page #form-prova .booking-submit:hover {
+  color:var(--trial-accent-text);
+  background:var(--trial-accent);
+  filter:brightness(1.08);
+}
+
+body.booking-page #form-prova .booking-success-check {
+  color:var(--trial-accent);
+  border-color:var(--trial-accent);
+  background:rgba(var(--trial-accent-rgb),.12);
+}
+
+/* Drop-in form: steel/graphite throughout, never CrossFit red or HYROX lime. */
+body.booking-page #booking-form-dropin {
+  --booking-accent:var(--booking-dropin-cool);
+  --booking-accent-soft:rgba(var(--booking-dropin-cool-rgb),.14);
+  --booking-accent-filled:rgba(var(--booking-dropin-cool-rgb),.4);
+  --booking-accent-text:#0a0b0c;
+}
+
+body.booking-page #form-dropin {
+  border-color:rgba(var(--booking-dropin-cool-rgb),.28);
+  box-shadow:0 0 0 1px rgba(var(--booking-dropin-cool-rgb),.04),0 24px 80px rgba(0,0,0,.16),0 4px 20px rgba(0,0,0,.1);
+}
+
+body.booking-page #form-dropin .req {
+  color:var(--booking-dropin-cool);
+}
+
+body.booking-page #form-dropin .booking-submit,
+body.booking-page #form-dropin .booking-submit--dropin {
+  color:#0a0b0c;
+  background:var(--booking-dropin-cool);
+}
+
+body.booking-page #form-dropin .booking-submit:hover,
+body.booking-page #form-dropin .booking-submit--dropin:hover {
+  color:#0a0b0c;
+  background:#aab2b8;
+}
+
+body.booking-page #form-dropin .booking-success-check,
+body.booking-page .booking-success--dropin .booking-success-check {
+  color:var(--booking-dropin-cool);
+  border-color:var(--booking-dropin-cool);
+  background:rgba(var(--booking-dropin-cool-rgb),.12);
+}
