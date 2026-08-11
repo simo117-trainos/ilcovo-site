@@ -23,6 +23,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/booking-theme.css">
 </head>
 <body class="booking-page">
 
@@ -60,6 +61,9 @@
     <div class="booking-cards" role="tablist" aria-label="Scegli il tipo di richiesta">
 
       <button type="button" class="booking-card" data-type="prova" role="tab" aria-label="Scegli Prova Gratuita" aria-controls="form-prova" aria-selected="false">
+        <div class="booking-card-media booking-card-media--prova">
+          <img src="assets/images/booking/prova-gratuita.jpg" alt="Coach e atleta durante una prima esperienza di allenamento al COVO">
+        </div>
         <div class="booking-card-inner">
           <span class="booking-card-tag">Gratis</span>
           <h2 class="booking-card-title">PROVA<br>GRATUITA</h2>
@@ -69,6 +73,9 @@
       </button>
 
       <button type="button" class="booking-card booking-card--dropin" data-type="dropin" role="tab" aria-label="Scegli Drop-in" aria-controls="form-dropin" aria-selected="false">
+        <div class="booking-card-media booking-card-media--dropin">
+          <img src="assets/images/booking/dropin.jpg" alt="Atleta durante un allenamento con la corda al COVO">
+        </div>
         <div class="booking-card-inner">
           <span class="booking-card-tag">Visitatori</span>
           <h2 class="booking-card-title">DROP-IN</h2>
