@@ -862,6 +862,10 @@ async function handleSubmit(formType, form) {
   if (formType === "trial") {
     try {
       await submitMakeLead(buildMakeTrialPayload(form));
+      window.ilCovoTrack?.("Lead", {
+        content_name: "Prenotazione prova",
+        content_category: getRadio(form, "tipo-prova") || "Prova"
+      });
       const successText = successEl.querySelector(".booking-success-text");
       if (successText) successText.textContent = "Richiesta inviata. Ti contatteremo a breve.";
       showSuccess(successEl, null);
