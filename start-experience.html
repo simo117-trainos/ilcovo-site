@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Experience CrossFit e HYROX a Ivrea | IL COVO</title>
+<meta name="description" content="Prenota la Start Experience al COVO di Ivrea: un allenamento guidato da un coach dedicato, CrossFit o HYROX. Gratuita fino al 30 settembre 2026.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://ilcovocrossfitivrea.com/start-experience">
+<meta property="og:locale" content="it_IT">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Start Experience CrossFit e HYROX a Ivrea | IL COVO">
+<meta property="og:description" content="Un allenamento guidato da un coach dedicato, CrossFit o HYROX. Gratuita fino al 30 settembre 2026.">
+<meta property="og:url" content="https://ilcovocrossfitivrea.com/start-experience">
+<meta property="og:image" content="https://ilcovocrossfitivrea.com/assets/images/social/il-covo-og.jpg">
+<meta property="og:site_name" content="IL COVO CrossFit Ivrea">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Start Experience CrossFit e HYROX a Ivrea | IL COVO">
+<meta name="twitter:description" content="Un allenamento guidato da un coach dedicato, CrossFit o HYROX. Gratuita fino al 30 settembre 2026.">
+<meta name="twitter:image" content="https://ilcovocrossfitivrea.com/assets/images/social/il-covo-og.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/booking-theme.css">
+<script src="/assets/js/privacy-consent.js?v=20260817" defer></script>
+<style>
+/* ── /start-experience — layout campagna (scoped) ───────────────────── */
+.start-experience-page { background:#f4f4f0; color:#111 }
+.start-experience-page main { overflow:hidden }
+.start-experience-page .se-wrap { max-width:1100px; margin:0 auto; padding:0 5vw }
+
+.start-experience-page .se-kicker {
+  display:inline-flex; align-items:center; gap:.7rem;
+  font:700 .68rem/1 var(--body-font); letter-spacing:.2em; text-transform:uppercase;
+  color:var(--red); margin-bottom:1.5rem;
+}
+.start-experience-page .se-kicker::before { content:""; width:34px; height:1px; background:var(--red) }
+
+/* Nav ridotta: il .nav-toggle e i .nav-links sono stati rimossi dal markup.
+   Le regole globali in styles.css dimensionano/nascondono .nav-actions per
+   fare spazio all'hamburger — qui lo forziamo a restare un pulsante visibile. */
+.start-experience-page nav#nav.se-nav .nav-actions {
+  width:auto; height:auto; position:static; justify-self:end;
+}
+.start-experience-page nav#nav.se-nav .nav-actions .nav-cta {
+  display:inline-flex !important; padding:.6rem 1.1rem; font-size:.62rem; white-space:nowrap;
+}
+@media (max-width:899px) {
+  .start-experience-page nav#nav.se-nav .nav-container { grid-template-columns:auto 1fr; gap:.6rem }
+  .start-experience-page nav#nav.se-nav .nav-actions { position:static; grid-column:2; justify-self:end; min-width:0 }
+  .start-experience-page nav#nav.se-nav .nav-logo-img { max-width:34vw }
+  .start-experience-page nav#nav.se-nav .nav-actions .nav-cta { padding:.55rem .85rem; font-size:.54rem }
+}
+
+/* Hero */
+.start-experience-page .se-hero { padding:clamp(7.5rem,13vw,11rem) 0 clamp(2.5rem,6vw,4.5rem); text-align:center }
+.start-experience-page .se-hero .se-wrap { max-width:940px }
+.start-experience-page .se-hero h1 {
+  font-family:var(--display-font); font-size:clamp(3rem,8.6vw,7.6rem); line-height:.85;
+  margin:0 0 1.3rem; color:#111;
+}
+.start-experience-page .se-hero h1 em { color:var(--red); font-style:normal }
+.start-experience-page .se-hero-sub {
+  font:400 clamp(1.02rem,1.35vw,1.24rem)/1.6 var(--body-font);
+  color:rgba(0,0,0,.62); max-width:46ch; margin:0 auto 1.9rem;
+}
+.start-experience-page .se-hero .btn { font-size:.82rem; padding:1.15rem 2.5rem }
+.start-experience-page .se-badges { display:flex; flex-wrap:wrap; gap:.55rem; justify-content:center; margin-top:2.1rem }
+.start-experience-page .se-badge {
+  font:700 .58rem/1.3 var(--body-font); letter-spacing:.14em; text-transform:uppercase;
+  color:#111; background:#fff; border:1px solid var(--line); border-radius:999px; padding:.55rem 1rem;
+}
+.start-experience-page .se-badge b { color:var(--red); font-weight:700 }
+
+/* Countdown */
+.start-experience-page .se-countdown { padding:clamp(1rem,3vw,2rem) 0 }
+.start-experience-page .se-cd-inner {
+  border:1px solid var(--line); border-radius:20px; background:#fff;
+  padding:clamp(1.6rem,4vw,2.4rem); text-align:center;
+}
+.start-experience-page .se-cd-grid { display:flex; gap:clamp(.7rem,3.5vw,2.2rem); justify-content:center }
+.start-experience-page .se-cd-cell { min-width:60px }
+.start-experience-page .se-cd-num { font-family:var(--display-font); font-size:clamp(2.6rem,7vw,4.2rem); line-height:1; color:#111 }
+.start-experience-page .se-cd-lab {
+  font:700 .56rem/1 var(--body-font); letter-spacing:.18em; text-transform:uppercase;
+  color:var(--muted); margin-top:.55rem;
+}
+.start-experience-page .se-cd-note { font:400 .92rem/1.6 var(--body-font); color:rgba(0,0,0,.62); margin:1.4rem auto 0; max-width:48ch }
+.start-experience-page .se-cd-note b { color:#111; font-weight:600 }
+
+/* Editorial sections */
+.start-experience-page .se-section { padding:clamp(3rem,7vw,5.5rem) 0 }
+.start-experience-page .se-section--tight { padding-top:clamp(1.5rem,4vw,2.5rem) }
+.start-experience-page .se-h2 { font-family:var(--display-font); font-size:clamp(2.2rem,5.6vw,4rem); line-height:.9; margin:0 0 1rem; color:#111 }
+.start-experience-page .se-lead { font:400 clamp(1rem,1.2vw,1.12rem)/1.7 var(--body-font); color:rgba(0,0,0,.62); max-width:54ch; margin:0 0 2.4rem }
+
+/* Discipline pick */
+.start-experience-page .se-disc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem }
+.start-experience-page .se-disc-card {
+  text-align:left; background:#fff; border:1px solid var(--line); border-radius:16px;
+  padding:1.5rem 1.4rem 1.6rem; cursor:pointer; font-family:inherit;
+  transition:border-color .2s, transform .2s, box-shadow .2s;
+}
+.start-experience-page .se-disc-card:hover { transform:translateY(-3px); box-shadow:0 18px 40px rgba(0,0,0,.08) }
+.start-experience-page .se-disc-card:focus-visible { outline:2px solid var(--red); outline-offset:2px }
+.start-experience-page .se-disc-card.is-active { border-color:#111 }
+.start-experience-page .se-disc-card[data-se-discipline="CrossFit"] { border-top:3px solid var(--red) }
+.start-experience-page .se-disc-card[data-se-discipline="HYROX"] { border-top:3px solid var(--color-lime) }
+.start-experience-page .se-disc-card[data-se-discipline="Consigliatemi voi"] { border-top:3px solid var(--muted) }
+.start-experience-page .se-disc-t { font-family:var(--display-font); font-size:1.7rem; line-height:1; color:#111; margin-bottom:.5rem }
+.start-experience-page .se-disc-d { font:400 .92rem/1.6 var(--body-font); color:rgba(0,0,0,.6) }
+.start-experience-page .se-disc-pick {
+  display:inline-block; margin-top:1rem;
+  font:700 .62rem/1 var(--body-font); letter-spacing:.14em; text-transform:uppercase; color:var(--red);
+}
+
+/* Reasons + steps */
+.start-experience-page .se-cols { display:grid; grid-template-columns:repeat(3,1fr); gap:1.7rem }
+.start-experience-page .se-col-t { font:700 1rem/1.35 var(--body-font); color:#111; margin:0 0 .5rem }
+.start-experience-page .se-col-d { font:400 .95rem/1.65 var(--body-font); color:rgba(0,0,0,.62) }
+.start-experience-page .se-steps { display:grid; gap:1.1rem }
+.start-experience-page .se-step {
+  display:grid; grid-template-columns:auto 1fr; gap:1.15rem; align-items:start;
+  border-top:1px solid var(--line); padding-top:1.1rem;
+}
+.start-experience-page .se-step-n { font-family:var(--display-font); font-size:1.9rem; line-height:1; color:var(--red); min-width:1.5ch }
+.start-experience-page .se-step p { margin:0; font:400 .98rem/1.6 var(--body-font); color:rgba(0,0,0,.72) }
+.start-experience-page .se-step b { color:#111; font-weight:600 }
+
+/* Proof */
+.start-experience-page .se-proof-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem }
+.start-experience-page .se-quote { background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden; display:flex; flex-direction:column }
+.start-experience-page .se-quote img { width:100%; height:180px; object-fit:cover; object-position:center 28% }
+.start-experience-page .se-quote-body { padding:1.3rem 1.3rem 1.5rem }
+.start-experience-page .se-quote-txt { font:400 .92rem/1.62 var(--body-font); color:rgba(0,0,0,.72) }
+.start-experience-page .se-quote-name {
+  margin-top:.9rem; font:700 .64rem/1 var(--body-font); letter-spacing:.16em; text-transform:uppercase; color:var(--red);
+}
+
+/* Booking block */
+.start-experience-page #prenota .se-wrap { max-width:760px; text-align:center; margin-bottom:2.4rem }
+.start-experience-page #prenota .booking-form-section { margin-top:0 }
+
+@media (max-width:860px) {
+  .start-experience-page .se-disc-grid,
+  .start-experience-page .se-cols,
+  .start-experience-page .se-proof-grid { grid-template-columns:1fr }
+  .start-experience-page .se-cd-cell { min-width:50px }
+}
+</style>
+</head>
+<body class="booking-page start-experience-page">
+
+<!-- Nav ridotta per la landing di campagna: solo logo + CTA, nessun link di uscita -->
+<nav id="nav" class="site-header header--light se-nav">
+  <div class="nav-container">
+  <a href="/" class="nav-logo nav-brand" aria-label="IL COVO">
+    <img src="assets/img/Scritta+lupo-bianco - Copia.png" alt="IL COVO CrossFit Ivrea" class="nav-logo-img">
+  </a>
+  <div class="nav-actions">
+    <a href="#prenota" class="nav-cta">Prenota la Start Experience</a>
+  </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ── 1 · HERO ── -->
+  <section class="se-hero">
+    <div class="se-wrap">
+      <span class="se-kicker">Campagna Settembre · Ivrea</span>
+      <h1>CROSSFIT + HYROX.<br><em>ORA A IVREA.</em></h1>
+      <p class="se-hero-sub">CrossFit Affiliate ufficiale e HYROX Training Club ufficiale, nello stesso box. La tua Start Experience è un allenamento guidato da un coach dedicato — non una lezione qualsiasi.</p>
+      <a href="#prenota" class="btn btn-red">Prenota la Start Experience</a>
+      <div class="se-badges">
+        <span class="se-badge"><b>CrossFit</b> Affiliate ufficiale</span>
+        <span class="se-badge"><b>HYROX</b> Training Club ufficiale</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 2 · COUNTDOWN ── -->
+  <section class="se-countdown">
+    <div class="se-wrap">
+      <div class="se-cd-inner rUp" data-countdown>
+        <div class="se-cd-grid">
+          <div class="se-cd-cell"><div class="se-cd-num" data-cd="d">--</div><div class="se-cd-lab">Giorni</div></div>
+          <div class="se-cd-cell"><div class="se-cd-num" data-cd="h">--</div><div class="se-cd-lab">Ore</div></div>
+          <div class="se-cd-cell"><div class="se-cd-num" data-cd="m">--</div><div class="se-cd-lab">Min</div></div>
+          <div class="se-cd-cell"><div class="se-cd-num" data-cd="s">--</div><div class="se-cd-lab">Sec</div></div>
+        </div>
+        <p class="se-cd-note"><b>Gratuita fino al 30 settembre 2026.</b> Dal 1° ottobre la Start Experience costa 20 €, interamente riconosciuti sul primo abbonamento in caso di iscrizione.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 3 · SCELTA DISCIPLINA ── -->
+  <section class="se-section se-section--tight">
+    <div class="se-wrap">
+      <h2 class="se-h2 rUp">Da dove vuoi partire?</h2>
+      <p class="se-lead rUp">Scegli ora: preselezioniamo la disciplina nel modulo di prenotazione. Se non sei sicuro, decidi con il coach il giorno stesso.</p>
+      <div class="se-disc-grid">
+        <button type="button" class="se-disc-card rUp d1" data-se-discipline="CrossFit">
+          <div class="se-disc-t">CrossFit</div>
+          <p class="se-disc-d">Forza, ginnastica e condizionamento in classe, programmati e scalati sul tuo livello. Anche se riparti da zero.</p>
+          <span class="se-disc-pick">Scelgo CrossFit →</span>
+        </button>
+        <button type="button" class="se-disc-card rUp d2" data-se-discipline="HYROX">
+          <div class="se-disc-t">HYROX</div>
+          <p class="se-disc-d">Corsa + forza + stazioni, con una programmazione dedicata. HYROX è arrivato a Ivrea: non serve avere una gara in calendario.</p>
+          <span class="se-disc-pick">Scelgo HYROX →</span>
+        </button>
+        <button type="button" class="se-disc-card rUp d3" data-se-discipline="Consigliatemi voi">
+          <div class="se-disc-t">Consigliatemi voi</div>
+          <p class="se-disc-d">Vieni, ne parliamo e il coach ti indirizza sul percorso più adatto ai tuoi obiettivi e al tuo punto di partenza.</p>
+          <span class="se-disc-pick">Decido con il coach →</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 4 · PERCHÉ IL COACH FA LA DIFFERENZA ── -->
+  <section class="se-section">
+    <div class="se-wrap">
+      <h2 class="se-h2 rUp">Perché il coach fa la differenza</h2>
+      <p class="se-lead rUp">Non devi essere pronto per iniziare. Ti segue una persona, dal primo minuto, che adatta l'allenamento a te.</p>
+      <div class="se-cols">
+        <div class="se-col rUp d1">
+          <h3 class="se-col-t">Se riparti da zero</h3>
+          <p class="se-col-d">Nessun test da superare, nessun livello minimo. Il coach ti mostra i movimenti, sceglie i carichi con te e ti dice esattamente cosa fare. Non resti mai indietro rispetto alla classe.</p>
+        </div>
+        <div class="se-col rUp d2">
+          <h3 class="se-col-t">Se cerchi HYROX / hybrid</h3>
+          <p class="se-col-d">Corsa, forza e stazioni in un unico allenamento, con una logica di programmazione — non un circuito a caso. Ti serve per una gara o solo per allenarti meglio: funziona in entrambi i casi.</p>
+        </div>
+        <div class="se-col rUp d3">
+          <h3 class="se-col-t">Se lavori a Ivrea</h3>
+          <p class="se-col-d">Allenati prima di andare in ufficio o trasforma la pausa pranzo nel tuo momento. Le classi delle 7:15, 9:00 e 12:45 sono pensate per incastrarsi nella giornata di chi lavora.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 5 · COME FUNZIONA LA START EXPERIENCE ── -->
+  <section class="se-section">
+    <div class="se-wrap">
+      <h2 class="se-h2 rUp">Come funziona la Start Experience</h2>
+      <div class="se-steps">
+        <div class="se-step rUp d1">
+          <span class="se-step-n">1</span>
+          <p>Prenoti qui sotto scegliendo <b>disciplina, giorno e ora reali</b> tra quelli disponibili. Ti confermiamo il posto su WhatsApp.</p>
+        </div>
+        <div class="se-step rUp d2">
+          <span class="se-step-n">2</span>
+          <p>Arrivi <b>15 minuti prima</b>: il coach dedicato ti accoglie, capisce da dove parti e prepara l'allenamento su di te.</p>
+        </div>
+        <div class="se-step rUp d3">
+          <span class="se-step-n">3</span>
+          <p>Ti alleni <b>con la classe</b>, non da solo in un angolo. Ogni movimento e ogni carico sono scalati sul tuo livello.</p>
+        </div>
+        <div class="se-step rUp d4">
+          <span class="se-step-n">4</span>
+          <p>A fine sessione <b>decidi con il coach</b> il percorso più adatto. Nessun obbligo: la Start Experience è gratuita fino al 30 settembre.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 6 · TESTIMONIANZE / PROOF ── -->
+  <section class="se-section">
+    <div class="se-wrap">
+      <h2 class="se-h2 rUp">Chi ha già iniziato</h2>
+      <div class="se-proof-grid">
+        <figure class="se-quote rUp d1">
+          <img src="assets/images/testimonials/testimonianza-1-poster.jpg" alt="Eleonora, atleta del COVO" loading="lazy">
+          <div class="se-quote-body">
+            <p class="se-quote-txt">"Da marzo a oggi ho perso 15 chili. Non pensavo di trovare qualcosa che mi desse la voglia di migliorare. Ora mi sento decisamente meglio con me stessa."</p>
+            <figcaption class="se-quote-name">Eleonora</figcaption>
+          </div>
+        </figure>
+        <figure class="se-quote rUp d2">
+          <img src="assets/images/testimonials/testimonianza-2-poster.jpg" alt="Simone, atleta del COVO" loading="lazy">
+          <div class="se-quote-body">
+            <p class="se-quote-txt">"Quando ho iniziato ero molto secco, adesso ho un fisico abbastanza atletico. Ho più energia anche nella vita di tutti i giorni."</p>
+            <figcaption class="se-quote-name">Simone</figcaption>
+          </div>
+        </figure>
+        <figure class="se-quote rUp d3">
+          <img src="assets/images/testimonials/testimonianza-3-poster.jpg" alt="Lorella, atleta del COVO" loading="lazy">
+          <div class="se-quote-body">
+            <p class="se-quote-txt">"Ho provato e mi è piaciuto tantissimo, adesso è un anno e mezzo che mi alleno. È sempre diverso da quello della palestra, ed è per questo che mi piace così tanto."</p>
+            <figcaption class="se-quote-name">Lorella</figcaption>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 7 + 8 · PRENOTAZIONE (slot reali) + COUNTDOWN FINALE ── -->
+  <section id="prenota" class="se-section">
+    <div class="se-wrap">
+      <span class="se-kicker rUp">Prenota ora</span>
+      <h2 class="se-h2 rUp">Blocca il tuo posto</h2>
+      <p class="se-lead rUp" style="margin-inline:auto">Scegli disciplina, giorno e ora: esci da qui con un appuntamento reale, non con una richiesta di ricontatto.</p>
+      <div class="se-cd-inner rUp" data-countdown>
+        <div class="se-cd-grid">
+          <div class="se-cd-cell"><div class="se-cd-num" data-cd="d">--</div><div class="se-cd-lab">Giorni</div></div>
+          <div class="se-cd-cell"><div class="se-cd-num" data-cd="h">--</div><div class="se-cd-lab">Ore</div></div>
+          <div class="se-cd-cell"><div class="se-cd-num" data-cd="m">--</div><div class="se-cd-lab">Min</div></div>
+          <div class="se-cd-cell"><div class="se-cd-num" data-cd="s">--</div><div class="se-cd-lab">Sec</div></div>
+        </div>
+        <p class="se-cd-note">alla fine della Start Experience gratuita</p>
+      </div>
+    </div>
+
+    <div id="form-prova" class="booking-form-section">
+      <div class="booking-form-header">
+        <h2 class="booking-form-title">I TUOI DATI</h2>
+        <p class="booking-form-desc">Meno di un minuto. Nome, contatto, disciplina e lo slot che preferisci.</p>
+      </div>
+
+      <form id="booking-form-prova" class="booking-form booking-form--trial" novalidate>
+
+        <div class="booking-field">
+          <label class="booking-label">Nome e cognome <span class="req">*</span></label>
+          <input type="text" name="nome" class="booking-input" placeholder="Mario Rossi" value="" autocomplete="name" required>
+          <p class="booking-field-error">Campo obbligatorio</p>
+        </div>
+
+        <div class="booking-field">
+          <label class="booking-label">Numero WhatsApp <span class="req">*</span></label>
+          <input type="tel" name="whatsapp" class="booking-input" placeholder="+39 333 123 4567" value="" autocomplete="tel" required>
+          <p class="booking-field-error">Campo obbligatorio</p>
+        </div>
+
+        <div class="booking-field">
+          <label class="booking-label">Email <span class="req">*</span></label>
+          <input type="email" name="email" class="booking-input" placeholder="mario@esempio.it" value="" autocomplete="email" required>
+          <p class="booking-field-error">Campo obbligatorio</p>
+        </div>
+
+        <div class="booking-field">
+          <label class="booking-label">Che disciplina vuoi provare? <span class="req">*</span></label>
+          <div class="booking-radio-group" data-required="true">
+            <label class="booking-radio-option"><input type="radio" name="tipo-prova" value="CrossFit"><span>CrossFit</span></label>
+            <label class="booking-radio-option"><input type="radio" name="tipo-prova" value="HYROX"><span>HYROX</span></label>
+            <label class="booking-radio-option"><input type="radio" name="tipo-prova" value="Consigliatemi voi"><span>Consigliatemi voi</span></label>
+          </div>
+          <p class="booking-field-error">Seleziona un'opzione</p>
+        </div>
+
+        <div class="booking-field" id="prova-orario-field">
+          <label class="booking-label">Quando vuoi fare la Start Experience? <span class="req">*</span></label>
+          <button type="button" class="booking-class-picker" id="booking-class-picker" aria-haspopup="dialog" aria-controls="trial-class-dialog">
+            <span class="booking-class-picker-icon" aria-hidden="true">▣</span>
+            <span class="booking-class-picker-copy">
+              <strong id="booking-class-summary">Scegli giorno e orario</strong>
+              <small id="booking-class-modify" hidden>Modifica</small>
+            </span>
+            <span class="booking-class-picker-chevron" aria-hidden="true">⌄</span>
+          </button>
+          <input type="hidden" name="preferred-discipline">
+          <input type="hidden" name="preferred-day">
+          <input type="hidden" name="preferred-time">
+          <input type="hidden" name="preferred-class-label">
+          <input type="hidden" name="availability-preference">
+          <p class="booking-field-error" id="prova-orario-error">Seleziona il giorno e l'orario della Start Experience.</p>
+        </div>
+
+        <div class="booking-field booking-field--privacy">
+          <label class="booking-privacy">
+            <input type="checkbox" name="privacy" required>
+            <span>Ho letto la <a href="/privacy-policy">Privacy Policy</a> e autorizzo il trattamento dei dati necessari alla gestione della mia richiesta.</span>
+          </label>
+          <p class="booking-field-error">Devi accettare la privacy per procedere</p>
+        </div>
+
+        <p class="booking-form-error" hidden>Compila tutti i campi obbligatori prima di continuare.</p>
+        <button type="submit" class="booking-submit">PRENOTA LA START EXPERIENCE</button>
+
+      </form>
+
+      <!-- Success state — mostrato da booking.js dopo l'invio -->
+      <div class="booking-success" hidden>
+        <span class="booking-success-check">✓</span>
+        <h3 class="booking-success-title">Start Experience prenotata</h3>
+        <p class="booking-success-text">Richiesta ricevuta. Ti confermiamo giorno e ora su WhatsApp.</p>
+        <p class="booking-success-wa" hidden>
+          Completa l'invio su WhatsApp per mandarci la richiesta.
+          <a class="booking-success-wa-link" href="#" target="_blank" rel="noopener">Apri WhatsApp →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Dialog scelta classe — riusa il pattern di prenota-prova.html -->
+<div class="booking-dialog-backdrop" id="trial-class-dialog" role="dialog" aria-modal="true" aria-labelledby="trial-class-dialog-title" aria-describedby="trial-class-dialog-desc" hidden>
+  <div class="booking-dialog" tabindex="-1">
+    <button type="button" class="booking-dialog-close" aria-label="Chiudi selezione classe">×</button>
+    <h2 class="booking-dialog-title" id="trial-class-dialog-title">Scegli la tua classe</h2>
+    <p class="booking-dialog-desc" id="trial-class-dialog-desc">Seleziona prima il giorno e poi l'orario che preferisci.</p>
+    <div class="booking-dialog-options" id="trial-class-dialog-options"></div>
+  </div>
+</div>
+
+<script src="assets/js/booking-availability.js"></script>
+<script src="assets/js/booking.js"></script>
+<script>
+(function () {
+  // Nav: fondo pieno + tema chiaro allo scroll
+  var navEl = document.getElementById("nav");
+  function updateNav() {
+    if (!navEl) return;
+    var st = window.scrollY || document.documentElement.scrollTop;
+    navEl.classList.toggle("solid", st > 60);
+    navEl.classList.toggle("header--light", st > 5);
+  }
+  window.addEventListener("scroll", updateNav, { passive: true });
+  updateNav();
+
+  // Reveal on scroll (riusa le classi .rUp/.d1-.d4/.on di styles.css)
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); }
+    });
+  }, { threshold: .12 });
+  document.querySelectorAll(".rUp,.rL").forEach(function (el) { io.observe(el); });
+
+  // Countdown reale → 30 settembre 2026, 23:59:59 Europe/Rome (CEST, UTC+2)
+  var DEADLINE = new Date("2026-09-30T23:59:59+02:00").getTime();
+  var roots = document.querySelectorAll("[data-countdown]");
+  function pad(n) { return String(n).padStart(2, "0"); }
+  function renderCountdown() {
+    var diff = DEADLINE - Date.now();
+    if (diff < 0) diff = 0;
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    roots.forEach(function (root) {
+      var set = function (k, v) { var el = root.querySelector('[data-cd="' + k + '"]'); if (el) el.textContent = v; };
+      set("d", d); set("h", pad(h)); set("m", pad(m)); set("s", pad(s));
+    });
+    if (diff === 0) clearInterval(timer);
+  }
+  renderCountdown();
+  var timer = setInterval(renderCountdown, 1000);
+
+  // Scelta disciplina (sezione 3) → preseleziona il radio nel form + scroll
+  document.querySelectorAll("[data-se-discipline]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var val = btn.getAttribute("data-se-discipline");
+      var radio = document.querySelector('#booking-form-prova input[name="tipo-prova"][value="' + val + '"]');
+      if (radio) { radio.checked = true; radio.dispatchEvent(new Event("change", { bubbles: true })); }
+      document.querySelectorAll("[data-se-discipline]").forEach(function (b) { b.classList.toggle("is-active", b === btn); });
+      var target = document.getElementById("prenota");
+      if (target) {
+        var y = target.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+      }
+    });
+  });
+
+  // ── META PIXEL — usa il sistema reale con consenso (assets/js/privacy-consent.js) ──
+  // window.ilCovoTrack è no-op finché l'utente non accetta i cookie marketing
+  // dal banner; niente da configurare qui, il Pixel è già installato sul sito.
+  function trackStartExperienceLead() {
+    window.ilCovoTrack?.("Schedule");
+    window.ilCovoTrack?.("StartExperienceLead");
+  }
+
+  // Conversione: SOLO dopo invio lead riuscito (evento emesso da booking.js), mai al page-load
+  document.addEventListener("ilcovo:booking-success", function (e) {
+    if (e.detail && e.detail.type === "trial") trackStartExperienceLead();
+  });
+})();
+</script>
+
+<div data-site-footer></div>
+<script src="assets/js/header.js" defer></script>
+<script src="assets/js/footer.js" defer></script>
+</body>
+</html>

@@ -24,6 +24,18 @@ const DAY_INDEXES = {
 };
 const DAY_KEYS = ["domenica", "lunedi", "martedi", "mercoledi", "giovedi", "venerdi", "sabato"];
 
+// ── ATTRIBUZIONE — pagina di partenza + parametri UTM ──
+// Catturati una sola volta al caricamento dello script, cosi' restano stabili
+// anche se l'utente naviga in pagina prima di inviare il form.
+function getCapturedAttribution() {
+  const params = new URLSearchParams(window.location.search);
+  const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+  const out = { pagina_lead: (window.location.pathname.replace(/^\/|\/$/g, "") || "home") };
+  utmKeys.forEach(key => { out[key] = params.get(key) || ""; });
+  return out;
+}
+const CAPTURED_ATTRIBUTION = getCapturedAttribution();
+
 // ── INTEGRAZIONI ──
 // Tutte le API key / segreti vanno gestiti lato backend, mai nel frontend.
 const INTEGRATIONS = {
@@ -263,7 +275,12 @@ function getTrialCalendarOptions(discipline) {
       const date = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate() + i));
       const dateParts = getCalendarDateParts(date);
       const times = TRIAL_CLASS_SCHEDULE[calendarDiscipline]?.[dateParts.day] || [];
-      const slots = times.map(time => buildClassSlot(date, time)).filter(slot => slot.isFuture);
+      const blocked = (typeof BOOKING_BLOCKED_SLOTS !== "undefined" && BOOKING_BLOCKED_SLOTS[dateParts.dateKey]) || [];
+      const dayIsFull = blocked === "full";
+      const slots = times
+        .map(time => buildClassSlot(date, time))
+        .filter(slot => slot.isFuture)
+        .filter(slot => !dayIsFull && !blocked.includes?.(slot.time));
       if (!slots.length) continue;
       options.push({
         ...dateParts,
@@ -316,6 +333,12 @@ function buildMakeTrialPayload(form) {
     consenso_privacy: !!form.querySelector('input[name="privacy"]')?.checked,
     fonte_lead: "Sito IL COVO",
     stato_lead_covo: "Nuovo lead",
+    pagina_lead: CAPTURED_ATTRIBUTION.pagina_lead,
+    utm_source: CAPTURED_ATTRIBUTION.utm_source,
+    utm_medium: CAPTURED_ATTRIBUTION.utm_medium,
+    utm_campaign: CAPTURED_ATTRIBUTION.utm_campaign,
+    utm_content: CAPTURED_ATTRIBUTION.utm_content,
+    utm_term: CAPTURED_ATTRIBUTION.utm_term,
   };
 }
 
@@ -359,6 +382,12 @@ function buildMakeDropinPayload(form) {
     fonte_lead: "Sito IL COVO",
     stato_lead_covo: "Nuovo lead",
     tipo_richiesta: "drop_in",
+    pagina_lead: CAPTURED_ATTRIBUTION.pagina_lead,
+    utm_source: CAPTURED_ATTRIBUTION.utm_source,
+    utm_medium: CAPTURED_ATTRIBUTION.utm_medium,
+    utm_campaign: CAPTURED_ATTRIBUTION.utm_campaign,
+    utm_content: CAPTURED_ATTRIBUTION.utm_content,
+    utm_term: CAPTURED_ATTRIBUTION.utm_term,
   };
 }
 
@@ -869,6 +898,7 @@ async function handleSubmit(formType, form) {
       const successText = successEl.querySelector(".booking-success-text");
       if (successText) successText.textContent = "Richiesta inviata. Ti contatteremo a breve.";
       showSuccess(successEl, null);
+      document.dispatchEvent(new CustomEvent("ilcovo:booking-success", { detail: { type: formType } }));
     } catch (err) {
       console.warn("[IL COVO] Invio Make fallito:", err.message);
       formError.textContent = "Errore nell’invio. Riprova tra poco o contattaci su WhatsApp.";
@@ -886,6 +916,7 @@ async function handleSubmit(formType, form) {
       if (successText) successText.textContent = "Richiesta drop-in ricevuta. Scrivici su WhatsApp per concordare l\u2019orario.";
       showSuccess(successEl, null);
       setDropinWhatsAppCta(form, successEl);
+      document.dispatchEvent(new CustomEvent("ilcovo:booking-success", { detail: { type: formType } }));
     } catch (err) {
       console.warn("[IL COVO] Invio Drop-in Make fallito:", err.message);
       formError.textContent = "Errore nell’invio. Riprova tra poco o contattaci su WhatsApp.";
@@ -918,7 +949,10 @@ document.getElementById("booking-form-prova").addEventListener("submit", functio
   handleSubmit("trial", this);
 });
 
-document.getElementById("booking-form-dropin").addEventListener("submit", function(e) {
-  e.preventDefault();
-  handleSubmit("dropin", this);
-});
+const dropinFormEl = document.getElementById("booking-form-dropin");
+if (dropinFormEl) {
+  dropinFormEl.addEventListener("submit", function(e) {
+    e.preventDefault();
+    handleSubmit("dropin", this);
+  });
+}
