@@ -3,6 +3,7 @@
 
   const PIXEL_ID = "2282714148548224";
   const STORAGE_KEY = "ilcovo_cookie_consent_v1";
+  const ATTRIBUTION_KEY = "ilcovo_attribution_v1";
   let pixelLoaded = false;
 
   function getConsent() {
@@ -22,6 +23,106 @@
     localStorage.setItem(STORAGE_KEY, JSON.stringify(consent));
     return consent;
   }
+
+  function readStoredAttribution() {
+    try {
+      return JSON.parse(sessionStorage.getItem(ATTRIBUTION_KEY) || "null") || {};
+    } catch {
+      return {};
+    }
+  }
+
+  function detectTrafficSource(attribution) {
+    const utmSource = (attribution.utm_source || "").toLowerCase();
+    const referrer = (attribution.referrer || "").toLowerCase();
+
+    if (
+      attribution.fbclid ||
+      ["meta", "facebook", "instagram", "fb", "ig"].some(value => utmSource.includes(value)) ||
+      referrer.includes("facebook.com") ||
+      referrer.includes("instagram.com") ||
+      referrer.includes("l.facebook.com")
+    ) return "Meta Ads / Meta";
+
+    if (utmSource) return `UTM: ${attribution.utm_source}`;
+    if (referrer.includes("google.")) return "Google / organico";
+    if (referrer) return "Referral";
+    return "Diretto / organico";
+  }
+
+  function captureAttribution() {
+    const stored = readStoredAttribution();
+    const params = new URLSearchParams(window.location.search);
+    const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+    const attribution = {
+      ...stored,
+      landing_path: stored.landing_path || window.location.pathname,
+      landing_url: stored.landing_url || `${window.location.origin}${window.location.pathname}${window.location.search}`,
+      referrer: stored.referrer || document.referrer || "",
+      fbclid: stored.fbclid || params.get("fbclid") || "",
+      captured_at: stored.captured_at || new Date().toISOString()
+    };
+
+    utmKeys.forEach(key => {
+      attribution[key] = stored[key] || params.get(key) || "";
+    });
+    attribution.traffic_source = detectTrafficSource(attribution);
+
+    try {
+      sessionStorage.setItem(ATTRIBUTION_KEY, JSON.stringify(attribution));
+    } catch {
+      // Session storage unavailable: keep attribution in memory only.
+    }
+    return attribution;
+  }
+
+  let capturedAttribution = captureAttribution();
+  window.ilCovoAttribution = () => ({ ...capturedAttribution });
+
+  // Enriches only the IL COVO Make lead payload. This gives the CRM/email a
+  // first-party acquisition source even when the user does not grant marketing
+  // cookie consent. The raw Meta click id is forwarded only with marketing consent.
+  const nativeFetch = window.fetch.bind(window);
+  window.fetch = function(input, init = {}) {
+    const url = typeof input === "string" ? input : input?.url || "";
+    if (url.includes("hook.eu1.make.com") && typeof init.body === "string") {
+      try {
+        const payload = JSON.parse(init.body);
+        if (payload && payload.fonte_lead === "Sito IL COVO") {
+          capturedAttribution = captureAttribution();
+          const attr = capturedAttribution;
+
+          payload.utm_source = payload.utm_source || attr.utm_source || "";
+          payload.utm_medium = payload.utm_medium || attr.utm_medium || "";
+          payload.utm_campaign = payload.utm_campaign || attr.utm_campaign || "";
+          payload.utm_content = payload.utm_content || attr.utm_content || "";
+          payload.utm_term = payload.utm_term || attr.utm_term || "";
+          payload.traffic_source = attr.traffic_source || "";
+          payload.landing_url = attr.landing_url || "";
+          payload.referrer = attr.referrer || "";
+          if (getConsent()?.marketing) payload.fbclid = attr.fbclid || "";
+
+          const attributionSummary = [
+            "",
+            "Attribuzione:",
+            `Sorgente: ${payload.traffic_source || "Non determinata"}`,
+            `Landing: ${payload.landing_url || window.location.href}`,
+            payload.utm_campaign ? `Campagna UTM: ${payload.utm_campaign}` : "",
+            payload.utm_content ? `Creativita UTM: ${payload.utm_content}` : "",
+            payload.referrer ? `Referrer: ${payload.referrer}` : ""
+          ].filter(Boolean).join("\n");
+
+          if (typeof payload.message === "string" && !payload.message.includes("\nAttribuzione:\n")) {
+            payload.message += `\n${attributionSummary}`;
+          }
+          init = { ...init, body: JSON.stringify(payload) };
+        }
+      } catch {
+        // Leave unrelated or non-JSON requests untouched.
+      }
+    }
+    return nativeFetch(input, init);
+  };
 
   function loadMetaPixel() {
     if (pixelLoaded || window.fbq) return;
