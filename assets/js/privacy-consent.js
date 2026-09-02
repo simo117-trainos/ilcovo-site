@@ -2,9 +2,11 @@
   "use strict";
 
   const PIXEL_ID = "2282714148548224";
+  const GA_MEASUREMENT_ID = "G-PXTN4NG18Z";
   const STORAGE_KEY = "ilcovo_cookie_consent_v1";
   const ATTRIBUTION_KEY = "ilcovo_attribution_v1";
   let pixelLoaded = false;
+  let gaLoaded = false;
 
   function getConsent() {
     try {
@@ -18,6 +20,7 @@
     const consent = {
       necessary: true,
       marketing: Boolean(marketing),
+      analytics: Boolean(marketing),
       updatedAt: new Date().toISOString()
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(consent));
@@ -80,8 +83,8 @@
   window.ilCovoAttribution = () => ({ ...capturedAttribution });
 
   // Enriches only the IL COVO Make lead payload. This gives the CRM/email a
-  // first-party acquisition source even when the user does not grant marketing
-  // cookie consent. The raw Meta click id is forwarded only with marketing consent.
+  // first-party acquisition source even when the user does not grant optional
+  // measurement consent. The raw Meta click id is forwarded only with consent.
   const nativeFetch = window.fetch.bind(window);
   window.fetch = function(input, init = {}) {
     const url = typeof input === "string" ? input : input?.url || "";
@@ -124,6 +127,25 @@
     return nativeFetch(input, init);
   };
 
+  function loadGoogleAnalytics() {
+    if (gaLoaded || window.gtag) return;
+    gaLoaded = true;
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function() {
+      window.dataLayer.push(arguments);
+    };
+    window.gtag("js", new Date());
+    window.gtag("config", GA_MEASUREMENT_ID, {
+      send_page_view: true
+    });
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_MEASUREMENT_ID)}`;
+    document.head.appendChild(script);
+  }
+
   function loadMetaPixel() {
     if (pixelLoaded || window.fbq) return;
     pixelLoaded = true;
@@ -152,7 +174,10 @@
   }
 
   function applyConsent(consent) {
-    if (consent && consent.marketing) loadMetaPixel();
+    if (!consent) return;
+    if (consent.marketing) loadMetaPixel();
+    // Backward compatibility: existing users only have `marketing` saved.
+    if (consent.analytics || consent.marketing) loadGoogleAnalytics();
   }
 
   function removeBanner() {
@@ -170,7 +195,7 @@
     banner.innerHTML = `
       <div class="ilcovo-cookie__copy">
         <strong>La tua privacy conta</strong>
-        <p>Usiamo cookie necessari e, solo con il tuo consenso, il Meta Pixel per misurare le campagne pubblicitarie.</p>
+        <p>Usiamo cookie necessari e, solo con il tuo consenso, Meta Pixel e Google Analytics per misurare traffico e campagne.</p>
         <a href="/cookie-policy">Leggi la Cookie Policy</a>
       </div>
       <div class="ilcovo-cookie__actions">
