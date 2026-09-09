@@ -1,0 +1,59 @@
+name: Apply Start Experience cleanup
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  patch-start-experience:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Patch Start Experience confirmation UI
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('start-experience.html')
+          text = path.read_text(encoding='utf-8-sig')
+
+          old_phone = '''            <input type="tel" name="whatsapp" class="booking-input" placeholder="3282733326" value="" autocomplete="tel-national" inputmode="numeric" pattern="[0-9]{10}" aria-label="Numero WhatsApp senza prefisso +39" required>'''
+          new_phone = '''            <input type="tel" name="whatsapp" class="booking-input" placeholder="Numero di telefono" value="" autocomplete="tel-national" inputmode="numeric" pattern="[0-9]{10}" aria-label="Numero WhatsApp senza prefisso +39" required>'''
+          if old_phone not in text:
+              raise SystemExit('Expected phone placeholder not found; aborting.')
+          text = text.replace(old_phone, new_phone, 1)
+
+          old_wa = '''        <p class="booking-success-wa" hidden>
+          Completa l'invio su WhatsApp per mandarci la richiesta.
+          <a class="booking-success-wa-link" href="#" target="_blank" rel="noopener">Apri WhatsApp →</a>
+        </p>
+'''
+          if old_wa not in text:
+              raise SystemExit('Expected WhatsApp success prompt not found; aborting.')
+          text = text.replace(old_wa, '', 1)
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Validate diff
+        run: |
+          git diff --check
+          grep -q 'placeholder="Numero di telefono"' start-experience.html
+          ! grep -q "Completa l'invio su WhatsApp" start-experience.html
+
+      - name: Commit cleanup and remove temporary workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add start-experience.html
+          git rm .github/workflows/apply-start-experience-cleanup.yml
+          git commit -m "Clean up Start Experience confirmation"
+          git push origin HEAD:main
