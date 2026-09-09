@@ -295,6 +295,7 @@ function getTrialCalendarOptions(discipline) {
 
 function buildMakeTrialPayload(form) {
   const fullName = splitFullName(getVal(form, "nome"));
+  const phone = isStartExperienceForm(form) ? formatStartExperiencePhone(form) : getVal(form, "whatsapp");
   const disciplineLabel = getRadio(form, "tipo-prova") || getVal(form, "preferred-discipline");
   const level = getRadio(form, "livello");
   const goal = getRadio(form, "obiettivo");
@@ -320,7 +321,7 @@ function buildMakeTrialPayload(form) {
     firstname: fullName.nome,
     lastname: fullName.cognome,
     email: getVal(form, "email"),
-    phone: getVal(form, "whatsapp"),
+    phone,
     interesse_principale: normalizeLeadDiscipline(disciplineLabel),
     livello_dichiarato: level,
     obiettivo: goal,
@@ -815,6 +816,15 @@ function getVal(form, name) {
   const el = form.querySelector(`[name="${name}"]`);
   return el ? el.value.trim() : "";
 }
+function isStartExperienceForm(form) {
+  return form?.id === "booking-form-prova" && form.dataset.startExperience === "true";
+}
+function isValidStartExperiencePhone(value) {
+  return /^[0-9]{10}$/.test(value);
+}
+function formatStartExperiencePhone(form) {
+  return `+39${getVal(form, "whatsapp")}`;
+}
 function getRadio(form, name) {
   const checked = form.querySelector(`input[name="${name}"]:checked`);
   return checked ? checked.value : "";
@@ -850,6 +860,20 @@ function validateForm(form) {
     const field = privacy.closest(".booking-field");
     if (!privacy.checked) { field.classList.add("has-error"); valid = false; }
     else field.classList.remove("has-error");
+  }
+
+  if (isStartExperienceForm(form)) {
+    const phoneInput = form.querySelector('input[name="whatsapp"]');
+    const phoneField = phoneInput?.closest(".booking-field");
+    const phoneError = phoneField?.querySelector(".booking-field-error");
+    const phoneValue = getVal(form, "whatsapp");
+
+    if (phoneError) phoneError.textContent = "Campo obbligatorio";
+    if (phoneInput && phoneField && phoneValue && !isValidStartExperiencePhone(phoneValue)) {
+      phoneField.classList.add("has-error");
+      if (phoneError) phoneError.textContent = "Inserisci solo le 10 cifre del numero, senza +39.";
+      valid = false;
+    }
   }
 
   if (form.id === "booking-form-prova") {

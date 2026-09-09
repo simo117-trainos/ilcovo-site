@@ -143,6 +143,44 @@
 /* Booking block */
 .start-experience-page #prenota .se-wrap { max-width:760px; text-align:center; margin-bottom:2.4rem }
 .start-experience-page #prenota .booking-form-section { margin-top:0 }
+.start-experience-page .booking-phone-field {
+  display:flex;
+  align-items:stretch;
+  background:#111;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:12px;
+  overflow:hidden;
+  transition:border-color .18s,background .18s,box-shadow .18s;
+}
+.start-experience-page .booking-phone-field:focus-within {
+  border-color:var(--booking-accent);
+  background:#161616;
+  box-shadow:0 0 0 3px var(--booking-accent-soft);
+}
+.start-experience-page .booking-phone-prefix {
+  display:inline-flex;
+  align-items:center;
+  flex:0 0 auto;
+  padding:0 .95rem;
+  color:#fff;
+  font:600 1rem/1.2 var(--body-font);
+  border-right:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.04);
+}
+.start-experience-page .booking-phone-field .booking-input {
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  min-width:0;
+}
+.start-experience-page .booking-phone-field .booking-input:focus,
+.start-experience-page .booking-phone-field .booking-input:not(:placeholder-shown) {
+  border-color:transparent;
+  background:transparent;
+  box-shadow:none;
+}
+.start-experience-page .booking-field.has-error .booking-phone-field { border-color:var(--red) }
 
 @media (max-width:860px) {
   .start-experience-page .se-disc-grid,
@@ -322,7 +360,7 @@
         <p class="booking-form-desc">Meno di un minuto. Nome, contatto, disciplina e lo slot che preferisci.</p>
       </div>
 
-      <form id="booking-form-prova" class="booking-form booking-form--trial" novalidate>
+      <form id="booking-form-prova" class="booking-form booking-form--trial" data-start-experience="true" novalidate>
 
         <div class="booking-field">
           <label class="booking-label">Nome e cognome <span class="req">*</span></label>
@@ -332,7 +370,10 @@
 
         <div class="booking-field">
           <label class="booking-label">Numero WhatsApp <span class="req">*</span></label>
-          <input type="tel" name="whatsapp" class="booking-input" placeholder="+39 333 123 4567" value="" autocomplete="tel" required>
+          <div class="booking-phone-field">
+            <span class="booking-phone-prefix" aria-hidden="true">+39</span>
+            <input type="tel" name="whatsapp" class="booking-input" placeholder="3282733326" value="" autocomplete="tel-national" inputmode="numeric" pattern="[0-9]{10}" aria-label="Numero WhatsApp senza prefisso +39" required>
+          </div>
           <p class="booking-field-error">Campo obbligatorio</p>
         </div>
 
