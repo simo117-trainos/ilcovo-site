@@ -191,6 +191,13 @@ function splitFullName(fullName) {
   };
 }
 
+function normalizeItalianE164Phone(value) {
+  const digits = String(value || "").replace(/\D/g, "");
+  if (!digits) return "";
+  const nationalNumber = digits.length > 10 && digits.startsWith("39") ? digits.slice(2) : digits;
+  return `+39${nationalNumber}`;
+}
+
 function getRomeParts(date = new Date()) {
   return Object.fromEntries(new Intl.DateTimeFormat("en-GB", {
     timeZone: ROME_TIME_ZONE,
@@ -295,7 +302,7 @@ function getTrialCalendarOptions(discipline) {
 
 function buildMakeTrialPayload(form) {
   const fullName = splitFullName(getVal(form, "nome"));
-  const phone = isStartExperienceForm(form) ? formatStartExperiencePhone(form) : getVal(form, "whatsapp");
+  const phone = isStartExperienceForm(form) ? formatStartExperiencePhone(form) : normalizeItalianE164Phone(getVal(form, "whatsapp"));
   const disciplineLabel = getRadio(form, "tipo-prova") || getVal(form, "preferred-discipline");
   const level = getRadio(form, "livello");
   const goal = getRadio(form, "obiettivo");
