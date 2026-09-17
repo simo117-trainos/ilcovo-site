@@ -238,6 +238,30 @@
     return true;
   };
 
+  window.ilCovoTrackAnalytics = function(eventName, parameters = {}) {
+    const consent = getConsent();
+    if (!(consent?.analytics || consent?.marketing)) return false;
+    if (!window.gtag) loadGoogleAnalytics();
+    window.gtag("event", eventName, parameters);
+    return true;
+  };
+
+  // GA4 lead: fires only after booking.js confirms the Make webhook succeeded.
+  // No PII is sent; the event inherits the session's source/campaign/UTM attribution.
+  document.addEventListener("ilcovo:booking-success", event => {
+    if (event.detail?.type !== "trial") return;
+
+    const discipline = document.querySelector('#booking-form-prova input[name="tipo-prova"]:checked')?.value || "Prova";
+    const isStartExperience = Boolean(document.querySelector('#booking-form-prova[data-start-experience="true"]'));
+
+    window.ilCovoTrackAnalytics("generate_lead", {
+      method: "website_form",
+      content_name: isStartExperience ? "Start Experience" : "Prenotazione prova",
+      content_category: discipline,
+      lead_type: isStartExperience ? "start_experience" : "trial"
+    });
+  });
+
   function init() {
     const consent = getConsent();
     if (consent) applyConsent(consent);
