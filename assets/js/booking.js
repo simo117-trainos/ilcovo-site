@@ -105,11 +105,13 @@ function isStandardStartExperienceForm(form) {
 
 function getStandardStartExperienceProduct(form) {
   if (!isStandardStartExperienceForm(form)) return {};
+  const paymentMethod = getRadio(form, "paymentMethod");
   return {
     product: "start_experience",
     price: 20,
     currency: "EUR",
-    paymentStatus: "pending",
+    paymentMethod,
+    paymentStatus: paymentMethod === "on_site" ? "unpaid" : "pending",
     creditOnMembership: 20,
     creditValidityDays: 10,
   };
@@ -429,6 +431,16 @@ async function submitMakeLead(payload) {
   });
   if (!response.ok) throw new Error(`Make webhook error ${response.status}`);
   return response;
+}
+
+async function submitStandardStartExperience(form) {
+  const payload = buildMakeTrialPayload(form);
+  const response = await submitMakeLead(payload);
+  // Checkout integration point: for paymentMethod === "online", the next step
+  // can consume the real Checkout Session returned by Make before showing success.
+  // Keep the response body unread; today's webhook may return plain text or no body.
+  // An accepted booking never means payment succeeded: retain pending / unpaid.
+  return { payload, response };
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -891,6 +903,15 @@ function validateForm(form) {
     else field.classList.remove("has-error");
   }
 
+  if (isStandardStartExperienceForm(form)) {
+    const paymentMethod = getRadio(form, "paymentMethod");
+    const hasValidPaymentMethod = paymentMethod === "online" || paymentMethod === "on_site";
+    const paymentGroup = form.querySelector('[name="paymentMethod"]')?.closest('.booking-radio-group');
+    paymentGroup?.closest('.booking-field')?.classList.toggle("has-error", !hasValidPaymentMethod);
+    paymentGroup?.setAttribute("aria-invalid", String(!hasValidPaymentMethod));
+    if (!hasValidPaymentMethod) valid = false;
+  }
+
   if (isStartExperienceForm(form)) {
     const phoneInput = form.querySelector('input[name="whatsapp"]');
     const phoneField = phoneInput?.closest(".booking-field");
@@ -950,14 +971,18 @@ async function handleSubmit(formType, form) {
   // CRM in background — non blocca il flusso
   if (formType === "trial") {
     try {
-      await submitMakeLead(buildMakeTrialPayload(form));
+      if (isStandardStartExperienceForm(form)) {
+        await submitStandardStartExperience(form);
+      } else {
+        await submitMakeLead(buildMakeTrialPayload(form));
+      }
       window.ilCovoTrack?.("Lead", {
         content_name: isStandardStartExperienceForm(form) ? "Prenotazione Start Experience" : "Prenotazione prova",
         content_category: getRadio(form, "tipo-prova") || (isStandardStartExperienceForm(form) ? "Start Experience" : "Prova")
       });
       const successText = successEl.querySelector(".booking-success-text");
       if (successText) successText.textContent = isStandardStartExperienceForm(form)
-        ? "Richiesta Start Experience inviata. Ti contatteremo a breve."
+        ? "Hai scelto il tuo slot per la Start Experience. Ti invieremo la conferma su WhatsApp."
         : "Richiesta inviata. Ti contatteremo a breve.";
       showSuccess(successEl, null);
       document.dispatchEvent(new CustomEvent("ilcovo:booking-success", { detail: { type: formType } }));

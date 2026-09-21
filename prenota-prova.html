@@ -54,7 +54,7 @@
   <section class="booking-hero">
     <span class="section-kicker">Inizia con Il Covo</span>
     <h1 class="booking-hero-title">PRENOTA LA TUA <br>PRIMA ESPERIENZA <br><em>AL COVO</em></h1>
-    <p class="booking-hero-sub">Scegli il percorso più adatto a te. Ti ricontattiamo su WhatsApp per fissare giorno e orario.</p>
+    <p class="booking-hero-sub">Scegli CrossFit o HYROX, giorno e orario. Al resto pensa il coach.</p>
   </section>
 
   <!-- ── SCELTA PERCORSO ── -->
@@ -179,7 +179,7 @@
 
       <div class="booking-field">
         <label class="booking-label">Note libere</label>
-        <textarea name="note" class="booking-textarea" rows="3" placeholder="Qualcosa che dobbiamo sapere prima di ricontattarti..."></textarea>
+        <textarea name="note" class="booking-textarea" rows="3" placeholder="Qualcosa che dobbiamo sapere prima della Start Experience..."></textarea>
         <p class="booking-orario-hint">Non inserire diagnosi, referti o informazioni mediche. Potrai confrontarti direttamente con il coach prima della Start Experience.</p>
       </div>
 
@@ -193,6 +193,16 @@
           <label class="booking-radio-option"><input type="radio" name="provenienza" value="Evento / gara"><span>Evento / gara</span></label>
           <label class="booking-radio-option"><input type="radio" name="provenienza" value="Altro"><span>Altro</span></label>
         </div>
+      </div>
+
+      <div class="booking-field" id="start-experience-payment-field">
+        <label class="booking-label" id="start-experience-payment-label">Come vuoi pagare? <span class="req">*</span></label>
+        <div class="booking-radio-group" data-required="true" role="radiogroup" aria-labelledby="start-experience-payment-label" aria-describedby="start-experience-payment-hint start-experience-payment-error" aria-required="true">
+          <label class="booking-radio-option"><input type="radio" name="paymentMethod" value="online" required><span>Paga online — 20 €</span></label>
+          <label class="booking-radio-option"><input type="radio" name="paymentMethod" value="on_site" required><span>Paga al COVO — 20 €</span></label>
+        </div>
+        <p class="booking-orario-hint" id="start-experience-payment-hint">Per ora registriamo la tua scelta. Il pagamento online non è ancora attivo e nessun importo viene addebitato con la prenotazione.</p>
+        <p class="booking-field-error" id="start-experience-payment-error">Scegli come pagare la Start Experience.</p>
       </div>
 
       <div class="booking-field booking-field--privacy">
@@ -211,8 +221,8 @@
     <!-- Success state — mostrato da JS dopo l'invio -->
     <div class="booking-success" hidden>
       <span class="booking-success-check">✓</span>
-      <h3 class="booking-success-title">Richiesta ricevuta</h3>
-      <p class="booking-success-text">Richiesta ricevuta. Ti confermeremo la disponibilità della classe.</p>
+      <h3 class="booking-success-title">Prenotazione ricevuta</h3>
+      <p class="booking-success-text">Hai scelto il tuo slot per la Start Experience. Ti invieremo la conferma su WhatsApp.</p>
       <p class="booking-success-wa" hidden>
         Completa l'invio su WhatsApp per mandarci la richiesta.
         <a class="booking-success-wa-link" href="#" target="_blank" rel="noopener">Apri WhatsApp →</a>
