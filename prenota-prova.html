@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prenota una prova CrossFit o HYROX a Ivrea | IL COVO</title>
-<meta name="description" content="Prenota la tua prova gratuita di CrossFit o HYROX a Ivrea e scegli il giorno e l&rsquo;orario pi&ugrave; adatti a te.">
+<meta name="description" content="Prenota la Start Experience CrossFit o HYROX a Ivrea. Gratuita fino al 30 settembre 2026.">
 <link rel="canonical" href="https://ilcovocrossfitivrea.com/prenota-prova">
 <meta property="og:locale" content="it_IT">
 <meta property="og:type" content="website">
@@ -39,10 +39,10 @@
     <a href="/hyrox">Hyrox</a>
     <a href="/orari">Orari</a>
     <a href="/prezzi">Prezzi</a>
-    <a href="/prenota-prova?type=trial" class="nav-cta nav-cta--mobile">Prova Gratuita</a>
+    <a href="/prenota-prova?type=trial" class="nav-cta nav-cta--mobile">Start Experience</a>
   </div>
   <div class="nav-actions">
-    <a href="/prenota-prova?type=trial" class="nav-cta">Prova Gratuita</a>
+    <a href="/prenota-prova?type=trial" class="nav-cta">Start Experience</a>
     <button class="nav-toggle" type="button" aria-label="Apri menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
   </div>
@@ -61,15 +61,15 @@
   <section class="booking-choice">
     <div class="booking-cards" role="tablist" aria-label="Scegli il tipo di richiesta">
 
-      <button type="button" class="booking-card" data-type="prova" role="tab" aria-label="Scegli Prova Gratuita" aria-controls="form-prova" aria-selected="false">
+      <button type="button" class="booking-card" data-type="prova" role="tab" aria-label="Scegli Start Experience" aria-controls="form-prova" aria-selected="false">
         <div class="booking-card-media booking-card-media--prova">
           <img src="assets/images/booking/prova-gratuita.jpg" alt="Coach e atleta durante una prima esperienza di allenamento al COVO">
         </div>
         <div class="booking-card-inner">
-          <span class="booking-card-tag">Gratis</span>
-          <h2 class="booking-card-title">PROVA <br>GRATUITA</h2>
-          <p class="booking-card-text">Per iniziare con CrossFit o HYROX, anche se parti da zero. Prima lezione senza impegno.</p>
-          <span class="booking-card-cta">Voglio fare una prova →</span>
+          <span class="booking-card-tag">Gratis fino al 30/09</span>
+          <h2 class="booking-card-title">START <br>EXPERIENCE</h2>
+          <p class="booking-card-text">La tua prima esperienza al COVO con CrossFit o HYROX, guidata da un coach e adattata al tuo livello. <strong>Gratuita fino al 30 settembre.</strong></p>
+          <span class="booking-card-cta">Prenota la Start Experience →</span>
         </div>
       </button>
 
@@ -88,10 +88,10 @@
     </div>
   </section>
 
-  <!-- ── FORM PROVA GRATUITA ── -->
+  <!-- ── FORM START EXPERIENCE ── -->
   <section id="form-prova" class="booking-form-section" role="tabpanel" hidden>
     <div class="booking-form-header">
-      <h2 class="booking-form-title">PRENOTA LA TUA PROVA</h2>
+      <h2 class="booking-form-title">PRENOTA LA TUA START EXPERIENCE</h2>
       <p class="booking-form-desc">Scegli CrossFit o HYROX e indicaci quando preferisci allenarti.</p>
     </div>
     <form id="booking-form-prova" class="booking-form booking-form--trial" novalidate>
@@ -115,7 +115,7 @@
       </div>
 
       <div class="booking-field">
-        <label class="booking-label">Che prova vuoi fare? <span class="req">*</span></label>
+        <label class="booking-label">Da dove vuoi partire? <span class="req">*</span></label>
         <div class="booking-radio-group" data-required="true">
           <label class="booking-radio-option"><input type="radio" name="tipo-prova" value="CrossFit"><span>CrossFit</span></label>
           <label class="booking-radio-option"><input type="radio" name="tipo-prova" value="HYROX"><span>HYROX</span></label>
@@ -150,7 +150,7 @@
       </div>
 
       <div class="booking-field" id="prova-orario-field">
-        <label class="booking-label">Quando vorresti fare la prova? <span class="req">*</span></label>
+        <label class="booking-label">Quando vuoi fare la Start Experience? <span class="req">*</span></label>
         <button type="button" class="booking-class-picker" id="booking-class-picker" aria-haspopup="dialog" aria-controls="trial-class-dialog">
           <span class="booking-class-picker-icon" aria-hidden="true">▣</span>
           <span class="booking-class-picker-copy">
@@ -164,11 +164,11 @@
         <input type="hidden" name="preferred-time">
         <input type="hidden" name="preferred-class-label">
         <input type="hidden" name="availability-preference">
-        <p class="booking-field-error" id="prova-orario-error">Seleziona il giorno e l'orario della prova.</p>
+        <p class="booking-field-error" id="prova-orario-error">Seleziona il giorno e l'orario della Start Experience.</p>
       </div>
 
       <div class="booking-field">
-        <label class="booking-label">Ci sono esigenze particolari di cui preferisci parlare con il coach prima della prova?</label>
+        <label class="booking-label">Ci sono esigenze particolari di cui preferisci parlare con il coach prima della Start Experience?</label>
         <div class="booking-radio-group">
           <label class="booking-radio-option"><input type="radio" name="infortuni" value="No"><span>No</span></label>
           <label class="booking-radio-option"><input type="radio" name="infortuni" value="Sì, scrivo nelle note"><span>Sì, scrivo nelle note</span></label>
@@ -178,8 +178,8 @@
 
       <div class="booking-field">
         <label class="booking-label">Note libere</label>
-        <textarea name="note" class="booking-textarea" rows="3" placeholder="Qualcosa che dobbiamo sapere prima di ricontattarti..."></textarea>
-        <p class="booking-orario-hint">Non inserire diagnosi, referti o informazioni mediche. Potrai confrontarti direttamente con il coach prima della prova.</p>
+        <textarea name="note" class="booking-textarea" rows="3" placeholder="Qualcosa che dobbiamo sapere prima della Start Experience..."></textarea>
+        <p class="booking-orario-hint">Non inserire diagnosi, referti o informazioni mediche. Potrai confrontarti direttamente con il coach prima della Start Experience.</p>
       </div>
 
       <div class="booking-field">
@@ -203,15 +203,15 @@
       </div>
 
       <p class="booking-form-error" hidden>Compila tutti i campi obbligatori prima di continuare.</p>
-      <button type="submit" class="booking-submit">RICHIEDI LA TUA PROVA</button>
+      <button type="submit" class="booking-submit">PRENOTA LA START EXPERIENCE</button>
 
     </form>
 
     <!-- Success state — mostrato da JS dopo l'invio -->
     <div class="booking-success" hidden>
       <span class="booking-success-check">✓</span>
-      <h3 class="booking-success-title">Richiesta ricevuta</h3>
-      <p class="booking-success-text">Richiesta ricevuta. Ti confermeremo la disponibilità della classe.</p>
+      <h3 class="booking-success-title">Start Experience prenotata</h3>
+      <p class="booking-success-text">Hai scelto il tuo slot. Ti invieremo la conferma su WhatsApp.</p>
       <p class="booking-success-wa" hidden>
         Completa l'invio su WhatsApp per mandarci la richiesta.
         <a class="booking-success-wa-link" href="#" target="_blank" rel="noopener">Apri WhatsApp →</a>
