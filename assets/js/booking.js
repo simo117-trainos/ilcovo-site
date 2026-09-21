@@ -281,6 +281,8 @@ function getTrialCalendarOptions(discipline) {
     for (let i = 0; i < 14; i += 1) {
       const date = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate() + i));
       const dateParts = getCalendarDateParts(date);
+      const maxBookingDate = document.getElementById("booking-form-prova")?.dataset.maxBookingDate || "";
+      if (maxBookingDate && dateParts.dateKey > maxBookingDate) break;
       const times = TRIAL_CLASS_SCHEDULE[calendarDiscipline]?.[dateParts.day] || [];
       const blocked = (typeof BOOKING_BLOCKED_SLOTS !== "undefined" && BOOKING_BLOCKED_SLOTS[dateParts.dateKey]) || [];
       const dayIsFull = blocked === "full";
@@ -885,9 +887,14 @@ function validateForm(form) {
 
   if (form.id === "booking-form-prova") {
     const discipline = getTrialDiscipline();
-    const hasClassSlot = !!getVal(form, "preferred-day") && !!getVal(form, "preferred-time");
-    const hasValidPreference = !!discipline && hasClassSlot;
-    classError.textContent = "Seleziona il giorno e l'orario della prova.";
+    const preferredDay = getVal(form, "preferred-day");
+    const hasClassSlot = !!preferredDay && !!getVal(form, "preferred-time");
+    const maxBookingDate = form.dataset.maxBookingDate || "";
+    const isWithinBookingWindow = !maxBookingDate || !preferredDay || preferredDay <= maxBookingDate;
+    const hasValidPreference = !!discipline && hasClassSlot && isWithinBookingWindow;
+    classError.textContent = !isWithinBookingWindow
+      ? `La Start Experience gratuita è prenotabile fino al ${maxBookingDate.split("-").reverse().join("/")}.`
+      : "Seleziona il giorno e l'orario della prova.";
     classField.classList.toggle("has-error", !hasValidPreference);
     if (!hasValidPreference) valid = false;
   }
