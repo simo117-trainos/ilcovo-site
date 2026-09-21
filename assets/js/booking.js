@@ -98,6 +98,23 @@ const DAY_LABELS = {
 //  Struttura dati pulita e pronta per qualsiasi provider futuro.
 // ══════════════════════════════════════════════════════════════
 
+// The paid standard offer is opt-in; the promotional landing keeps its own behavior.
+function isStandardStartExperienceForm(form) {
+  return form?.id === "booking-form-prova" && form.dataset.product === "start_experience";
+}
+
+function getStandardStartExperienceProduct(form) {
+  if (!isStandardStartExperienceForm(form)) return {};
+  return {
+    product: "start_experience",
+    price: 20,
+    currency: "EUR",
+    paymentStatus: "pending",
+    creditOnMembership: 20,
+    creditValidityDays: 10,
+  };
+}
+
 function buildBookingPayload(formType, form) {
   const base = {
     source:         "website",
@@ -110,6 +127,7 @@ function buildBookingPayload(formType, form) {
     const classLabel = getVal(form, "preferred-class-label");
     return {
       ...base,
+      ...getStandardStartExperienceProduct(form),
       type:                "trial",
       status:              "trial_request",
       trialType:           getRadio(form, "tipo-prova"),
@@ -316,11 +334,12 @@ function buildMakeTrialPayload(form) {
   const calendarStart = getVal(form, "calendar-start");
   const calendarEnd = getVal(form, "calendar-end");
   const readableTrialDate = classLabel || "";
+  const standardExperience = isStandardStartExperienceForm(form);
   const message = [
-    `Prova richiesta: ${disciplineLabel || ""}`,
+    `${standardExperience ? "Start Experience richiesta" : "Prova richiesta"}: ${disciplineLabel || ""}`,
     `Livello: ${level || ""}`,
     `Obiettivo: ${goal || ""}`,
-    `Data e ora prova: ${readableTrialDate}`,
+    `${standardExperience ? "Data e ora Start Experience" : "Data e ora prova"}: ${readableTrialDate}`,
     `Limitazioni: ${limitations || ""}`,
     `Note: ${notes}`,
     `Come ci ha trovato: ${source || ""}`,
@@ -334,6 +353,7 @@ function buildMakeTrialPayload(form) {
     interesse_principale: normalizeLeadDiscipline(disciplineLabel),
     livello_dichiarato: level,
     obiettivo: goal,
+    ...getStandardStartExperienceProduct(form),
     data_e_ora_prova: calendarStart,
     calendar_start: calendarStart,
     calendar_end: calendarEnd,
@@ -539,12 +559,12 @@ Potete confermarmi disponibilita e orario?`;
 }
 function buildWaMessageTrial(p) {
   return (
-`Ciao IL COVO, vorrei richiedere una prova gratuita.
+`Ciao IL COVO, vorrei ${p.product === "start_experience" ? "prenotare la Start Experience — 20 €" : "richiedere una prova gratuita"}.
 
 Nome: ${p.fullName || "—"}
 WhatsApp: ${p.phone || "—"}
 Email: ${p.email || "—"}
-Tipo prova: ${p.trialType || "—"}
+${p.product === "start_experience" ? "Disciplina Start Experience" : "Tipo prova"}: ${p.trialType || "—"}
 Livello: ${p.level || "—"}
 Obiettivo: ${p.goal || "—"}
 Giorno scelto: ${p.preferredDay ? DAY_LABELS[p.preferredDay] : "—"}
@@ -894,7 +914,9 @@ function validateForm(form) {
     const hasValidPreference = !!discipline && hasClassSlot && isWithinBookingWindow;
     classError.textContent = !isWithinBookingWindow
       ? `La Start Experience gratuita è prenotabile fino al ${maxBookingDate.split("-").reverse().join("/")}.`
-      : "Seleziona il giorno e l'orario della prova.";
+      : isStandardStartExperienceForm(form)
+        ? "Seleziona il giorno e l'orario della Start Experience."
+        : "Seleziona il giorno e l'orario della prova.";
     classField.classList.toggle("has-error", !hasValidPreference);
     if (!hasValidPreference) valid = false;
   }
@@ -930,11 +952,13 @@ async function handleSubmit(formType, form) {
     try {
       await submitMakeLead(buildMakeTrialPayload(form));
       window.ilCovoTrack?.("Lead", {
-        content_name: "Prenotazione prova",
-        content_category: getRadio(form, "tipo-prova") || "Prova"
+        content_name: isStandardStartExperienceForm(form) ? "Prenotazione Start Experience" : "Prenotazione prova",
+        content_category: getRadio(form, "tipo-prova") || (isStandardStartExperienceForm(form) ? "Start Experience" : "Prova")
       });
       const successText = successEl.querySelector(".booking-success-text");
-      if (successText) successText.textContent = "Richiesta inviata. Ti contatteremo a breve.";
+      if (successText) successText.textContent = isStandardStartExperienceForm(form)
+        ? "Richiesta Start Experience inviata. Ti contatteremo a breve."
+        : "Richiesta inviata. Ti contatteremo a breve.";
       showSuccess(successEl, null);
       document.dispatchEvent(new CustomEvent("ilcovo:booking-success", { detail: { type: formType } }));
     } catch (err) {

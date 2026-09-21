@@ -150,6 +150,17 @@ body.booking-page .booking-card-inner {
   padding:clamp(1.45rem,2.5vw,2.1rem);
 }
 
+/* Standard Start Experience membership credit. */
+body.booking-page .booking-credit-note {
+  margin:0 0 1.5rem;
+  padding:1rem;
+  border-left:3px solid var(--booking-trial-warm);
+  background:rgba(var(--booking-trial-warm-rgb),.1);
+  color:#eee8da;
+  font-size:1rem;
+  line-height:1.5;
+}
+
 /* Keep the selected entry card tied to its neutral family. */
 body.booking-page .booking-card[data-type="prova"].is-active .booking-card-tag,
 body.booking-page .booking-card[data-type="prova"].is-active .booking-card-cta {
