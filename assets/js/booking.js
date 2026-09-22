@@ -98,6 +98,25 @@ const DAY_LABELS = {
 //  Struttura dati pulita e pronta per qualsiasi provider futuro.
 // ══════════════════════════════════════════════════════════════
 
+// The paid standard offer is opt-in; the promotional landing keeps its own behavior.
+function isStandardStartExperienceForm(form) {
+  return form?.id === "booking-form-prova" && form.dataset.product === "start_experience";
+}
+
+function getStandardStartExperienceProduct(form) {
+  if (!isStandardStartExperienceForm(form)) return {};
+  const paymentMethod = getRadio(form, "paymentMethod");
+  return {
+    product: "start_experience",
+    price: 20,
+    currency: "EUR",
+    paymentMethod,
+    paymentStatus: paymentMethod === "on_site" ? "unpaid" : "pending",
+    creditOnMembership: 20,
+    creditValidityDays: 10,
+  };
+}
+
 function buildBookingPayload(formType, form) {
   const base = {
     source:         "website",
@@ -110,6 +129,7 @@ function buildBookingPayload(formType, form) {
     const classLabel = getVal(form, "preferred-class-label");
     return {
       ...base,
+      ...getStandardStartExperienceProduct(form),
       type:                "trial",
       status:              "trial_request",
       trialType:           getRadio(form, "tipo-prova"),
@@ -316,11 +336,12 @@ function buildMakeTrialPayload(form) {
   const calendarStart = getVal(form, "calendar-start");
   const calendarEnd = getVal(form, "calendar-end");
   const readableTrialDate = classLabel || "";
+  const standardExperience = isStandardStartExperienceForm(form);
   const message = [
-    `Prova richiesta: ${disciplineLabel || ""}`,
+    `${standardExperience ? "Start Experience richiesta" : "Prova richiesta"}: ${disciplineLabel || ""}`,
     `Livello: ${level || ""}`,
     `Obiettivo: ${goal || ""}`,
-    `Data e ora prova: ${readableTrialDate}`,
+    `${standardExperience ? "Data e ora Start Experience" : "Data e ora prova"}: ${readableTrialDate}`,
     `Limitazioni: ${limitations || ""}`,
     `Note: ${notes}`,
     `Come ci ha trovato: ${source || ""}`,
@@ -334,6 +355,7 @@ function buildMakeTrialPayload(form) {
     interesse_principale: normalizeLeadDiscipline(disciplineLabel),
     livello_dichiarato: level,
     obiettivo: goal,
+    ...getStandardStartExperienceProduct(form),
     data_e_ora_prova: calendarStart,
     calendar_start: calendarStart,
     calendar_end: calendarEnd,
@@ -416,6 +438,38 @@ async function submitMakeLead(payload) {
   } finally {
     clearTimeout(timeout);
   }
+}
+
+async function submitStandardStartExperience(form) {
+  const payload = buildMakeTrialPayload(form);
+  const response = await submitMakeLead(payload);
+  const paymentMethod = payload.paymentMethod;
+
+  if (paymentMethod === "online") {
+    let data;
+    try {
+      data = await response.json();
+    } catch {
+      throw new Error("Make checkout response is not valid JSON");
+    }
+
+    if (data?.status !== "checkout_required" || !data?.checkoutUrl) {
+      throw new Error("Make checkout response is missing checkoutUrl");
+    }
+
+    const checkoutUrl = new URL(data.checkoutUrl, window.location.origin);
+    const isStripeCheckout = checkoutUrl.protocol === "https:"
+      && (checkoutUrl.hostname === "checkout.stripe.com" || checkoutUrl.hostname.endsWith(".stripe.com"));
+    if (!isStripeCheckout) throw new Error("Invalid Stripe Checkout URL");
+
+    return { payload, redirectUrl: checkoutUrl.toString() };
+  }
+
+  if (paymentMethod === "on_site") {
+    return { payload, redirectUrl: "" };
+  }
+
+  throw new Error("Invalid Start Experience payment method");
 }
 
 function showBookingSubmissionError(element) {
@@ -558,12 +612,12 @@ Potete confermarmi disponibilita e orario?`;
 }
 function buildWaMessageTrial(p) {
   return (
-`Ciao IL COVO, vorrei richiedere una prova gratuita.
+`Ciao IL COVO, vorrei ${p.product === "start_experience" ? "prenotare la Start Experience — 20 €" : "richiedere una prova gratuita"}.
 
 Nome: ${p.fullName || "—"}
 WhatsApp: ${p.phone || "—"}
 Email: ${p.email || "—"}
-Tipo prova: ${p.trialType || "—"}
+${p.product === "start_experience" ? "Disciplina Start Experience" : "Tipo prova"}: ${p.trialType || "—"}
 Livello: ${p.level || "—"}
 Obiettivo: ${p.goal || "—"}
 Giorno scelto: ${p.preferredDay ? DAY_LABELS[p.preferredDay] : "—"}
@@ -836,6 +890,34 @@ function applyBookingQueryParams() {
 
 applyBookingQueryParams();
 
+function applyStartExperiencePaymentReturnState() {
+  const params = new URLSearchParams(window.location.search);
+  const payment = params.get("payment");
+  if (payment !== "success" && payment !== "cancelled") return;
+
+  const card = document.querySelector('.booking-card[data-type="prova"]');
+  if (card) selectCard(card, false);
+
+  const form = document.getElementById("booking-form-prova");
+  const section = form?.closest(".booking-form-section");
+  const successEl = section?.querySelector(".booking-success");
+  const formError = form?.querySelector(".booking-form-error");
+
+  if (!form || !section || !successEl || !formError) return;
+
+  if (payment === "success") {
+    const successText = successEl.querySelector(".booking-success-text");
+    if (successText) successText.textContent = "Pagamento ricevuto. Start Experience confermata.";
+    showSuccess(successEl, null);
+    return;
+  }
+
+  formError.textContent = "Pagamento non completato. La prenotazione non è confermata. Puoi riprovare o scegliere pagamento al COVO.";
+  formError.hidden = false;
+}
+
+applyStartExperiencePaymentReturnState();
+
 // ══════════════════════════════════════════════════════════════
 //  HELPERS
 // ══════════════════════════════════════════════════════════════
@@ -890,6 +972,15 @@ function validateForm(form) {
     else field.classList.remove("has-error");
   }
 
+  if (isStandardStartExperienceForm(form)) {
+    const paymentMethod = getRadio(form, "paymentMethod");
+    const hasValidPaymentMethod = paymentMethod === "online" || paymentMethod === "on_site";
+    const paymentGroup = form.querySelector('[name="paymentMethod"]')?.closest('.booking-radio-group');
+    paymentGroup?.closest('.booking-field')?.classList.toggle("has-error", !hasValidPaymentMethod);
+    paymentGroup?.setAttribute("aria-invalid", String(!hasValidPaymentMethod));
+    if (!hasValidPaymentMethod) valid = false;
+  }
+
   if (isStartExperienceForm(form)) {
     const phoneInput = form.querySelector('input[name="whatsapp"]');
     const phoneField = phoneInput?.closest(".booking-field");
@@ -913,7 +1004,9 @@ function validateForm(form) {
     const hasValidPreference = !!discipline && hasClassSlot && isWithinBookingWindow;
     classError.textContent = !isWithinBookingWindow
       ? `La Start Experience gratuita è prenotabile fino al ${maxBookingDate.split("-").reverse().join("/")}.`
-      : "Seleziona il giorno e l'orario della prova.";
+      : isStandardStartExperienceForm(form)
+        ? "Seleziona il giorno e l'orario della Start Experience."
+        : "Seleziona il giorno e l'orario della prova.";
     classField.classList.toggle("has-error", !hasValidPreference);
     if (!hasValidPreference) valid = false;
   }
@@ -947,6 +1040,25 @@ async function handleSubmit(formType, form) {
   // CRM in background — non blocca il flusso
   if (formType === "trial") {
     try {
+      if (isStandardStartExperienceForm(form)) {
+        const result = await submitStandardStartExperience(form);
+        window.ilCovoTrack?.("Lead", {
+          content_name: "Prenotazione Start Experience",
+          content_category: getRadio(form, "tipo-prova") || "Start Experience"
+        });
+
+        if (result.redirectUrl) {
+          window.location.assign(result.redirectUrl);
+          return;
+        }
+
+        const successText = successEl.querySelector(".booking-success-text");
+        if (successText) successText.textContent = "Prenotazione ricevuta. Pagherai 20 € al COVO quando arrivi.";
+        showSuccess(successEl, null);
+        document.dispatchEvent(new CustomEvent("ilcovo:booking-success", { detail: { type: formType, paymentMethod: "on_site" } }));
+        return;
+      }
+
       await submitMakeLead(buildMakeTrialPayload(form));
       window.ilCovoTrack?.("Lead", {
         content_name: "Prenotazione prova",
