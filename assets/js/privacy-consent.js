@@ -7,8 +7,10 @@
   const ATTRIBUTION_KEY = "ilcovo_attribution_v1";
   let pixelLoaded = false;
   let gaLoaded = false;
+  let memoryConsent = null;
 
   function getConsent() {
+    if (memoryConsent) return memoryConsent;
     try {
       return JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
     } catch {
@@ -23,7 +25,12 @@
       analytics: Boolean(marketing),
       updatedAt: new Date().toISOString()
     };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(consent));
+    memoryConsent = consent;
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(consent));
+    } catch {
+      // Keep the choice for this page even when the browser blocks storage.
+    }
     return consent;
   }
 

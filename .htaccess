@@ -2,6 +2,11 @@ DirectoryIndex index.html
 
 RewriteEngine On
 
+# Canonicalize existing root HTML pages before resolving relative assets.
+# Real directories are left untouched; campaign query strings are preserved.
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^([A-Za-z0-9_-]+)/$ /$1 [R=301,L]
+
 # Tracking scripts: never serve a stale consent/analytics bundle.
 <IfModule mod_headers.c>
   <Files "privacy-consent.js">
@@ -25,4 +30,4 @@ RewriteRule ^(.+?)\.html$ /$1 [R=301,L]
 # Serve automaticamente il file .html quando l'URL pulito esiste
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^(.+?)/?$ $1.html [L]
+RewriteRule ^([^/]+)$ $1.html [L]

@@ -402,13 +402,32 @@ function buildMakeDropinPayload(form) {
 }
 
 async function submitMakeLead(payload) {
-  const response = await fetch(MAKE_TRIAL_WEBHOOK_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-  if (!response.ok) throw new Error(`Make webhook error ${response.status}`);
-  return response;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000);
+  try {
+    const response = await fetch(MAKE_TRIAL_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    });
+    if (!response.ok) throw new Error(`Make webhook error ${response.status}`);
+    return response;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+function showBookingSubmissionError(element) {
+  // A lost response does not prove the lead was not received. Do not retry automatically.
+  element.textContent = "Non è stato possibile confermare l’invio. Prima di riprovare, ";
+  const contact = document.createElement("a");
+  contact.href = `https://wa.me/${WHATSAPP_NUMBER}`;
+  contact.textContent = "contattaci su WhatsApp";
+  contact.style.color = "inherit";
+  contact.style.textDecoration = "underline";
+  element.appendChild(contact);
+  element.hidden = false;
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -939,8 +958,7 @@ async function handleSubmit(formType, form) {
       document.dispatchEvent(new CustomEvent("ilcovo:booking-success", { detail: { type: formType } }));
     } catch (err) {
       console.warn("[IL COVO] Invio Make fallito:", err.message);
-      formError.textContent = "Errore nell’invio. Riprova tra poco o contattaci su WhatsApp.";
-      formError.hidden = false;
+      showBookingSubmissionError(formError);
       btn.disabled = false;
       btn.textContent = originalButtonText;
     }
@@ -957,8 +975,7 @@ async function handleSubmit(formType, form) {
       document.dispatchEvent(new CustomEvent("ilcovo:booking-success", { detail: { type: formType } }));
     } catch (err) {
       console.warn("[IL COVO] Invio Drop-in Make fallito:", err.message);
-      formError.textContent = "Errore nell’invio. Riprova tra poco o contattaci su WhatsApp.";
-      formError.hidden = false;
+      showBookingSubmissionError(formError);
       btn.disabled = false;
       btn.textContent = originalButtonText;
     }

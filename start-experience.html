@@ -23,13 +23,15 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css">
-<link rel="stylesheet" href="assets/css/booking-theme.css">
-<script src="/assets/js/privacy-consent.js?v=20260817" defer></script>
+<link rel="stylesheet" href="/assets/css/styles.css?v=20260922-1">
+<link rel="stylesheet" href="/assets/css/booking-theme.css?v=20260922-1">
+<script src="/assets/js/privacy-consent.js?v=20260922-1" defer></script>
 <style>
 /* ── /start-experience — layout campagna (scoped) ───────────────────── */
 .start-experience-page { background:#f4f4f0; color:#111 }
 .start-experience-page main { overflow:hidden }
+.start-experience-page .rUp,
+.start-experience-page .rL { opacity:1; transform:none }
 .start-experience-page .se-wrap { max-width:1100px; margin:0 auto; padding:0 5vw }
 
 .start-experience-page .se-kicker {
@@ -196,7 +198,7 @@
 <nav id="nav" class="site-header header--light se-nav">
   <div class="nav-container">
   <a href="/" class="nav-logo nav-brand" aria-label="IL COVO">
-    <img src="assets/img/Scritta+lupo-bianco - Copia.png" alt="IL COVO CrossFit Ivrea" class="nav-logo-img">
+    <img src="/assets/img/Scritta+lupo-bianco - Copia.png" alt="IL COVO CrossFit Ivrea" class="nav-logo-img">
   </a>
   <div class="nav-actions">
     <a href="#prenota" class="nav-cta">Prenota la Start Experience</a>
@@ -313,21 +315,21 @@
       <h2 class="se-h2 rUp">Chi ha già iniziato</h2>
       <div class="se-proof-grid">
         <figure class="se-quote rUp d1">
-          <img src="assets/images/testimonials/testimonianza-1-poster.jpg" alt="Eleonora, atleta del COVO" loading="lazy">
+          <img src="/assets/images/testimonials/testimonianza-1-poster.jpg" alt="Eleonora, atleta del COVO" loading="lazy">
           <div class="se-quote-body">
             <p class="se-quote-txt">"Da marzo a oggi ho perso 15 chili. Non pensavo di trovare qualcosa che mi desse la voglia di migliorare. Ora mi sento decisamente meglio con me stessa."</p>
             <figcaption class="se-quote-name">Eleonora</figcaption>
           </div>
         </figure>
         <figure class="se-quote rUp d2">
-          <img src="assets/images/testimonials/testimonianza-2-poster.jpg" alt="Simone, atleta del COVO" loading="lazy">
+          <img src="/assets/images/testimonials/testimonianza-2-poster.jpg" alt="Simone, atleta del COVO" loading="lazy">
           <div class="se-quote-body">
             <p class="se-quote-txt">"Quando ho iniziato ero molto secco, adesso ho un fisico abbastanza atletico. Ho più energia anche nella vita di tutti i giorni."</p>
             <figcaption class="se-quote-name">Simone</figcaption>
           </div>
         </figure>
         <figure class="se-quote rUp d3">
-          <img src="assets/images/testimonials/testimonianza-3-poster.jpg" alt="Lorella, atleta del COVO" loading="lazy">
+          <img src="/assets/images/testimonials/testimonianza-3-poster.jpg" alt="Lorella, atleta del COVO" loading="lazy">
           <div class="se-quote-body">
             <p class="se-quote-txt">"Ho provato e mi è piaciuto tantissimo, adesso è un anno e mezzo che mi alleno. È sempre diverso da quello della palestra, ed è per questo che mi piace così tanto."</p>
             <figcaption class="se-quote-name">Lorella</figcaption>
@@ -446,8 +448,8 @@
   </div>
 </div>
 
-<script src="assets/js/booking-availability.js"></script>
-<script src="assets/js/booking.js"></script>
+<script src="/assets/js/booking-availability.js?v=20260922-1"></script>
+<script src="/assets/js/booking.js?v=20260922-1"></script>
 <script>
 (function () {
   // Nav: fondo pieno + tema chiaro allo scroll
@@ -461,13 +463,7 @@
   window.addEventListener("scroll", updateNav, { passive: true });
   updateNav();
 
-  // Reveal on scroll (riusa le classi .rUp/.d1-.d4/.on di styles.css)
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); }
-    });
-  }, { threshold: .12 });
-  document.querySelectorAll(".rUp,.rL").forEach(function (el) { io.observe(el); });
+  // Landing content remains visible even if scroll animations are unavailable.
 
   // Countdown reale → 30 settembre 2026, 23:59:59 Europe/Rome (CEST, UTC+2)
   var DEADLINE = new Date("2026-09-30T23:59:59+02:00").getTime();
@@ -520,7 +516,7 @@
 </script>
 
 <div data-site-footer></div>
-<script src="assets/js/header.js" defer></script>
-<script src="assets/js/footer.js" defer></script>
+<script src="/assets/js/header.js?v=20260922-1" defer></script>
+<script src="/assets/js/footer.js?v=20260922-1" defer></script>
 </body>
 </html>
