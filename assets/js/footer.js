@@ -11,6 +11,10 @@
     })
     .then(html => {
       mount.innerHTML = html;
+      const bookingCta = mount.querySelector('.site-footer__cta a[href="/prenota-prova"]');
+      if (bookingCta && mount.dataset.bookingCta) {
+        bookingCta.textContent = mount.dataset.bookingCta;
+      }
 
       const footer = mount.querySelector(".site-footer");
       const floatingActions = document.querySelectorAll(".intro-bottom-pill, #wa");
