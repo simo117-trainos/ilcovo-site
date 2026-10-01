@@ -23,7 +23,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
-<link rel="stylesheet" href="assets/css/booking-theme.css?v=20261001">
+<link rel="stylesheet" href="assets/css/booking-theme.css?v=20261001b">
 <script src="/assets/js/privacy-consent.js?v=20260817" defer></script>
 </head>
 <body class="booking-page">
@@ -97,7 +97,13 @@
     </div>
     <form id="booking-form-prova" class="booking-form booking-form--trial" data-product="start_experience" novalidate>
 
-      <div class="booking-field">
+            <div class="booking-form-group booking-form-group--identity">
+        <div class="booking-form-group-heading">
+          <span class="booking-step-number">1</span>
+          <div><strong>I tuoi dati</strong><small>Ci servono solo per confermare la prenotazione.</small></div>
+        </div>
+        <div class="booking-form-group-fields booking-form-group-fields--identity">
+<div class="booking-field">
         <label class="booking-label">Nome e cognome <span class="req">*</span></label>
         <input type="text" name="nome" class="booking-input" placeholder="Mario Rossi" value="" autocomplete="name" required>
         <p class="booking-field-error">Campo obbligatorio</p>
@@ -115,7 +121,16 @@
         <p class="booking-field-error">Campo obbligatorio</p>
       </div>
 
-      <div class="booking-field">
+            </div>
+      </div>
+
+      <div class="booking-form-group booking-form-group--profile">
+        <div class="booking-form-group-heading">
+          <span class="booking-step-number">2</span>
+          <div><strong>Il tuo percorso</strong><small>Così il coach parte già dal livello giusto.</small></div>
+        </div>
+        <div class="booking-form-group-fields">
+<div class="booking-field">
         <label class="booking-label">Da dove vuoi partire? <span class="req">*</span></label>
         <div class="booking-radio-group" data-required="true">
           <label class="booking-radio-option"><input type="radio" name="tipo-prova" value="CrossFit"><span>CrossFit</span></label>
@@ -150,7 +165,16 @@
         <p class="booking-field-error">Seleziona un'opzione</p>
       </div>
 
-      <div class="booking-field" id="prova-orario-field">
+            </div>
+      </div>
+
+      <div class="booking-form-group booking-form-group--schedule">
+        <div class="booking-form-group-heading">
+          <span class="booking-step-number">3</span>
+          <div><strong>Scegli quando venire</strong><small>Seleziona giorno e orario della Start Experience.</small></div>
+        </div>
+        <div class="booking-form-group-fields">
+<div class="booking-field" id="prova-orario-field">
         <label class="booking-label">Quando vuoi fare la Start Experience? <span class="req">*</span></label>
         <button type="button" class="booking-class-picker" id="booking-class-picker" aria-haspopup="dialog" aria-controls="trial-class-dialog">
           <span class="booking-class-picker-icon" aria-hidden="true">▣</span>
@@ -168,7 +192,16 @@
         <p class="booking-field-error" id="prova-orario-error">Seleziona il giorno e l'orario della Start Experience.</p>
       </div>
 
-      <div class="booking-field">
+            </div>
+      </div>
+
+      <div class="booking-form-group booking-form-group--details">
+        <div class="booking-form-group-heading">
+          <span class="booking-step-number">4</span>
+          <div><strong>Ultimi dettagli</strong><small>Informazioni utili per preparare meglio la tua prova.</small></div>
+        </div>
+        <div class="booking-form-group-fields">
+<div class="booking-field">
         <label class="booking-label">Ci sono esigenze particolari di cui preferisci parlare con il coach prima della Start Experience?</label>
         <div class="booking-radio-group">
           <label class="booking-radio-option"><input type="radio" name="infortuni" value="No"><span>No</span></label>
@@ -195,7 +228,14 @@
         </div>
       </div>
 
-      <div class="booking-field booking-payment-box" id="start-experience-payment-field">
+            </div>
+      </div>
+
+<div class="booking-field booking-payment-box" id="start-experience-payment-field">
+        <div class="booking-form-group-heading booking-form-group-heading--payment">
+          <span class="booking-step-number">5</span>
+          <div><strong>Pagamento</strong><small>Scegli l’opzione che preferisci.</small></div>
+        </div>
         <label class="booking-label" id="start-experience-payment-label">Scegli come pagare la tua prova <span class="req">*</span></label>
         <div class="booking-radio-group booking-payment-options" data-required="true" role="radiogroup" aria-labelledby="start-experience-payment-label" aria-describedby="start-experience-payment-hint start-experience-payment-error" aria-required="true">
           <label class="booking-payment-option booking-payment-option--online">
