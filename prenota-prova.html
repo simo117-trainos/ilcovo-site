@@ -23,7 +23,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
-<link rel="stylesheet" href="assets/css/booking-theme.css?v=20261001">
+<link rel="stylesheet" href="assets/css/booking-theme.css?v=20261001b">
 <script src="/assets/js/privacy-consent.js?v=20260817" defer></script>
 </head>
 <body class="booking-page">
@@ -97,6 +97,15 @@
     </div>
     <form id="booking-form-prova" class="booking-form booking-form--trial" data-product="start_experience" novalidate>
 
+      <section class="booking-form-block" aria-labelledby="booking-step-personal">
+        <div class="booking-form-block-head">
+          <span class="booking-form-step">01</span>
+          <div>
+            <h3 id="booking-step-personal">I tuoi dati</h3>
+            <p>Ci servono solo per confermare la prova e contattarti.</p>
+          </div>
+        </div>
+
       <div class="booking-field">
         <label class="booking-label">Nome e cognome <span class="req">*</span></label>
         <input type="text" name="nome" class="booking-input" placeholder="Mario Rossi" value="" autocomplete="name" required>
@@ -114,6 +123,17 @@
         <input type="email" name="email" class="booking-input" placeholder="mario@esempio.it" value="" autocomplete="email" required>
         <p class="booking-field-error">Campo obbligatorio</p>
       </div>
+
+      </section>
+
+      <section class="booking-form-block" aria-labelledby="booking-step-path">
+        <div class="booking-form-block-head">
+          <span class="booking-form-step">02</span>
+          <div>
+            <h3 id="booking-step-path">Il tuo percorso</h3>
+            <p>Tre scelte veloci per far capire al coach da dove parti e dove vuoi arrivare.</p>
+          </div>
+        </div>
 
       <div class="booking-field">
         <label class="booking-label">Da dove vuoi partire? <span class="req">*</span></label>
@@ -150,6 +170,17 @@
         <p class="booking-field-error">Seleziona un'opzione</p>
       </div>
 
+      </section>
+
+      <section class="booking-form-block booking-form-block--schedule" aria-labelledby="booking-step-schedule">
+        <div class="booking-form-block-head">
+          <span class="booking-form-step">03</span>
+          <div>
+            <h3 id="booking-step-schedule">Scegli quando iniziare</h3>
+            <p>Seleziona il giorno e l'orario più comodi per la tua Start Experience.</p>
+          </div>
+        </div>
+
       <div class="booking-field" id="prova-orario-field">
         <label class="booking-label">Quando vuoi fare la Start Experience? <span class="req">*</span></label>
         <button type="button" class="booking-class-picker" id="booking-class-picker" aria-haspopup="dialog" aria-controls="trial-class-dialog">
@@ -167,6 +198,17 @@
         <input type="hidden" name="availability-preference">
         <p class="booking-field-error" id="prova-orario-error">Seleziona il giorno e l'orario della Start Experience.</p>
       </div>
+
+      </section>
+
+      <section class="booking-form-block" aria-labelledby="booking-step-coach">
+        <div class="booking-form-block-head">
+          <span class="booking-form-step">04</span>
+          <div>
+            <h3 id="booking-step-coach">Prima di incontrare il coach</h3>
+            <p>Puoi lasciarci qualche indicazione utile. Niente dati medici o documentazione.</p>
+          </div>
+        </div>
 
       <div class="booking-field">
         <label class="booking-label">Ci sono esigenze particolari di cui preferisci parlare con il coach prima della Start Experience?</label>
@@ -194,6 +236,17 @@
           <label class="booking-radio-option"><input type="radio" name="provenienza" value="Altro"><span>Altro</span></label>
         </div>
       </div>
+
+      </section>
+
+      <section class="booking-form-block booking-form-block--checkout" aria-labelledby="booking-step-checkout">
+        <div class="booking-form-block-head">
+          <span class="booking-form-step">05</span>
+          <div>
+            <h3 id="booking-step-checkout">Conferma la prenotazione</h3>
+            <p>Scegli come pagare. Online costa meno e la conferma è immediata.</p>
+          </div>
+        </div>
 
       <div class="booking-field booking-payment-box" id="start-experience-payment-field">
         <label class="booking-label" id="start-experience-payment-label">Scegli come pagare la tua prova <span class="req">*</span></label>
@@ -228,6 +281,7 @@
 
       <p class="booking-form-error" hidden>Compila tutti i campi obbligatori prima di continuare.</p>
       <button type="submit" class="booking-submit">PRENOTA LA TUA PROVA</button>
+      </section>
 
     </form>
 
