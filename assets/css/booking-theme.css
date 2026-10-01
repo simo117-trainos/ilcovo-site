@@ -458,3 +458,156 @@ body.booking-page .booking-payment-hint {
     min-height:98px;
   }
 }
+
+
+/* October 2026: stronger visual hierarchy for the Start Experience form. */
+body.booking-page #booking-form-prova .booking-form-group {
+  padding:1.25rem;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:18px;
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.018));
+  box-shadow:inset 3px 0 0 rgba(var(--trial-accent-rgb),.2),0 10px 30px rgba(0,0,0,.08);
+}
+
+body.booking-page #booking-form-prova .booking-form-group--schedule {
+  border-color:rgba(var(--trial-accent-rgb),.22);
+  background:linear-gradient(180deg,rgba(var(--trial-accent-rgb),.07),rgba(255,255,255,.018));
+  box-shadow:inset 3px 0 0 rgba(var(--trial-accent-rgb),.55),0 12px 30px rgba(0,0,0,.1);
+}
+
+body.booking-page #booking-form-prova .booking-form-group-heading {
+  display:flex;
+  align-items:center;
+  gap:.8rem;
+  margin-bottom:1.15rem;
+}
+
+body.booking-page #booking-form-prova .booking-form-group-heading--payment {
+  margin-bottom:.2rem;
+}
+
+body.booking-page #booking-form-prova .booking-step-number {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:32px;
+  height:32px;
+  flex:0 0 32px;
+  border-radius:50%;
+  color:var(--trial-accent-text);
+  background:var(--trial-accent);
+  font:700 .72rem/1 var(--body-font);
+  box-shadow:0 0 0 4px rgba(var(--trial-accent-rgb),.09);
+}
+
+body.booking-page #booking-form-prova .booking-form-group-heading strong {
+  display:block;
+  color:#fff;
+  font:700 .82rem/1.1 var(--body-font);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+body.booking-page #booking-form-prova .booking-form-group-heading small {
+  display:block;
+  margin-top:.25rem;
+  color:rgba(255,255,255,.5);
+  font:400 .74rem/1.4 var(--body-font);
+}
+
+body.booking-page #booking-form-prova .booking-form-group-fields {
+  display:flex;
+  flex-direction:column;
+  gap:1.45rem;
+}
+
+body.booking-page #booking-form-prova .booking-form-group-fields--identity {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1.25rem;
+}
+
+body.booking-page #booking-form-prova .booking-form-group-fields--identity > .booking-field:first-child {
+  grid-column:1 / -1;
+}
+
+body.booking-page #booking-form-prova .booking-form-group--profile .booking-field + .booking-field,
+body.booking-page #booking-form-prova .booking-form-group--details .booking-field + .booking-field {
+  padding-top:1.15rem;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+
+body.booking-page #booking-form-prova .booking-label {
+  font-weight:700;
+}
+
+body.booking-page #booking-form-prova .booking-radio-option span {
+  min-height:38px;
+  background:rgba(255,255,255,.025);
+}
+
+body.booking-page #booking-form-prova .booking-radio-option input:checked + span {
+  font-weight:700;
+  transform:translateY(-1px);
+  box-shadow:0 0 0 3px rgba(var(--trial-accent-rgb),.11),0 6px 14px rgba(0,0,0,.16);
+}
+
+body.booking-page #booking-form-prova .booking-input,
+body.booking-page #booking-form-prova .booking-textarea {
+  background:#121212;
+}
+
+body.booking-page #booking-form-prova .booking-input::placeholder,
+body.booking-page #booking-form-prova .booking-textarea::placeholder {
+  color:rgba(255,255,255,.5);
+}
+
+body.booking-page #booking-form-prova #prova-orario-field .booking-class-picker {
+  min-height:60px;
+  background:#131313;
+  border-width:1px;
+  box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+
+body.booking-page #booking-form-prova #prova-orario-field .booking-class-picker:hover {
+  border-color:rgba(var(--trial-accent-rgb),.55);
+  background:#171717;
+}
+
+body.booking-page #start-experience-payment-field.booking-payment-box {
+  padding:1.25rem;
+  box-shadow:inset 3px 0 0 rgba(var(--booking-trial-warm-rgb),.5),0 12px 30px rgba(0,0,0,.1);
+}
+
+body.booking-page #booking-form-prova .booking-field--privacy {
+  padding:1rem 1.05rem;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  background:rgba(255,255,255,.025);
+}
+
+@media (max-width:767px) {
+  body.booking-page #booking-form-prova .booking-form-group,
+  body.booking-page #start-experience-payment-field.booking-payment-box {
+    padding:1rem;
+    border-radius:16px;
+  }
+
+  body.booking-page #booking-form-prova .booking-form-group-fields--identity {
+    grid-template-columns:1fr;
+  }
+
+  body.booking-page #booking-form-prova .booking-form-group-fields--identity > .booking-field:first-child {
+    grid-column:auto;
+  }
+
+  body.booking-page #booking-form-prova .booking-form-group-heading {
+    align-items:flex-start;
+  }
+
+  body.booking-page #booking-form-prova .booking-step-number {
+    width:30px;
+    height:30px;
+    flex-basis:30px;
+  }
+}
