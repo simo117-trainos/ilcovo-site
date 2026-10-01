@@ -292,3 +292,169 @@ body.booking-page .booking-success--dropin .booking-success-check {
     padding:1.35rem;
   }
 }
+
+
+/* October 2026: improve Start Experience form readability and payment choice. */
+body.booking-page #form-prova {
+  max-width:820px;
+}
+
+body.booking-page #booking-form-prova {
+  gap:2.15rem;
+}
+
+body.booking-page #booking-form-prova .booking-field {
+  gap:.62rem;
+}
+
+body.booking-page #booking-form-prova .booking-label {
+  font-size:.78rem;
+  line-height:1.25;
+  letter-spacing:.08em;
+  color:rgba(255,255,255,.94);
+}
+
+body.booking-page #booking-form-prova .booking-orario-hint {
+  margin:.15rem 0 0;
+  font-size:.76rem;
+  line-height:1.58;
+  color:rgba(255,255,255,.6);
+}
+
+body.booking-page #booking-form-prova .booking-radio-group {
+  gap:.55rem;
+}
+
+body.booking-page #booking-form-prova .booking-radio-option span {
+  padding:.6rem 1rem;
+  font-size:.72rem;
+  line-height:1.15;
+  color:rgba(255,255,255,.82);
+  background:rgba(255,255,255,.015);
+}
+
+body.booking-page #booking-form-prova .booking-radio-option input:checked + span {
+  box-shadow:0 0 0 2px rgba(var(--trial-accent-rgb),.12);
+}
+
+body.booking-page #booking-form-prova .booking-input,
+body.booking-page #booking-form-prova .booking-textarea,
+body.booking-page #booking-form-prova .booking-class-picker {
+  border-color:rgba(255,255,255,.24);
+}
+
+body.booking-page #booking-form-prova .booking-privacy span {
+  font-size:.82rem;
+  line-height:1.58;
+  color:rgba(255,255,255,.68);
+}
+
+body.booking-page #start-experience-payment-field.booking-payment-box {
+  gap:.8rem;
+  padding:1.15rem;
+  border:1px solid rgba(var(--booking-trial-warm-rgb),.24);
+  border-radius:18px;
+  background:rgba(var(--booking-trial-warm-rgb),.045);
+}
+
+body.booking-page .booking-payment-options {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:.75rem !important;
+  margin-top:.1rem;
+}
+
+body.booking-page .booking-payment-option {
+  display:block;
+  min-width:0;
+  cursor:pointer;
+}
+
+body.booking-page .booking-payment-option input {
+  position:absolute;
+  width:1px;
+  height:1px;
+  opacity:0;
+  pointer-events:none;
+}
+
+body.booking-page .booking-payment-card {
+  position:relative;
+  display:flex;
+  min-height:112px;
+  flex-direction:column;
+  justify-content:center;
+  gap:.42rem;
+  padding:1rem 1.05rem;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:14px;
+  background:#111;
+  transition:border-color .18s ease,background .18s ease,box-shadow .18s ease,transform .18s ease;
+}
+
+body.booking-page .booking-payment-card strong {
+  color:#fff;
+  font:600 .84rem/1.2 var(--body-font);
+  letter-spacing:.035em;
+  text-transform:uppercase;
+}
+
+body.booking-page .booking-payment-card small {
+  color:rgba(255,255,255,.62);
+  font:400 .76rem/1.35 var(--body-font);
+}
+
+body.booking-page .booking-payment-option--online .booking-payment-card {
+  border-color:rgba(var(--booking-trial-warm-rgb),.68);
+  background:linear-gradient(145deg,rgba(var(--booking-trial-warm-rgb),.12),rgba(var(--booking-trial-warm-rgb),.045));
+  box-shadow:0 8px 24px rgba(0,0,0,.16);
+}
+
+body.booking-page .booking-payment-option--online .booking-payment-card:hover {
+  border-color:#eee8da;
+  transform:translateY(-1px);
+}
+
+body.booking-page .booking-payment-badge {
+  align-self:flex-start;
+  padding:.28rem .5rem;
+  border-radius:999px;
+  color:#111;
+  background:var(--booking-trial-warm);
+  font:700 .62rem/1 var(--body-font);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+body.booking-page .booking-payment-option input:checked + .booking-payment-card {
+  border-color:#eee8da;
+  background:rgba(var(--booking-trial-warm-rgb),.17);
+  box-shadow:0 0 0 3px rgba(var(--booking-trial-warm-rgb),.1),0 10px 28px rgba(0,0,0,.2);
+}
+
+body.booking-page .booking-payment-option input:focus-visible + .booking-payment-card {
+  outline:3px solid #eee8da;
+  outline-offset:3px;
+}
+
+body.booking-page .booking-payment-hint {
+  max-width:640px;
+}
+
+@media (max-width:767px) {
+  body.booking-page #booking-form-prova {
+    gap:1.85rem;
+  }
+
+  body.booking-page #booking-form-prova .booking-label {
+    font-size:.76rem;
+  }
+
+  body.booking-page .booking-payment-options {
+    grid-template-columns:1fr;
+  }
+
+  body.booking-page .booking-payment-card {
+    min-height:98px;
+  }
+}
