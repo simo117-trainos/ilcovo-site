@@ -106,9 +106,10 @@ function isStandardStartExperienceForm(form) {
 function getStandardStartExperienceProduct(form) {
   if (!isStandardStartExperienceForm(form)) return {};
   const paymentMethod = getRadio(form, "paymentMethod");
+  const price = paymentMethod === "on_site" ? 25 : 20;
   return {
     product: "start_experience",
-    price: 20,
+    price,
     currency: "EUR",
     paymentMethod,
     paymentStatus: paymentMethod === "on_site" ? "unpaid" : "pending",
@@ -1053,7 +1054,7 @@ async function handleSubmit(formType, form) {
         }
 
         const successText = successEl.querySelector(".booking-success-text");
-        if (successText) successText.textContent = "Prenotazione ricevuta. Pagherai 20 € al COVO quando arrivi.";
+        if (successText) successText.textContent = "Prenotazione ricevuta. Pagherai 25 € al COVO quando arrivi.";
         showSuccess(successEl, null);
         document.dispatchEvent(new CustomEvent("ilcovo:booking-success", { detail: { type: formType, paymentMethod: "on_site" } }));
         return;
