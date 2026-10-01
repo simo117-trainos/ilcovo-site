@@ -458,3 +458,217 @@ body.booking-page .booking-payment-hint {
     min-height:98px;
   }
 }
+
+
+/* October 2026: visual hierarchy for the full Start Experience form. */
+body.booking-page #booking-form-prova {
+  gap:1.05rem;
+}
+
+body.booking-page #booking-form-prova .booking-form-block {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:1.45rem;
+  padding:1.35rem;
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:20px;
+  background:linear-gradient(155deg,rgba(255,255,255,.045) 0%,rgba(255,255,255,.018) 56%,rgba(255,255,255,.008) 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 12px 32px rgba(0,0,0,.13);
+}
+
+body.booking-page #booking-form-prova .booking-form-block:hover {
+  border-color:rgba(255,255,255,.16);
+}
+
+body.booking-page #booking-form-prova .booking-form-block-head {
+  display:flex;
+  align-items:flex-start;
+  gap:.9rem;
+  padding-bottom:1rem;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+body.booking-page #booking-form-prova .booking-form-step {
+  display:grid;
+  place-items:center;
+  flex:0 0 36px;
+  width:36px;
+  height:36px;
+  border:1px solid rgba(var(--booking-trial-warm-rgb),.42);
+  border-radius:50%;
+  background:rgba(var(--booking-trial-warm-rgb),.08);
+  color:#eee8da;
+  font:700 .7rem/1 var(--body-font);
+  letter-spacing:.06em;
+}
+
+body.booking-page #booking-form-prova .booking-form-block-head h3 {
+  margin:0;
+  color:#fff;
+  font:600 1rem/1.15 var(--body-font);
+  letter-spacing:.045em;
+  text-transform:uppercase;
+}
+
+body.booking-page #booking-form-prova .booking-form-block-head p {
+  margin:.32rem 0 0;
+  max-width:600px;
+  color:rgba(255,255,255,.55);
+  font:400 .8rem/1.45 var(--body-font);
+}
+
+body.booking-page #booking-form-prova .booking-form-block--schedule {
+  border-color:rgba(var(--trial-accent-rgb),.24);
+  background:linear-gradient(155deg,rgba(var(--trial-accent-rgb),.065),rgba(255,255,255,.018) 58%);
+}
+
+body.booking-page #booking-form-prova .booking-form-block--schedule .booking-form-step {
+  color:var(--trial-accent-text);
+  border-color:var(--trial-accent);
+  background:var(--trial-accent);
+}
+
+body.booking-page #booking-form-prova .booking-form-block--checkout {
+  border-color:rgba(var(--booking-trial-warm-rgb),.34);
+  background:linear-gradient(155deg,rgba(var(--booking-trial-warm-rgb),.07),rgba(255,255,255,.018) 58%);
+}
+
+body.booking-page #booking-form-prova .booking-input,
+body.booking-page #booking-form-prova .booking-textarea {
+  min-height:48px;
+  padding:.95rem 1.05rem;
+  border-color:rgba(255,255,255,.2);
+  background:#141414;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.018);
+}
+
+body.booking-page #booking-form-prova .booking-textarea {
+  min-height:112px;
+}
+
+body.booking-page #booking-form-prova .booking-input:hover,
+body.booking-page #booking-form-prova .booking-textarea:hover {
+  border-color:rgba(255,255,255,.32);
+}
+
+body.booking-page #booking-form-prova .booking-input:focus,
+body.booking-page #booking-form-prova .booking-textarea:focus {
+  border-color:var(--trial-accent);
+  background:#171717;
+  box-shadow:0 0 0 3px rgba(var(--trial-accent-rgb),.1);
+}
+
+body.booking-page #booking-form-prova .booking-radio-option span {
+  min-height:38px;
+  padding:.64rem 1rem;
+  border-color:rgba(255,255,255,.19);
+  background:#141414;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.018);
+}
+
+body.booking-page #booking-form-prova .booking-radio-option span:hover {
+  border-color:rgba(255,255,255,.42);
+  background:#191919;
+  transform:translateY(-1px);
+}
+
+body.booking-page #booking-form-prova .booking-radio-option input:checked + span {
+  border-color:var(--trial-accent);
+  background:var(--trial-accent);
+  color:var(--trial-accent-text);
+  box-shadow:0 5px 16px rgba(var(--trial-accent-rgb),.14);
+}
+
+body.booking-page #booking-form-prova .booking-class-picker {
+  min-height:60px;
+  padding:1rem 1.05rem;
+  border-color:rgba(var(--trial-accent-rgb),.34);
+  background:linear-gradient(135deg,#171717,#121212);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+body.booking-page #booking-form-prova .booking-class-picker:hover {
+  border-color:rgba(var(--trial-accent-rgb),.62);
+  background:#181818;
+}
+
+body.booking-page #booking-form-prova .booking-class-picker-icon {
+  display:grid;
+  place-items:center;
+  width:28px;
+  height:28px;
+  border:1px solid rgba(var(--trial-accent-rgb),.34);
+  border-radius:8px;
+  background:rgba(var(--trial-accent-rgb),.08);
+}
+
+body.booking-page #booking-form-prova .booking-class-picker-copy strong {
+  font-size:.78rem;
+  letter-spacing:.045em;
+}
+
+body.booking-page #booking-form-prova .booking-payment-box {
+  padding:1rem;
+  border-color:rgba(var(--booking-trial-warm-rgb),.28);
+  background:rgba(0,0,0,.14);
+}
+
+body.booking-page #booking-form-prova .booking-field--privacy {
+  padding-top:.2rem;
+}
+
+body.booking-page #booking-form-prova .booking-privacy {
+  padding:.9rem 1rem;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:13px;
+  background:rgba(255,255,255,.018);
+}
+
+body.booking-page #booking-form-prova .booking-submit {
+  min-height:56px;
+  margin-top:.05rem;
+  box-shadow:0 10px 30px rgba(var(--trial-accent-rgb),.12);
+}
+
+body.booking-page #booking-form-prova .booking-submit:hover {
+  transform:translateY(-2px);
+  box-shadow:0 14px 34px rgba(var(--trial-accent-rgb),.18);
+}
+
+@media (max-width:767px) {
+  body.booking-page #booking-form-prova {
+    gap:.85rem;
+  }
+
+  body.booking-page #booking-form-prova .booking-form-block {
+    gap:1.25rem;
+    padding:1.05rem;
+    border-radius:17px;
+  }
+
+  body.booking-page #booking-form-prova .booking-form-block-head {
+    gap:.75rem;
+    padding-bottom:.85rem;
+  }
+
+  body.booking-page #booking-form-prova .booking-form-step {
+    flex-basis:32px;
+    width:32px;
+    height:32px;
+    font-size:.64rem;
+  }
+
+  body.booking-page #booking-form-prova .booking-form-block-head h3 {
+    font-size:.92rem;
+  }
+
+  body.booking-page #booking-form-prova .booking-form-block-head p {
+    font-size:.75rem;
+  }
+
+  body.booking-page #booking-form-prova .booking-radio-option span {
+    min-height:36px;
+    padding:.58rem .82rem;
+  }
+}
