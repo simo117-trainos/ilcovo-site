@@ -1124,3 +1124,48 @@ if (dropinFormEl) {
     handleSubmit("dropin", this);
   });
 }
+
+
+// ── Ritorno da Stripe Checkout: non considerare il redirect prova di pagamento.
+// La conferma definitiva arriva dal webhook Stripe lato server.
+(function showStartExperienceStripeReturnNotice() {
+  const params = new URLSearchParams(window.location.search);
+  const payment = params.get("payment");
+  if (payment !== "success" && payment !== "cancelled") return;
+
+  function render() {
+    const form = document.getElementById("booking-form-prova");
+    if (!form || document.getElementById("start-experience-stripe-return")) return;
+
+    const notice = document.createElement("div");
+    notice.id = "start-experience-stripe-return";
+    notice.setAttribute("role", "status");
+    notice.style.cssText = "margin:16px 0;padding:18px 20px;border:1px solid currentColor;border-radius:12px;line-height:1.55;";
+
+    const heading = document.createElement("strong");
+    heading.style.display = "block";
+    heading.textContent = payment === "success"
+      ? "Pagamento in verifica"
+      : "Pagamento non completato";
+    const message = document.createElement("p");
+    message.style.margin = "8px 0";
+    message.textContent = payment === "success"
+      ? "Se hai autorizzato il pagamento, stiamo attendendo la conferma da Stripe. Non ripetere il pagamento: contattaci se non ricevi conferma della prenotazione."
+      : "Il pagamento non risulta completato da questo passaggio. Se la banca mostra un addebito, non riprovare: contattaci prima di effettuare un altro tentativo.";
+
+    const contact = document.createElement("a");
+    contact.href = "https://wa.me/" + WHATSAPP_NUMBER;
+    contact.textContent = "Scrivici su WhatsApp per verificare la prova";
+    contact.target = "_blank";
+    contact.rel = "noopener noreferrer";
+    notice.append(heading, message, contact);
+    form.parentNode.insertBefore(notice, form);
+    notice.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", render, { once: true });
+  } else {
+    render();
+  }
+})();
