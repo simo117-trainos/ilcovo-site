@@ -22,4 +22,8 @@ return [
     // Facoltativa: parola segreta per forzare l'aggiornamento subito
     // visitando https://ilcovocrossfitivrea.com/cronache/?refresh=PAROLA
     'refresh_key' => '',
+
+    // Parola segreta per l'anteprima degli articoli con "Solo test" spuntato:
+    // https://ilcovocrossfitivrea.com/cronache/?anteprima=PAROLA
+    'preview_key' => '',
 ];

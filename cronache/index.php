@@ -40,6 +40,7 @@ cronache_head([
     'description' => 'Storie, traguardi e cronache delle persone che vivono IL COVO CrossFit Ivrea. Le persone sono la notizia.',
     'path' => '/cronache/' . ($filtro ? '?rubrica=' . $filtro : ''),
     'image' => $cover['images'][0] ?? null,
+    'noindex' => !$all, // finché il giornale è vuoto non va indicizzato
 ]);
 
 function cr_card(array $a, string $variant = ''): void

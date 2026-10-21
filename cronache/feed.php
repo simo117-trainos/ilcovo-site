@@ -12,7 +12,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>', "\n";
   <link><?= e($site) ?>/cronache/</link>
   <description>Storie, traguardi e cronache delle persone che vivono IL COVO CrossFit Ivrea.</description>
   <language>it-it</language>
-<?php foreach (array_slice(cronache_articles(), 0, 30) as $a): ?>
+<?php foreach (array_slice(cronache_articles(false), 0, 30) as $a): ?>
   <item>
     <title><?= e($a['title']) ?></title>
     <link><?= e($site . '/cronache/' . $a['slug']) ?></link>

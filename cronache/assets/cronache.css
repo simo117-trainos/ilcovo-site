@@ -263,3 +263,10 @@ a.cr-masthead__name { font-size:clamp(2.2rem, 6vw, 4.6rem) }
 @media (prefers-reduced-motion: reduce) {
   .cr-card__media img, .cr-cover__media img { transition:none }
 }
+
+/* ── Barra anteprima (solo con link segreto) ── */
+.cr-preview-bar {
+  position:fixed; left:0; right:0; bottom:0; z-index:400;
+  padding:.6rem 1rem; background:#C6FF00; color:#000; text-align:center;
+  font:700 .75rem/1.3 var(--body-font, "Barlow", sans-serif); letter-spacing:.08em; text-transform:uppercase;
+}

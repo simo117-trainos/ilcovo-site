@@ -24,7 +24,7 @@ function cronache_head(array $meta): void
 <title><?= e($title) ?></title>
 <meta name="description" content="<?= e($desc) ?>">
 <link rel="canonical" href="<?= e($url) ?>">
-<?php if (!empty($meta['noindex'])): ?><meta name="robots" content="noindex"><?php endif; ?>
+<?php if (!empty($meta['noindex']) || cronache_preview()): ?><meta name="robots" content="noindex, nofollow"><?php endif; ?>
 <meta property="og:locale" content="it_IT">
 <meta property="og:type" content="<?= e($type) ?>">
 <meta property="og:title" content="<?= e($title) ?>">
@@ -50,6 +50,9 @@ function cronache_head(array $meta): void
 <script src="/assets/js/privacy-consent.js?v=20260817" defer></script>
 </head>
 <body class="cronache-page">
+<?php if (cronache_preview()): ?>
+<div class="cr-preview-bar">Anteprima — vedi anche gli articoli di test. Il pubblico non li vede.</div>
+<?php endif; ?>
 <nav id="nav" class="site-header header--light">
   <div class="nav-container">
   <a href="/" class="nav-logo nav-brand" aria-label="IL COVO">

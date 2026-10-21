@@ -33,6 +33,7 @@ function cronache_config(): array
         'site_url' => CRONACHE_SITE_URL,
         'refresh_key' => '',         // se impostata, /cronache/?refresh=CHIAVE svuota la cache
         'api_base' => 'https://api.notion.com/v1/', // modificabile solo per i test
+        'preview_key' => '',         // parola segreta per vedere gli articoli "Solo test": /cronache/?anteprima=PAROLA
     ];
 
     $candidates = array_filter([
@@ -59,6 +60,42 @@ function cronache_config(): array
     $config['site_url'] = rtrim((string) $config['site_url'], '/');
 
     return $config;
+}
+
+/**
+ * Modalità anteprima: mostra anche gli articoli con "Solo test" spuntato.
+ * Si attiva aprendo /cronache/?anteprima=PAROLA (resta attiva 12 ore tramite cookie).
+ */
+function cronache_preview(): bool
+{
+    static $on = null;
+    if ($on !== null) {
+        return $on;
+    }
+    $key = (string) cronache_config()['preview_key'];
+    if ($key === '') {
+        return $on = false;
+    }
+    $token = hash('sha256', 'cronache|' . $key);
+    if (isset($_GET['anteprima']) && hash_equals($key, (string) $_GET['anteprima'])) {
+        if (!headers_sent()) {
+            setcookie('cr_anteprima', $token, [
+                'expires' => time() + 12 * 3600,
+                'path' => '/cronache',
+                'httponly' => true,
+                'secure' => !empty($_SERVER['HTTPS']),
+                'samesite' => 'Lax',
+            ]);
+        }
+        $on = true;
+    } else {
+        $on = isset($_COOKIE['cr_anteprima']) && hash_equals($token, (string) $_COOKIE['cr_anteprima']);
+    }
+    if ($on && !headers_sent()) {
+        header('X-Robots-Tag: noindex, nofollow');
+        header('Cache-Control: private, no-store');
+    }
+    return $on;
 }
 
 function cronache_is_configured(): bool
@@ -354,12 +391,25 @@ function cronache_map_page(array $page): ?array
         'edizione' => cronache_prop_number($p, 'Edizione'),
         'copertina' => cronache_prop_bool($p, 'In copertina'),
         'stato' => $stato,
+        'test' => cronache_prop_bool($p, 'Solo test'),
         'url_notion' => cronache_prop_text($p, 'URL articolo'),
     ];
 }
 
-/** Tutti gli articoli pubblicabili, dal più recente. */
-function cronache_articles(): array
+/**
+ * Articoli pubblicabili, dal più recente.
+ * Gli articoli "Solo test" compaiono solo in modalità anteprima (mai in feed e sitemap).
+ */
+function cronache_articles(?bool $includeTest = null): array
+{
+    $includeTest = $includeTest ?? cronache_preview();
+    return array_values(array_filter(
+        cronache_all_articles(),
+        fn ($a) => $includeTest || empty($a['test'])
+    ));
+}
+
+function cronache_all_articles(): array
 {
     $c = cronache_config();
     if ($c['demo']) {
@@ -427,7 +477,7 @@ function cronache_mark_published(array &$articles): void
         return;
     }
     foreach ($articles as &$a) {
-        if ($a['stato'] !== 'Approvato') {
+        if ($a['stato'] !== 'Approvato' || !empty($a['test'])) {
             continue;
         }
         $today = date('Y-m-d');
