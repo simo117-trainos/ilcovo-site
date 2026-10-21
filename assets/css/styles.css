@@ -7085,10 +7085,3 @@ nav#nav.site-header .nav-actions {
     padding-bottom:clamp(4.75rem,16vw,6rem);
   }
 }
-
-/* Menu con 6 voci (aggiunta Cronache): più compatto sui desktop stretti */
-@media (min-width:900px) and (max-width:1199px) {
-  nav#nav { gap:1.2rem }
-  nav#nav .nav-links { gap:1.35rem }
-  nav#nav .nav-links a { font-size:.8rem }
-}
