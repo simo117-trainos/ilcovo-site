@@ -1,0 +1,416 @@
+{
+ "_nota": "DATI DI PROVA per l'anteprima locale (CRONACHE_DEMO=1). Mai usati in produzione.",
+ "articles": [
+  {
+   "id": "demo-giulia",
+   "slug": "primo-pull-up-giulia-classe-19",
+   "title": "Il primo pull-up di Giulia, davanti alla classe delle 19",
+   "rubrica": "Storie",
+   "formato": "Ritratto",
+   "occhiello": "Ultima a finire il suo primo WOD, a un passo dal mollare dopo sei mesi: la storia di Giulia, al COVO da marzo 2024.",
+   "estratto": "Due anni e mezzo fa pensava che il box non fosse un posto per lei. Il 12 ottobre ha fatto il suo primo pull-up senza elastico.",
+   "citazione": "Nessuno ti guarda per giudicarti, ti guardano per aiutarti.",
+   "protagonista": "Giulia Esempio",
+   "scheda": [
+    "Al COVO da marzo 2024",
+    "Primo pull-up senza elastico: 12 ottobre 2026",
+    "Prima HYROX: Torino, in coppia"
+   ],
+   "images": [
+    "/assets/img/ILCOVOCHALLENGE-138.jpg",
+    "/assets/img/DSC04272.jpg",
+    "/assets/img/IMG_0363.JPG",
+    "/assets/img/ILCOVOCHALLENGE-229.jpg"
+   ],
+   "date": "2026-10-21",
+   "date_set": true,
+   "edizione": 1,
+   "copertina": true,
+   "stato": "Pubblicato",
+   "url_notion": ""
+  },
+  {
+   "id": "demo-t1",
+   "slug": "esempio-traguardo-muscle-up",
+   "title": "[Esempio] Il primo muscle-up a 41 anni",
+   "rubrica": "Traguardi",
+   "formato": "Breve",
+   "occhiello": "",
+   "estratto": "Esempio di traguardo breve: il risultato in una riga.",
+   "citazione": "",
+   "protagonista": "",
+   "scheda": [],
+   "images": [
+    "/assets/img/ILCOVOCHALLENGE-176.jpg"
+   ],
+   "date": "2026-10-18",
+   "date_set": true,
+   "edizione": 1,
+   "copertina": false,
+   "stato": "Pubblicato",
+   "url_notion": ""
+  },
+  {
+   "id": "demo-t2",
+   "slug": "esempio-traguardo-hyrox",
+   "title": "[Esempio] Prima HYROX chiusa sotto l'ora e mezza",
+   "rubrica": "Traguardi",
+   "formato": "Breve",
+   "occhiello": "",
+   "estratto": "Esempio di traguardo breve con un tempo di gara.",
+   "citazione": "",
+   "protagonista": "",
+   "scheda": [],
+   "images": [
+    "/assets/img/IMG_9757.JPG"
+   ],
+   "date": "2026-10-15",
+   "date_set": true,
+   "edizione": 1,
+   "copertina": false,
+   "stato": "Pubblicato",
+   "url_notion": ""
+  },
+  {
+   "id": "demo-t3",
+   "slug": "esempio-traguardo-deadlift",
+   "title": "[Esempio] Stacco da terra: 100 kg per la prima volta",
+   "rubrica": "Traguardi",
+   "formato": "Breve",
+   "occhiello": "",
+   "estratto": "Esempio di traguardo breve con un numero.",
+   "citazione": "",
+   "protagonista": "",
+   "scheda": [],
+   "images": [
+    "/assets/img/DSC00738.jpg"
+   ],
+   "date": "2026-10-12",
+   "date_set": true,
+   "edizione": 1,
+   "copertina": false,
+   "stato": "Pubblicato",
+   "url_notion": ""
+  },
+  {
+   "id": "demo-c1",
+   "slug": "esempio-cronaca-covo-challenge",
+   "title": "[Esempio] Covo Challenge: com'è andata la giornata",
+   "rubrica": "Cronaca",
+   "formato": "Ritratto",
+   "occhiello": "Esempio di articolo di cronaca su un evento del box.",
+   "estratto": "Esempio di cronaca: chi, cosa, quando e un momento simbolo.",
+   "citazione": "",
+   "protagonista": "",
+   "scheda": [],
+   "images": [
+    "/assets/img/ILCOVOCHALLENGE-106.jpg"
+   ],
+   "date": "2026-10-08",
+   "date_set": true,
+   "edizione": 1,
+   "copertina": false,
+   "stato": "Pubblicato",
+   "url_notion": ""
+  },
+  {
+   "id": "demo-s2",
+   "slug": "esempio-storia-in-numeri",
+   "title": "[Esempio] Tre anni al COVO in sei numeri",
+   "rubrica": "Storie",
+   "formato": "In numeri",
+   "occhiello": "Esempio di storia nel formato In numeri.",
+   "estratto": "Esempio di formato In numeri: PR, presenze e gare con un breve commento.",
+   "citazione": "",
+   "protagonista": "",
+   "scheda": [],
+   "images": [
+    "/assets/img/IMG_0401.JPG"
+   ],
+   "date": "2026-10-02",
+   "date_set": true,
+   "edizione": 1,
+   "copertina": false,
+   "stato": "Pubblicato",
+   "url_notion": ""
+  }
+ ],
+ "blocks": {
+  "demo-giulia": [
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "Il 12 ottobre, alle sette di sera, la sbarra era la stessa di sempre. Cambiava solo una cosa: nessun elastico appeso. Giulia ha afferrato, ha tirato, ed è arrivata con il mento sopra la sbarra. Una volta sola. «Uno solo, ma l'ho fatto davanti a tutta la classe delle 19», racconta.",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   },
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "Per capire quanto pesa quell'unica ripetizione bisogna tornare indietro di due anni e mezzo. Fino a marzo 2024 lo sport, nella vita di Giulia, era quasi scomparso: qualche corsa la domenica, «niente di serio». Trentotto anni, due figli piccoli, un lavoro in ufficio che finisce alle sei di sera.",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   },
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "A portarla al COVO è stata una collega, che l'ha convinta a provare una lezione. Giulia ci è entrata con un'idea precisa in testa: che quello fosse un posto per gente già allenata. «Ero terrorizzata», ammette. Il WOD l'ha chiuso per ultima. Ma è la scena finale che ricorda: «tutti stavano urlando il mio nome per farmi finire».",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   },
+   {
+    "type": "heading_2",
+    "rich": [
+     {
+      "plain_text": "Le due settimane di assenza",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   },
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "Il momento più duro è arrivato a settembre 2024, sei mesi dopo. Il pull-up restava lontanissimo: nemmeno con l'elastico più spesso riusciva a completare una ripetizione. «Mi sentivo ridicola». Per due settimane non si è più presentata.",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   },
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "A riportarla in sala non è stato un programma o un obiettivo, ma un messaggio. Il coach le ha scritto su WhatsApp per chiederle se stesse bene. Lei è tornata.",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   },
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "Da allora la sua settimana ha una forma precisa: martedì e giovedì dopo l'ufficio, sabato mattina. Il sabato i bambini vengono con lei e giocano nell'area all'ingresso mentre si allena.",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   },
+   {
+    "type": "heading_2",
+    "rich": [
+     {
+      "plain_text": "Una versione fatta per lei",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   },
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "Se c'è una persona che ha reso possibile tutto questo, per Giulia è Marco, il coach della sera. «Non mi ha mai fatto sentire indietro, mi dava sempre una versione dell'esercizio fatta per me». È il lavoro meno visibile di un coach: adattare, scalare, trovare per ognuno il gradino giusto.",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   },
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "I gradini, nel frattempo, sono diventati traguardi. A maggio [DA VERIFICARE: anno] Giulia ha chiuso la sua prima HYROX, a Torino, in coppia. Poi il 12 ottobre 2026, la sbarra senza elastico.",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   },
+   {
+    "type": "heading_2",
+    "rich": [
+     {
+      "plain_text": "Entra e basta",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   },
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "Alla domanda su cosa direbbe a chi ha paura di varcare la porta di un box, Giulia non ci pensa troppo. «Entra e basta. Nessuno ti guarda per giudicarti, ti guardano per aiutarti». E aggiunge la frase che riassume due anni e mezzo meglio di qualsiasi numero: «Il primo giorno è il più difficile, poi diventa la tua ora».",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   }
+  ],
+  "demo-t1": [
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "Testo di esempio per vedere l'impaginazione di un Traguardo: due o tre paragrafi brevi, il risultato nella prima frase, una citazione testuale della persona.",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   },
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "«Frase di esempio del protagonista.» Questo contenuto non verrà mai pubblicato: esiste solo nell'anteprima locale.",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   }
+  ],
+  "demo-t2": [
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "Testo di esempio per vedere l'impaginazione di un Traguardo: due o tre paragrafi brevi, il risultato nella prima frase, una citazione testuale della persona.",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   },
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "«Frase di esempio del protagonista.» Questo contenuto non verrà mai pubblicato: esiste solo nell'anteprima locale.",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   }
+  ],
+  "demo-t3": [
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "Testo di esempio per vedere l'impaginazione di un Traguardo: due o tre paragrafi brevi, il risultato nella prima frase, una citazione testuale della persona.",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   },
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "«Frase di esempio del protagonista.» Questo contenuto non verrà mai pubblicato: esiste solo nell'anteprima locale.",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   }
+  ],
+  "demo-c1": [
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "Testo di esempio per vedere l'impaginazione di un Traguardo: due o tre paragrafi brevi, il risultato nella prima frase, una citazione testuale della persona.",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   },
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "«Frase di esempio del protagonista.» Questo contenuto non verrà mai pubblicato: esiste solo nell'anteprima locale.",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   }
+  ],
+  "demo-s2": [
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "Testo di esempio per vedere l'impaginazione di un Traguardo: due o tre paragrafi brevi, il risultato nella prima frase, una citazione testuale della persona.",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   },
+   {
+    "type": "paragraph",
+    "rich": [
+     {
+      "plain_text": "«Frase di esempio del protagonista.» Questo contenuto non verrà mai pubblicato: esiste solo nell'anteprima locale.",
+      "annotations": {
+       "bold": false,
+       "italic": false
+      }
+     }
+    ]
+   }
+  ]
+ }
+}
