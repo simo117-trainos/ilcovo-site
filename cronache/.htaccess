@@ -1,0 +1,22 @@
+# Cronache dal Covo
+DirectoryIndex index.php index.html
+Options -Indexes
+
+RewriteEngine On
+RewriteBase /cronache/
+
+# /cronache -> /cronache/
+RewriteRule ^$ index.php [L]
+
+# Feed RSS e sitemap
+RewriteRule ^feed\.xml$ feed.php [L]
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+# Blocca l'accesso diretto a codice, cache, dati di prova e configurazione
+RewriteRule ^(lib|cache|demo)(/|$) - [F,L]
+RewriteRule ^(config\.local\.php|README\.md)$ - [F,L]
+
+# /cronache/articolo-slug -> articolo.php?slug=articolo-slug
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-z0-9-]+)/?$ articolo.php?slug=$1 [L,QSA]

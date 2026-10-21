@@ -1,0 +1,5 @@
+# Solo immagini: nessuno script eseguibile in questa cartella
+Options -Indexes
+<FilesMatch "\.(php|phtml|php\d|phar|pl|py|cgi|sh)$">
+  Require all denied
+</FilesMatch>
