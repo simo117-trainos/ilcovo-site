@@ -135,7 +135,8 @@ function cronache_cached(string $key, callable $producer)
     $fresh = is_file($file) && (time() - filemtime($file) < $ttl);
 
     $key = (string) cronache_config()['refresh_key'];
-    $forceRefresh = $key !== '' && isset($_GET['refresh']) && hash_equals($key, (string) $_GET['refresh']);
+    $forceRefresh = ($key !== '' && isset($_GET['refresh']) && hash_equals($key, (string) $_GET['refresh']))
+        || cronache_preview(); // in anteprima si vedono subito le modifiche fatte su Notion
     if ($fresh && !$forceRefresh) {
         $data = json_decode((string) file_get_contents($file), true);
         if (is_array($data)) {
@@ -646,6 +647,17 @@ function cronache_render_blocks(array $blocks): string
     }
     // Il redattore usa [DA VERIFICARE: …]: non deve mai finire online
     return preg_replace('/\[DA VERIFICARE[^\]]*\]/u', '', $html);
+}
+
+/** true se l'immagine salvata sul server è verticale */
+function cronache_is_portrait(string $publicPath): bool
+{
+    if (!str_starts_with($publicPath, '/cronache/media/')) {
+        return false;
+    }
+    $file = dirname(__DIR__) . '/media/' . basename($publicPath);
+    $size = is_file($file) ? @getimagesize($file) : false;
+    return $size ? $size[1] > $size[0] * 1.1 : false;
 }
 
 function cronache_date_it(string $date): string

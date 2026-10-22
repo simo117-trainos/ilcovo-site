@@ -75,7 +75,7 @@ $shareText = $a['title'] . ' — Cronache dal Covo ' . $url;
   </header>
 
   <?php if ($hero): ?>
-  <figure class="cr-article__hero">
+  <figure class="cr-article__hero<?= cronache_is_portrait($hero) ? ' cr-article__hero--portrait' : '' ?>">
     <img src="<?= e($hero) ?>" alt="<?= e($a['protagonista'] ?: $a['title']) ?>">
   </figure>
   <?php endif; ?>

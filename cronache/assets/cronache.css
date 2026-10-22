@@ -95,7 +95,7 @@ a.cr-masthead__name { font-size:clamp(2.2rem, 6vw, 4.6rem) }
   color:inherit; text-decoration:none;
 }
 .cr-cover__media { position:relative; aspect-ratio:4/3; overflow:hidden; background:var(--cr-paper-2) }
-.cr-cover__media img { width:100%; height:100%; object-fit:cover; transition:transform .8s cubic-bezier(.2,.7,.2,1) }
+.cr-cover__media img { width:100%; height:100%; object-fit:cover; object-position:50% 30%; transition:transform .8s cubic-bezier(.2,.7,.2,1) }
 .cr-cover__link:hover .cr-cover__media img { transform:scale(1.03) }
 .cr-cover__badge {
   position:absolute; left:0; top:0;
@@ -189,6 +189,9 @@ a.cr-masthead__name { font-size:clamp(2.2rem, 6vw, 4.6rem) }
 .cr-article__meta { margin-top:1.4rem; font:600 .72rem/1 var(--cr-label); letter-spacing:.14em; text-transform:uppercase; color:var(--cr-muted) }
 .cr-article__hero { width:min(100%, 1320px); margin:0 auto; aspect-ratio:16/9; overflow:hidden; background:var(--cr-paper-2) }
 .cr-article__hero img { width:100%; height:100%; object-fit:cover; object-position:50% 35% }
+/* Foto verticali (da telefono): niente taglio orizzontale, formato 4:5 centrato */
+.cr-article__hero--portrait { width:min(calc(100% - 32px), 620px); aspect-ratio:4/5 }
+.cr-article__hero--portrait img { object-position:50% 30% }
 
 .cr-article__layout {
   display:grid; grid-template-columns:minmax(200px, 260px) minmax(0, 680px);
@@ -233,9 +236,9 @@ a.cr-masthead__name { font-size:clamp(2.2rem, 6vw, 4.6rem) }
 
 .cr-gallery { padding-bottom:clamp(3rem, 6vw, 5rem) }
 .cr-gallery__grid { display:grid; gap:clamp(.6rem, 1.2vw, 1rem); grid-template-columns:repeat(var(--cols, 3), 1fr) }
-.cr-gallery__grid--1 { --cols:1 } .cr-gallery__grid--2 { --cols:2 } .cr-gallery__grid--3 { --cols:3 } .cr-gallery__grid--4 { --cols:2 }
-.cr-gallery__grid img { width:100%; aspect-ratio:4/3; object-fit:cover; display:block }
-.cr-gallery__grid--1 img { aspect-ratio:16/9 }
+.cr-gallery__grid--1 { --cols:1; max-width:620px; margin-inline:auto } .cr-gallery__grid--2 { --cols:2 } .cr-gallery__grid--3 { --cols:3 } .cr-gallery__grid--4 { --cols:4 }
+.cr-gallery__grid img { width:100%; aspect-ratio:4/5; object-fit:cover; object-position:50% 30%; display:block }
+.cr-gallery__grid--1 img { aspect-ratio:4/5 }
 
 .cr-related { border-top:1px solid var(--cr-rule) }
 
@@ -257,6 +260,7 @@ a.cr-masthead__name { font-size:clamp(2.2rem, 6vw, 4.6rem) }
   .cr-grid { grid-template-columns:1fr }
   .cr-strip__rail { grid-auto-columns:72% }
   .cr-article__hero { aspect-ratio:4/3 }
+  .cr-article__hero--portrait { aspect-ratio:4/5 }
   .cr-gallery__grid { --cols:2 }
   .cr-gallery__grid--1 { --cols:1 }
 }

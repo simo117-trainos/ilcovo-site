@@ -46,7 +46,7 @@ function cronache_head(array $meta): void
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@600;700&family=Bebas+Neue&family=Barlow:wght@300;400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
-<link rel="stylesheet" href="cronache/assets/cronache.css?v=1">
+<link rel="stylesheet" href="cronache/assets/cronache.css?v=2">
 <script src="/assets/js/privacy-consent.js?v=20260817" defer></script>
 </head>
 <body class="cronache-page">
